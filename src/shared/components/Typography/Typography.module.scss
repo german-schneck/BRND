@@ -1,0 +1,38 @@
+.geist {
+  &.light {
+    font-family: 'Geist-Light', sans-serif;
+    font-weight: 300;
+  }
+
+  &.regular {
+    font-family: 'Geist-Regular', sans-serif;
+    font-weight: normal;
+  }
+
+  &.medium {
+    font-family: 'Geist-Medium', sans-serif;
+    font-weight: 500;
+  }
+
+  &.semiBold {
+    font-family: 'Geist-SemiBold', sans-serif;
+    font-weight: 600;
+  }
+
+  &.bold {
+    font-family: 'Geist-Bold', sans-serif;
+    font-weight: bold;
+  }
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
