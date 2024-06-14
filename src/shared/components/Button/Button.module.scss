@@ -1,0 +1,33 @@
+.layout {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 8px;
+  height: 48px;
+}
+
+.primary {
+  background: #FFFFFF;
+
+  border: 1px solid;
+
+  border-image-source: linear-gradient(0deg, #463659, #463659),
+  linear-gradient(90deg, #FFFFFF 0%, #FF0000 33%, #0C00FF 66%, #00FF00 100%);
+  
+  
+
+  color: #000000;
+}
+
+.secondary {
+  background-color: #FFC3FF;
+  color: #4C2897;
+  border: 1px solid #463659
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid #FFFFFF
+}

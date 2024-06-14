@@ -1,0 +1,48 @@
+@import "@/styles/index.scss";
+.layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  padding: 16px;
+}
+
+.header {
+  flex: 0;
+  display: flex;
+}
+
+.scroll {
+  display: flex;
+  overflow: scroll;
+  flex: 1;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0%, 100%));
+  gap: 12px;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 52px;
+
+  pointer-events: none;
+
+  button {
+    pointer-events: initial;
+  }
+}
