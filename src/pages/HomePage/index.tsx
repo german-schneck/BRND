@@ -1,10 +1,16 @@
 // Dependencies
 import React from 'react';
 
-export default function BrandPage(): React.ReactNode {
+// StyleSheet
+import styles from './HomePage.module.scss';
+
+// Components
+import AppLayout from '../../shared/layouts/AppLayout';
+
+export default function HomePage(): React.ReactNode {
   return (
-    <div>
-      BrandPage
-    </div>
+    <AppLayout>
+      HomePage
+    </AppLayout>
   );
 }
