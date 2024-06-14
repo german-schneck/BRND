@@ -1,0 +1,11 @@
+@import "@/styles/index.scss";
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.input {
+  border: none;
+  outline: none;
+}

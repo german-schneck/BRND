@@ -1,0 +1,23 @@
+@import "@/styles/index.scss";
+
+.backdrop {
+  background-color: #080809b6;
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  backdrop-filter: blur(12px);
+}
+
+.container {
+  position: absolute;
+  padding: 16px;
+  background-color: $background-primary;
+  border: 1px solid $border-primary;
+  border-bottom: 0;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  border-radius: 16px 16px 0 0;
+
+  height: 80%;
+}

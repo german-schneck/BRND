@@ -1,5 +1,5 @@
 // Dependencies
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {SignInButton, UseSignInData} from '@farcaster/auth-kit';
 import {motion} from 'framer-motion';
 
@@ -22,6 +22,49 @@ export default function LoginPage(): React.ReactNode {
   const handleSignInSuccess = useCallback((e: UseSignInData) => {
     console.log(e);
   }, []);
+
+  /**
+   * Renders a decorative grid of animated squares.
+   * 
+   * This component uses a useMemo hook to optimize performance by memoizing the rendered output.
+   * It creates a grid of 14 squares, each with an animation that makes the square visible by changing
+   * its opacity and vertical position. The animation for each square is staggered based on its index
+   * to create a wave effect.
+   * 
+   * @returns A React component representing the decorative grid.
+   */
+  const renderDecoration = useMemo(() => (
+    <div className={styles.decorator}>
+      <div className={styles.squareGrid}>
+        {Array.from({length: 14}).map((_, i) => (
+          <div key={`--decoration-key-${i.toString()}`} className={styles.square}>
+            <motion.div
+              className={styles.box}
+              initial="hidden"
+              animate="visible"
+              viewport={{once: true}}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 300,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.5,
+                    delay: i / 20,
+                    type: 'spring', 
+                    stiffness: 100
+                  }
+                }
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  ), []);
 
   return (
     <div className={styles.body}>
@@ -51,34 +94,7 @@ export default function LoginPage(): React.ReactNode {
         </motion.div> 
       </div>
   
-      <div className={styles.decorator}>
-        <div className={styles.squareGrid}>
-          {Array.from({length: 14}).map((_, i) => (
-            <div key={i} className={styles.square}>
-              <motion.div
-                className={styles.box}
-                initial="hidden"
-                animate="visible"
-                viewport={{once: true}}
-                variants={{
-                  hidden: {
-                    opacity: 0,
-                    y: 300,
-                  },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      duration: 0.5,
-                      delay: i / 20
-                    }
-                  }
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      {renderDecoration}
     </div>
   );
 }
