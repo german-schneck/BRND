@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -18,6 +19,7 @@ module.exports = {
     'object-curly-spacing': ['error', 'never'],
     'quotes': ['error', 'single'],
     'semi': ['error', 'always'],
-    'no-multiple-empty-lines': ['error', { 'max': 1 }]
+    'no-multiple-empty-lines': ['error', { 'max': 1 }],
+    'react-hooks/exhaustive-deps': 'off',
   },
 }

@@ -1,8 +1,8 @@
 // Dependencies
 import React from 'react';
 
-// StyleSheet
-import styles from './HomePage.module.scss';
+// // StyleSheet
+// import styles from './HomePage.module.scss';
 
 // Components
 import AppLayout from '../../shared/layouts/AppLayout';

@@ -18,6 +18,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@/*': path.resolve(__dirname, 'src/'),
+      '@/hocs': path.resolve(__dirname, 'src/shared/hocs/'),
       '@/components': path.resolve(__dirname, 'src/shared/components/'),
       '@/assets': path.resolve(__dirname, 'src/shared/assets/'),
       '@/hooks': path.resolve(__dirname, 'src/shared/hooks/'),

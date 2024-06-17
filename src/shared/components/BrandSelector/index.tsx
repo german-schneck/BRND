@@ -5,13 +5,13 @@ import {motion, AnimatePresence} from 'framer-motion';
 // Components
 import SearchInput from './partials/SearchInput';
 import BrandItem from './partials/BrandItem';
-import Button from '@components/Button';
+import Button from '@/components/Button';
 
 // StyleSheet
 import styles from './BrandSelector.module.scss';
 
 // Assets
-import SaveIcon from '@assets/icons/save.svg?react';
+import SaveIcon from '@/assets/icons/save.svg?react';
 
 interface BrandSelectorProps {
   readonly onSelect: (id: number) => void;

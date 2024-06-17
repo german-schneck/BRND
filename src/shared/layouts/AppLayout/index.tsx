@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import NavigationBar from '@components/NavigationBar';
+import NavigationBar from '@/components/NavigationBar';
 
 // StyleSheet
 import styles from './AppLayout.module.scss';

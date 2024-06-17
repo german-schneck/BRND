@@ -1,26 +1,46 @@
 // Dependencies
 import React, {useCallback, useMemo} from 'react';
-import {SignInButton, UseSignInData} from '@farcaster/auth-kit';
+import {SignInButton, UseSignInData, useProfile} from '@farcaster/auth-kit';
 import {motion} from 'framer-motion';
+
+// Hooks
+import {useLogIn} from '../../shared/hooks/auth';
 
 // StyleSheet
 import styles from './LoginPage.module.scss';
 
 // Assets
-import Logo from '../../shared/assets/images/logo.svg';
-import MockLogo from '../../shared/assets/images/mock/landscape-logo.svg';
+import Logo from '@/assets/images/logo.svg';
+import MockLogo from '@/assets/images/mock/landscape-logo.svg';
 
 // Components
-import Typography from '../../shared/components/Typography';
+import Typography from '@/components/Typography';
 
 export default function LoginPage(): React.ReactNode {
+  const logIn = useLogIn();
+  const {isAuthenticated} = useProfile();
 
   /**
-   * Callback function to handle the successful sign-in event.
-   * @param e - The sign-in data received upon successful authentication.
+   * Handles the successful sign-in event by mutating the login state with the received sign-in data.
+   * 
+   * @param {UseSignInData} data - The sign-in data received upon successful authentication.
+   * @param {string} data.fid - The unique identifier for the user.
+   * @param {string} data.signature - The cryptographic signature of the sign-in message.
+   * @param {string} data.message - The message that was signed during authentication.
+   * @param {string} data.nonce - A unique nonce used during the sign-in process.
    */
-  const handleSignInSuccess = useCallback((e: UseSignInData) => {
-    console.log(e);
+  const handleSignInSuccess = useCallback((data: UseSignInData) => {
+    if (data && (data.fid && data.signature && data.message && data.username && data.pfpUrl)) {
+      void logIn.mutate({
+        fid: data.fid,
+        signature: data.signature,
+        domain: 'example.com',
+        message: data.message,
+        nonce: data.nonce,
+        username: data.username,
+        photoUrl: data.pfpUrl,
+      });
+    }
   }, []);
 
   /**
@@ -84,14 +104,16 @@ export default function LoginPage(): React.ReactNode {
             </Typography>
           </div>  
         </motion.div>
-        <motion.div
-          className={styles.footer} 
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{duration: 0.5, delay: 0.5}}
-        >
-          <SignInButton hideSignOut={true} onSuccess={handleSignInSuccess} /> 
-        </motion.div> 
+        {!isAuthenticated && (
+          <motion.div
+            className={styles.footer} 
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{duration: 0.5, delay: 0.5}}
+          >
+            <SignInButton hideSignOut={true} onSuccess={handleSignInSuccess} /> 
+          </motion.div> 
+        )}
       </div>
   
       {renderDecoration}

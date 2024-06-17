@@ -6,7 +6,7 @@ import classNames from 'clsx';
 import styles from './SearchInput.module.scss';
 
 // Assets
-import SearchIcon from '@assets/icons/search.svg?react';
+import SearchIcon from '@/assets/icons/search.svg?react';
 
 export default function SearchInput() {
   const [isActive, setActive] = useState<boolean>(false);

@@ -15,8 +15,29 @@
 
 .scroll {
   display: flex;
-  overflow: scroll;
+  overflow: auto;
+  
   flex: 1;
+  padding-right: 8px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $border-primary;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $border-primary-hover;
+  }
 }
 
 .list {

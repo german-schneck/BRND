@@ -24,12 +24,13 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["*"],
-      "@components/*": ["shared/components/*"],
-      "@assets/*": ["shared/assets/*"],
-      "@hooks/*": ["shared/hooks/*"],
-      "@styles/*": ["shared/styles/*"],
-      "@pages/*": ["pages/*"],
-      "@config/*": ["config/*"]
+      "@/components/*": ["shared/components/*"],
+      "@/assets/*": ["shared/assets/*"],
+      "@/hooks/*": ["shared/hooks/*"],
+      "@/styles/*": ["shared/styles/*"],
+      "@/pages/*": ["pages/*"],
+      "@/config/*": ["config/*"],
+      "@/hocs/*": ["shared/hocs/*"]
     }
   },
   "include": ["src"],

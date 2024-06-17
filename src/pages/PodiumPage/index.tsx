@@ -3,13 +3,13 @@ import React from 'react';
 import {motion} from 'framer-motion';
 
 // Components
-import Podium from '../../shared/components/Podium';
-import Typography from '../../shared/components/Typography';
+import Podium from '@/components/Podium';
+import Typography from '@/components/Typography';
 
 // StyleSheet
-import styles from './OnBoardingPage.module.scss';
+import styles from './PodiumPage.module.scss';
 
-export default function OnBoardingPage(): React.ReactNode {
+export default function PodiumPage(): React.ReactNode {
   return (
     <div className={styles.body}>
       <motion.div 
@@ -25,3 +25,4 @@ export default function OnBoardingPage(): React.ReactNode {
     </div>
   );
 }
+

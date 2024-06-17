@@ -6,9 +6,9 @@ import classNames from 'clsx';
 import styles from './NavigationBar.module.scss';
 
 // Assets
-import FlagIcon from '@assets/icons/flag.svg?react';
-import SearchIcon from '@assets/icons/search.svg?react';
-import AddIcon from '@assets/icons/add.svg?react';
+import FlagIcon from '@/assets/icons/flag.svg?react';
+import SearchIcon from '@/assets/icons/search.svg?react';
+import AddIcon from '@/assets/icons/add.svg?react';
 
 // Components
 import Typography from '../Typography';

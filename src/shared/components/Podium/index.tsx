@@ -10,7 +10,7 @@ import PodiumColumn from './partials/PodiumColumn';
 import BrandSelector from '../BrandSelector';
 
 // Hooks
-import useBottomSheet from '@hooks/ui/useBottomSheet';
+import useBottomSheet from '@/hooks/ui/useBottomSheet';
 
 function Podium() {
   const {open} = useBottomSheet();

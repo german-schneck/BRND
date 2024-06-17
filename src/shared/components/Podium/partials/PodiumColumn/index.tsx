@@ -5,7 +5,7 @@ import classNames from 'clsx';
 import styles from './PodiumColumn.module.scss';
 
 // Components
-import Typography from '@components/Typography';
+import Typography from '@/components/Typography';
 
 // Assets
 import AddIcon from '../../../../assets/icons/add.svg?react';
