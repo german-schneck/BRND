@@ -11,7 +11,6 @@ import styles from './LoginPage.module.scss';
 
 // Assets
 import Logo from '@/assets/images/logo.svg';
-import MockLogo from '@/assets/images/mock/landscape-logo.svg';
 
 // Components
 import Typography from '@/components/Typography';
@@ -97,10 +96,8 @@ export default function LoginPage(): React.ReactNode {
           <img src={Logo} className={styles.logo} />
 
           <div className={styles.field}>
-            <img src={MockLogo} className={styles.brand} />
-        
             <Typography weight={'bold'} className={styles.title} textAlign={'center'}>
-            Discover, build, and sync your Farcaster Landscape
+              Discover, build, and sync your Farcaster Landscape
             </Typography>
           </div>  
         </motion.div>

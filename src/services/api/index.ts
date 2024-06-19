@@ -14,10 +14,11 @@ export const DEFAULT_HEADERS = {
 };
 
 /**
- * Function to make a request to the server.
- * @param {string} path - The path of the request.
- * @param {RequestProps} props - The properties of the request.
- * @returns {Promise<T>} - The response from the server.
+ * Asynchronously sends a request to the server.
+ * @param path The endpoint path to which the request is sent.
+ * @param props The configuration options for the request, including method, headers, and body.
+ * @returns A promise that resolves with the server's response.
+ * @template T The expected type of the response data.
  */
 export async function request<T>(path: string, {
   method,
@@ -25,7 +26,7 @@ export async function request<T>(path: string, {
   body = {},
   params = null,
   headers = {}
-}: RequestProps): Promise<T> {
+}: RequestProps): Promise<AxiosResponse<T>> {
   const url = baseUrl ?? API_URL;
 
   const fullUrl = `${url}${path}`;
@@ -43,8 +44,8 @@ export async function request<T>(path: string, {
   };
 
   try {
-    const {data: {data}} = await axios(config);
-    return data;
+    const response = await axios<T>(config);
+    return response;
   } catch (error) {
     console.error(error);
     throw error;

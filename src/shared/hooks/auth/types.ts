@@ -1,5 +1,6 @@
 export type User = {
   id: string;
+  fid: number;
   username: string;
   photoUrl: string;
   createdAt: Date;
@@ -7,7 +8,6 @@ export type User = {
 }
 
 export enum UserRoleEnum {
-  OWNER = 'owner',
   ADMIN = 'admin',
   USER = 'user',
 }

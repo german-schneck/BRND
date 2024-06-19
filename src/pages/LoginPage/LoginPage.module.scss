@@ -53,7 +53,7 @@
 .footer {
   display: flex;
   flex: 0.3;
-  background: linear-gradient(180deg, rgba(31, 22, 42, 0) 0%, #1F162A 87.8%);
+  background: linear-gradient(180deg, rgba(16, 14, 20, 0) 0%, #100E14 87.8%);
   align-items: center;
   justify-content: center;
 }
@@ -63,17 +63,20 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
+  justify-content: center;
+  flex: 1;
 }
 
 .title {
   background-clip: text;
   color: transparent;
-  background: linear-gradient(180deg, #D1B8FF 0%, #FFFFFF 121.67%);
+  background: linear-gradient(180deg, #2F2F2F 0%, #FFFFFF 121.67%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   font-size: 24px;
   line-height: 30px;
+  max-width: 362px;
   
   @include isDesktopL() {
     font-size: 32px;
@@ -141,8 +144,8 @@
     aspect-ratio: 242/242;
   }
 
-  background-color: $background-secondary;
-  border: 1px solid $border-primary;
+  background-color: #0A0B0D;
+  border: 1px solid #2F2F2F;
   border-radius: 16px;
 }
 
