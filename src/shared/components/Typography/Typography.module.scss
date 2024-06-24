@@ -25,6 +25,27 @@
   }
 }
 
+.druk {
+  &.condensed {
+    font-family: 'Druk Cond Web';
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  &.wide {
+    font-family: 'Druk Wide Web';
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  &.text-wide {
+    font-family: 'Druk Text Wide Web';
+    font-weight: 800;
+    font-style: normal;
+  }
+}
+
+
 .left {
   text-align: left;
 }

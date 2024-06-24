@@ -3,7 +3,7 @@ import {RequestProps} from './types';
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 
 // Config
-import {API_URL} from '@/config';
+import {API_URL} from '@/config/api';
 
 /**
  * Default headers for the requests.

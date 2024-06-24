@@ -5,21 +5,13 @@ import classNames from 'clsx';
 // StyleSheet
 import styles from './Typography.module.scss';
 
-interface TypographyProps {
-  as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  variant?: 'geist';
-  weight?: 'light' | 'regular' | 'medium' | 'semiBold' | 'bold';
-  children: React.ReactNode | string;
-  size?: number;
-  lineHeight?: number;
-  className?: string;
-  textAlign?: 'left' | 'center' | 'right';
-}
+// Types
+import {TypographyProps} from './types';
 
 const Typography: React.FC<TypographyProps> = ({
   as: Component = 'p', 
   variant = 'geist', 
-  weight = 'regular',
+  weight = variant === 'geist' ? 'wide' : 'regular',
   size,
   lineHeight,
   children,

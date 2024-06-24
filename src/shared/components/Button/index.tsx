@@ -6,7 +6,7 @@ import classNames from 'clsx';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'underline';
   caption: string;
   iconLeft?: React.ReactNode,
   iconRight?: React.ReactNode,

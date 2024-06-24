@@ -2,7 +2,7 @@
 import {request} from './api';
 
 // Configuration
-import {AUTH_SERVICE} from '@/config';
+import {AUTH_SERVICE} from '@/config/api';
 
 // Types
 import {User} from '../shared/hooks/auth';
@@ -68,6 +68,7 @@ export interface GetMeResponse {
   data: User;
   action: string;
 }
+
 /**
  * Retrieves the current user's information from the authentication service.
  * 

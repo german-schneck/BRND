@@ -8,15 +8,16 @@ import ReactDOM from 'react-dom/client';
 import {AuthKitProvider} from '@farcaster/auth-kit';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
+// SCSS StyleSheet
+import './shared/styles/global.scss';
+import '@farcaster/auth-kit/styles.css';
+
 // React-Query Provider
 const queryClient = new QueryClient();
 
 // Configuration
-import {RootNavigation, farcasterConfig} from './config';
-
-// SCSS StyleSheet
-import './shared/styles/global.scss';
-import '@farcaster/auth-kit/styles.css';
+import {RootNavigation} from './config/router';
+import {farcasterConfig} from './config/farcaster';
 
 // Managers
 import BottomSheetManager from './shared/managers/BottomSheetManager';

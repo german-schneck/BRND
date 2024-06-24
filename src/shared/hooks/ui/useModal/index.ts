@@ -37,7 +37,7 @@ const useModal = create((set) => ({
    * Closes the currently open modal and resets the state.
    */
   closeModal: () => set(() => ({...initialState}))
-}));
+})); 
 
 export default useModal;
 

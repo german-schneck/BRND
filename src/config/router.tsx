@@ -18,13 +18,15 @@ import LoaderIndicator from '../shared/components/LoaderIndicator';
 /**
  * Renders a component or redirects based on a condition.
  * 
- * @param {boolean} [operation=false] - Condition to check whether to redirect or render the component.
- * @param {string} redirectTo - The URL to redirect to if the condition is true.
- * @param {() => React.ReactNode} component - A function that returns the React component to render if the condition is false.
+ * @param {Object} props - The properties object.
+ * @param {boolean} [props.operation=false] - Condition to check whether to redirect or render the component.
+ * @param {string} props.redirectTo - The URL to redirect to if the condition is true.
+ * @param {() => React.ReactNode} props.component - A function that returns the React component to render if the condition is false.
  * @returns {React.ReactNode} - Either a redirection to the specified URL or the specified component.
  */
-const Protected = ({operation = false, redirectTo, component}: { operation?: boolean; redirectTo: string; component: () => React.ReactNode }) => 
-  operation ? <Navigate to={redirectTo} /> : component();
+function Protected({operation = false, redirectTo, component}: { operation?: boolean; redirectTo: string; component: () => React.ReactNode }) {
+  return operation ? <Navigate to={redirectTo} /> : component();
+}
 
 /**
  * RootNavigation component that handles the rendering of different routes based on authentication status.
@@ -33,7 +35,7 @@ const Protected = ({operation = false, redirectTo, component}: { operation?: boo
  * 
  * @returns {React.ReactNode} - The Router component with nested routes or a LoaderIndicator if authentication status is still loading.
  */
-export const RootNavigation = (): React.ReactNode => {
+export function RootNavigation(): React.ReactNode {
   const {isLoading, isError, data} = useAuth();
 
   const hasLoggedIn = !!(!isError && data);
@@ -55,7 +57,5 @@ export const RootNavigation = (): React.ReactNode => {
       </Routes>
     </Router>
   );
-};
-
-export default RootNavigation;
+}
 
