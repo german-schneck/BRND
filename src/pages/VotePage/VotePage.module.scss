@@ -12,12 +12,24 @@
   overflow: hidden;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 114px;
+  height: 28px;
+
+  @include isDesktopL() {
+    width: 164px;
+    height: 40px;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
   gap: 22px;
-}
-
-.grey {
-  color: #c8c8c8;
 }

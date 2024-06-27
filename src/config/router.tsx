@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom
 // Pages
 import LoginPage from '../pages/LoginPage';
 import NotFoundPage from '../pages/NotFoundPage';
-import PodiumPage from '../pages/PodiumPage';
+import PodiumPage from '../pages/VotePage';
 import HomePage from '../pages/HomePage';
 import WelcomePage from '../pages/WelcomePage';
 
@@ -52,7 +52,7 @@ export function RootNavigation(): React.ReactNode {
         <Route path={'/'} element={(<Protected operation={!hasLoggedIn} redirectTo='/login' component={HomePage} />)} />
         <Route path={'/login'} element={(<Protected operation={hasLoggedIn} redirectTo='/' component={LoginPage} />)} />
         <Route path={'/welcome'} element={(<Protected operation={!hasLoggedIn} redirectTo='/login' component={WelcomePage} />)} />
-        <Route path={'/podium'} element={(<Protected operation={!hasLoggedIn} redirectTo='/login' component={PodiumPage} />)} />
+        <Route path={'/vote'} element={(<Protected operation={!hasLoggedIn} redirectTo='/login' component={PodiumPage} />)} />
         <Route path={'*'} element={<NotFoundPage />} />
       </Routes>
     </Router>

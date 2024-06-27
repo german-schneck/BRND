@@ -17,6 +17,8 @@
   max-width: 634px;
   padding: 62px 14px;
   align-items: center;
+  overflow: hidden;
+  @include baseLayout();
 }
 
 .logo {

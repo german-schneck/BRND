@@ -41,7 +41,7 @@ function WelcomePage(): React.ReactNode {
    * @returns {void}
    */
   const handleClickSkipTutorial = useCallback((): void => {
-    navigate('/podium');
+    navigate('/vote');
   }, []);
 
   /**
@@ -54,7 +54,7 @@ function WelcomePage(): React.ReactNode {
     if (stepId < steps.length - 1) {
       setStepId(stepId + 1);
     } else {
-      navigate('/podium');
+      navigate('/vote');
     }
   }, [stepId, navigate]);
 

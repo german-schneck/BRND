@@ -31,12 +31,12 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $border-primary;
+    background: #202020;
     border-radius: 4px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: $border-primary-hover;
+    background: #272727;
   }
 }
 
@@ -66,4 +66,11 @@
   button {
     pointer-events: initial;
   }
+}
+
+.loader {
+  display: flex;
+  padding: 32px 0;
+  align-items: center;
+  justify-content: center;
 }

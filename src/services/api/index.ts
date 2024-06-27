@@ -26,7 +26,7 @@ export async function request<T>(path: string, {
   body = {},
   params = null,
   headers = {}
-}: RequestProps): Promise<AxiosResponse<T>> {
+}: RequestProps): Promise<AxiosResponse<T>['data']> {
   const url = baseUrl ?? API_URL;
 
   const fullUrl = `${url}${path}`;
@@ -45,7 +45,7 @@ export async function request<T>(path: string, {
 
   try {
     const response = await axios<T>(config);
-    return response;
+    return response.data;
   } catch (error) {
     console.error(error);
     throw error;

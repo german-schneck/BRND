@@ -8,7 +8,7 @@ import styles from './PodiumColumn.module.scss';
 import Typography from '@/components/Typography';
 
 // Assets
-import AddIcon from '../../../../assets/icons/add.svg?react';
+import AddIcon from '../../../../assets/icons/add-solid.svg?react';
 
 interface PodiumColumnProps {
   variant: 'primary' | 'secondary';

@@ -7,9 +7,12 @@ import Podium from '@/components/Podium';
 import Typography from '@/components/Typography';
 
 // StyleSheet
-import styles from './PodiumPage.module.scss';
+import styles from './VotePage.module.scss';
 
-export default function PodiumPage(): React.ReactNode {
+// Assets
+import Logo from '@/assets/images/logo.svg';
+
+export default function VotePage(): React.ReactNode {
   return (
     <div className={styles.body}>
       <motion.div 
@@ -18,8 +21,10 @@ export default function PodiumPage(): React.ReactNode {
         animate={{opacity: 1}}
         transition={{duration: 1, delay: 0.5}}
       >
-        <Typography size={19} weight={'bold'}>Welcome! 👋 Create your Farcaster Landscape Brand Podium</Typography>
-        <Typography size={18} weight={'light'} className={styles.grey}>Add your favourite brands on this podium</Typography>
+        <div className={styles.center}>
+          <img src={Logo} className={styles.logo} alt="Logo" />
+        </div>
+        <Typography size={18} lineHeight={24} variant={'druk'} weight={'wide'}>Add your top brands on this podium</Typography>
       </motion.div>
       <Podium />
     </div>

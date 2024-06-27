@@ -8,7 +8,11 @@ import styles from './SearchInput.module.scss';
 // Assets
 import SearchIcon from '@/assets/icons/search.svg?react';
 
-export default function SearchInput() {
+interface SearchInputProps {
+  onChangeText: (text: string) => void;
+}
+
+export default function SearchInput({onChangeText}: SearchInputProps) {
   const [isActive, setActive] = useState<boolean>(false);
 
   return (
@@ -21,6 +25,7 @@ export default function SearchInput() {
         placeholder={'Search brands'}
         onFocus={() => setActive(true)}
         onBlur={() => setActive(false)}
+        onChange={(e) => onChangeText(e.target.value)}
       />
     </div>
   );

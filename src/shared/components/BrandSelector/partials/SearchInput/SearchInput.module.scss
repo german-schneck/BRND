@@ -3,7 +3,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  background-color: #3A3045;
+  background-color: #202020;
   border-radius: 32px;
   align-items: center;
   padding: 0 12px;
@@ -12,9 +12,10 @@
   width: 100%;
 
   transition: background 150ms linear;
+  color: #636363;
 
   &.active {
-    background-color: #43384f;
+    background-color: #262626;
   }
 }
 
@@ -31,6 +32,6 @@
   line-height: 18px;
 
   &::placeholder {
-    color: #9B92A5;
+    color: #636363;
   }
 }
