@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'Geist-Bold';
+  src: url('../assets/fonts/Geist-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist-Light';
+  src: url('../assets/fonts/Geist-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist-Medium';
+  src: url('../assets/fonts/Geist-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist-Regular';
+  src: url('../assets/fonts/Geist-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist-SemiBold';
+  src: url('../assets/fonts/Geist-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist-Thin';
+  src: url('../assets/fonts/Geist-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'Druk Cond Web';
+	src: url('../assets/fonts/DrukCondensed-Super-Web.woff2') format('woff2'),
+		 url('../assets/fonts/DrukCondensed-Super-Web.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+}
+
+.DrukCondensed-Super-Web {
+	font-family: 'Druk Cond Web';
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Druk Text Wide Web';
+	src: url('../assets/fonts/DrukTextWide-Heavy-Web.woff2') format('woff2'),
+		 url('../assets/fonts/DrukTextWide-Heavy-Web.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Druk Wide Web';
+	src: url('../assets/fonts/DrukWide-Heavy-Web.woff2') format('woff2'),
+		 url('../assets/fonts/DrukWide-Heavy-Web.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+}
+

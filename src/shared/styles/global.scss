@@ -1,0 +1,21 @@
+@import "./theme.scss";
+@import "./fonts.scss";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  color: #fff;
+  background-color: #0A0B0D;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}

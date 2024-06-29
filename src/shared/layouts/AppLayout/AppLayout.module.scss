@@ -1,0 +1,21 @@
+@import "@/styles/index.scss";
+
+.layout {
+  @include baseLayout();
+  position: relative;
+}
+
+.view {
+  padding-top: 62px;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-bottom: 30px;
+}
+
+.bar {
+  position: fixed;
+  width: 100%;
+  @include baseLayout();
+  bottom: 16px;
+  padding: 0 8px;
+}

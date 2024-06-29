@@ -1,0 +1,75 @@
+@import "@/styles/index.scss";
+.layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  padding: 16px;
+}
+
+.header {
+  flex: 0;
+  display: flex;
+}
+
+.scroll {
+  display: flex;
+  overflow: auto;
+  
+  padding-right: 8px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #202020;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #272727;
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0%, 100%));
+  gap: 12px;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 28px;
+
+  pointer-events: none;
+
+  button {
+    pointer-events: initial;
+  }
+}
+
+.loader {
+  display: flex;
+  padding: 32px 0;
+  align-items: center;
+  justify-content: center;
+}

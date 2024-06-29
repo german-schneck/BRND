@@ -1,0 +1,45 @@
+@import "@/styles/index.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  @include baseLayout();
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 48px;
+  gap: 32px;
+  overflow: hidden;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 114px;
+  height: 28px;
+
+  @include isDesktopL() {
+    width: 164px;
+    height: 40px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  flex: 0.4;
+}
+
+.howToScore {
+  padding: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

@@ -1,0 +1,12 @@
+@import "@/styles/index.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  @include baseLayout();
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 48px;
+  gap: 32px;
+}

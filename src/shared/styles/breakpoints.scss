@@ -1,0 +1,39 @@
+/**
+ * Mixin for mobile devices
+ * Applies styles for screens with a maximum width of 390px
+ */
+@mixin isMobile {
+  @media (max-width: 390px) {
+    @content;
+  }
+}
+
+/**
+ * Mixin for tablet devices
+ * Applies styles for screens with a width between 391px and 834px
+ */
+@mixin isTablet {
+  @media (min-width: 391px) and (max-width: 834px) {
+    @content;
+  }
+}
+
+/**
+ * Mixin for medium desktop devices
+ * Applies styles for screens with a width between 835px and 1280px
+ */
+@mixin isDesktopM {
+  @media (min-width: 835px) and (max-width: 1280px) {
+    @content;
+  }
+}
+
+/**
+ * Mixin for large desktop devices
+ * Applies styles for screens with a minimum width of 1281px
+ */
+@mixin isDesktopL {
+  @media (min-width: 1281px) {
+    @content;
+  }
+}

@@ -1,0 +1,114 @@
+@import "@/styles/index.scss";
+
+
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0A0B0D;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 634px;
+  padding: 62px 14px;
+  align-items: center;
+  overflow: hidden;
+  @include baseLayout();
+}
+
+.logo {
+  width: 114px;
+  height: 28px;
+  
+  margin-bottom: 76px;
+
+  @include isDesktopL() {
+    width: 164px;
+    height: 40px;
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+
+  position: relative;
+  z-index: 4;
+}
+
+.brand {
+  width: 100%;
+  height: 77.51px;
+  
+  @include isDesktopL() {
+    width: 100%;
+    height: 138px;
+  }
+}
+
+.title {
+  background-clip: text;
+  color: transparent;
+  background: linear-gradient(90deg, #FF9533 0%, #FFE835 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.grey {
+  color: #F7FCF8;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.actions {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: 50px 1fr 50px;
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: #FFFFFF66;
+  transition: all 200ms linear;
+
+  &.active {
+    background-color: #FFFFFF;
+  }
+}

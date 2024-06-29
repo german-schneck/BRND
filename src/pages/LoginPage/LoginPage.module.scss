@@ -1,0 +1,152 @@
+@import "@/styles/index.scss";
+
+
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1d1d1d;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 634px;
+  padding: 62px 14px;
+  align-items: center;
+}
+
+.logo {
+  width: 114px;
+  height: 28px;
+  
+  margin-bottom: 76px;
+
+  @include isDesktopL() {
+    width: 164px;
+    height: 40px;
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+
+  position: relative;
+  z-index: 4;
+}
+
+.brand {
+  width: 100%;
+  height: 77.51px;
+  
+  @include isDesktopL() {
+    width: 100%;
+    height: 138px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex: 0.3;
+  background: linear-gradient(180deg, rgba(16, 14, 20, 0) 0%, #100E14 87.8%);
+  align-items: center;
+  justify-content: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+  flex: 1;
+}
+
+.title {
+  background-clip: text;
+  color: transparent;
+  background: linear-gradient(180deg, #2F2F2F 0%, #FFFFFF 121.67%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-size: 24px;
+  line-height: 30px;
+  max-width: 362px;
+  
+  @include isDesktopL() {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.decorator {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+
+  justify-content: center;
+}
+
+.squareGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  grid-row-gap: 8%;
+
+  @include isTablet() {
+    grid-row-gap: 10%;
+  }
+
+  width: 100%;
+  height: 100%;
+  max-width: 620px;
+
+  overflow: hidden;
+  z-index: 2;
+  padding-top: 90px; 
+
+  @include isDesktopL() {
+    gap: 34px;
+    grid-row-gap: 94px;
+
+    padding-top: 0;
+    position: relative;
+    top: -14px;
+  }
+}
+
+.square {
+  width: 100%;
+}
+
+.square:nth-child(2n) {
+  position: relative;
+  top: 44px;
+
+  @include isDesktopL() {
+    top: 84px;
+  }
+}
+.box {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 172/172;
+
+  @include isDesktopL() {
+    aspect-ratio: 242/242;
+  }
+
+  background-color: #0A0B0D;
+  border: 1px solid #2F2F2F;
+  border-radius: 16px;
+}
+

@@ -1,0 +1,104 @@
+@import "@/styles/index.scss";
+
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-radius: 12px 12px 0 0;
+  height: 100%;
+  gap: 18px;
+  position: relative;
+
+  &.primary {
+    background: linear-gradient(360deg, rgba(45, 34, 58, 0) 0%, #2D223A 64.5%, rgba(45, 34, 58, 0) 100%);
+  
+    .brand {
+      background-color: $background-secondary;
+      border: 1px dashed $border-primary;
+
+      svg {
+        color: #FFC3FF;
+      }
+    }
+  }
+  
+  &.secondary {
+    background: linear-gradient(360deg, rgba(30, 28, 33, 0) 0%, #1E1C21 64.5%, rgba(30, 28, 33, 0) 100%);
+    
+    .brand {
+      svg {
+        color: #fff;
+      }
+
+      background-color: #1E1C21;
+      border: 1px dashed #3C3842;
+    }
+
+    .number {
+      background-image: linear-gradient(360deg, rgba(30, 28, 33, 0) 0%, #494450 100%);
+    }
+  }
+
+  &.selected {
+    .number {
+      color: #fff;
+    }
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 116/116;
+  border-radius: 12px;
+}
+
+.number {
+  background: none;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(360deg, rgba(45, 34, 58, 0) 0%, #ADA8B3 100%);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  background: linear-gradient(0deg, #1c1b1f00 0%, #0a0b0d 80%);
+  position: relative;
+  color: #fff;
+  border: none;
+}
+
+.image {
+  width: 72px;
+  height: 72px;
+  z-index: 2;
+  position: relative;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+}
+
+
+.points {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  padding: 0 12px;
+}

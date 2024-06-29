@@ -1,0 +1,80 @@
+@import "@/styles/index.scss";
+
+.item {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #0A0B0D;
+  border: 1px solid #2F2F2F;
+  border-radius: 12px;
+  display: flex;
+  overflow: hidden;
+  transition: all 200ms linear;
+  position: relative;
+  padding: 0px;
+  transition: all 0.3s linear;
+
+  &.selected {
+    padding: 1.5px;
+    border-color: transparent;
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .container {
+      &:after {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.effect {
+  inset: 0;
+  position: absolute;
+  background: linear-gradient(154.5deg, #FF9533 2.43%, #FF0000 26.41%, #0C00FF 74.37%, #00FF00 98.35%);
+  background-size: 100% 100%;
+  z-index: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #0A0B0D;
+  padding: 12px;
+  transition: all 200ms linear;
+  border-radius: 12px;
+  position: relative;
+  z-index: 2;
+
+  span {
+    word-break: break-word;
+  }
+
+  &:after {
+    transition: all 200ms ease-in;
+    opacity: 0;
+    content: "";
+    position: absolute;
+    background: linear-gradient(90.03deg, #FF9533 7.38%, #FF0000 35.51%, #0C00FF 63.64%, #00FF00 92.62%);
+    z-index: 10;
+    filter: blur(24px);
+    left: 14%;
+    right: 22%;
+    top: 50%;
+    bottom: 20%;
+  }
+}
+
+.top {
+  display: flex;
+  flex: 1;
+
+  img {
+    border-radius: 100%;
+  }
+}
+

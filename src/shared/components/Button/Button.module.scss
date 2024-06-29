@@ -1,0 +1,74 @@
+.layout {
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.caption, .icon {
+  position: relative;
+  z-index: 3;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 48px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.primary {
+  width: 100%;
+  position: relative;
+  border: none;
+  color: #fff;
+  overflow: hidden;
+  background: linear-gradient(88.53deg, #FF9533 9.34%, #FF0000 36.21%, #0C00FF 63.09%, #00FF00 90.78%);
+  padding: 1px;
+  
+  .container {
+    background-color: #000;
+    border-radius: 8px;
+  }
+
+  .effect {
+    inset: 0;
+    position: absolute;
+    background: linear-gradient(90.03deg, #FF9533 7.38%, #FF0000 35.51%, #0C00FF 63.64%, #00FF00 92.62%);
+    filter: blur(20px);
+    opacity: 0.2;
+  }
+}
+
+.icon {
+  svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.secondary {
+  background-color: #FFC3FF;
+  color: #4C2897;
+  border: 1px solid #463659
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid #FFFFFF
+}
+
+.underline {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  text-decoration: underline;
+  font-size: 16px;
+  line-height: 20px;
+}
