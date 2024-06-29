@@ -38,9 +38,9 @@ export default function BrandItem({
       </AnimatePresence>
       <div className={styles.container}>
         <div className={styles.top}>
-          <img src={photoUrl} width={28} height={28} />
+          <img src={photoUrl} width={28} height={28} alt={`${name} logo`} />
         </div>
-        <Typography size={12} lineHeight={14} weight={'semiBold'}>{name}</Typography>
+        <Typography as={'span'} size={12} lineHeight={14} weight={'semiBold'}>{name}</Typography>
       </div>
     </div>
   );

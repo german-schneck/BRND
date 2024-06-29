@@ -2,9 +2,10 @@
 import React, {useCallback, useMemo} from 'react';
 import {SignInButton, UseSignInData, useProfile} from '@farcaster/auth-kit';
 import {motion} from 'framer-motion';
+import {useNavigate} from 'react-router-dom';
 
 // Hooks
-import {useLogIn} from '../../shared/hooks/auth';
+import {useAuth, useLogIn} from '@/hooks/auth';
 
 // StyleSheet
 import styles from './LoginPage.module.scss';
@@ -15,9 +16,14 @@ import Logo from '@/assets/images/logo.svg';
 // Components
 import Typography from '@/components/Typography';
 
-export default function LoginPage(): React.ReactNode {
+// Hocs
+import withProtectionRoute from '@/hocs/withProtectionRoute';
+
+function LoginPage(): React.ReactNode {
   const logIn = useLogIn();
+  const navigate = useNavigate();
   const {isAuthenticated} = useProfile();
+  const {refetch} = useAuth();
 
   /**
    * Handles the successful sign-in event by mutating the login state with the received sign-in data.
@@ -38,9 +44,17 @@ export default function LoginPage(): React.ReactNode {
         nonce: data.nonce,
         username: data.username,
         photoUrl: data.pfpUrl,
+      }, {
+        onSuccess: async (data) => {
+          if (data) {
+            await refetch();
+            const {isCreated, hasVotedToday} = data;
+            navigate(isCreated ? '/welcome' : !hasVotedToday ? '/vote' : '/');
+          }
+        },
       });
     }
-  }, []);
+  }, [navigate]);
 
   /**
    * Renders a decorative grid of animated squares.
@@ -117,3 +131,5 @@ export default function LoginPage(): React.ReactNode {
     </div>
   );
 }
+
+export default withProtectionRoute(LoginPage, 'only-disconnected');

@@ -1,6 +1,6 @@
 // Types
 import {RequestProps} from './types';
-import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 // Config
 import {API_URL} from '@/config/api';
@@ -23,29 +23,36 @@ export const DEFAULT_HEADERS = {
 export async function request<T>(path: string, {
   method,
   baseUrl = null,
-  body = {},
+  body = undefined,
   params = null,
   headers = {}
-}: RequestProps): Promise<AxiosResponse<T>['data']> {
+}: RequestProps): Promise<T> {
   const url = baseUrl ?? API_URL;
+  const fullUrl = new URL(`${url}${path}`);
 
-  const fullUrl = `${url}${path}`;
-  const config: AxiosRequestConfig = {
+  if (params) {
+    Object.keys(params).forEach(key => fullUrl.searchParams.append(key, params[key]));
+  }
+
+  const config: RequestInit = {
     method: method,
-    url: fullUrl,
     headers: {
       ...DEFAULT_HEADERS,
       ...headers,
     },
-    withCredentials: true,
-    data: body ? JSON.stringify(body) : null,
-    params: params,
-    
+    credentials: 'include',
+    ...(body && ({
+      body: JSON.stringify(body)
+    }))
   };
 
   try {
-    const response = await axios<T>(config);
-    return response.data;
+    const response = await fetch(fullUrl.toString(), config);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+    const data: T = await response.json();
+    return data;
   } catch (error) {
     console.error(error);
     throw error;

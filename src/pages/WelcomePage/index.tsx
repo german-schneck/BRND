@@ -18,6 +18,9 @@ import IconButton from '@/components/IconButton';
 // Assets
 import ArrowRightIcon from '@/assets/icons/arrow-right.svg?react';
 
+// Hocs
+import withProtectionRoute from '@/hocs/withProtectionRoute';
+
 /**
  * An array of steps for the welcome page tutorial.
  * Each step is represented as a tuple containing:
@@ -122,4 +125,4 @@ function WelcomePage(): React.ReactNode {
   );
 }
 
-export default WelcomePage;
+export default withProtectionRoute(WelcomePage, 'only-connected');

@@ -26,20 +26,14 @@ export interface LogInParams {
 /**
  * Represents the response structure for the login operation.
  * 
- * @extends {Response} The standard response object.
  * @property {boolean} isCreated - Indicates if a new user was created during the login process.
- * @property {Object} user - Contains user-specific information.
- * @property {number} user.fid - The unique identifier of the user.
- * @property {string} user.username - The username of the user.
- * @property {string} user.photoUrl - The URL of the user's profile photo.
+ * @property {boolean} hasVotedToday - Indicates if the user has voted today.
+ * @property {User} user - Contains user-specific information.
  */
 export interface LogInResponse {
   isCreated: boolean;
-  user: {
-    fid: User['fid'];
-    username: User['username'];
-    photoUrl: User['photoUrl'];
-  };
+  hasVotedToday: boolean;
+  user: User;
 }
 
 /**
@@ -57,17 +51,6 @@ export const logIn = async (body: LogInParams) =>
 /* =======================================
    = = = = = = = = = = = = = = = = = = = =
    ======================================= */
-  
-/**
- * Defines the structure of the response returned by the getMe API.
- * 
- * @property {User} data - Contains the user information retrieved.
- * @property {string} action - Describes the action performed.
- */
-export interface GetMeResponse {
-  data: User;
-  action: string;
-}
 
 /**
  * Retrieves the current user's information from the authentication service.
@@ -75,6 +58,6 @@ export interface GetMeResponse {
  * @returns A promise that resolves with the user's information.
  */
 export const getMe = async () =>
-  await request<GetMeResponse>(`${AUTH_SERVICE}/me`, {
+  await request<User>(`${AUTH_SERVICE}/me`, {
     method: 'GET',
   });

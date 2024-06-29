@@ -7,10 +7,15 @@ import React from 'react';
 // Components
 import AppLayout from '../../shared/layouts/AppLayout';
 
-export default function HomePage(): React.ReactNode {
+// Hocs
+import withProtectionRoute from '@/hocs/withProtectionRoute';
+
+function HomePage(): React.ReactNode {
   return (
     <AppLayout>
       HomePage
     </AppLayout>
   );
 }
+
+export default withProtectionRoute(HomePage, 'only-connected');

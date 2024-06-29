@@ -1,0 +1,50 @@
+@import "@/styles/index.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  @include baseLayout();
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 48px;
+  gap: 14px;
+  flex: 1;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  background: none;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #FF9533 0%, #FFE835 100%);
+}
+
+.logo {
+  width: 114px;
+  height: 28px;
+
+  @include isDesktopL() {
+    width: 164px;
+    height: 40px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  flex: 0.5;
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  flex: 1;
+  padding: 0 6px;
+}

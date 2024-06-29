@@ -5,6 +5,8 @@ export type User = {
   photoUrl: string;
   createdAt: Date;
   role: UserRoleEnum;
+
+  hasVotedToday: boolean;
 }
 
 export enum UserRoleEnum {

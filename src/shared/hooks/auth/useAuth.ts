@@ -10,12 +10,12 @@ import {getMe} from '@/services/auth';
  * 
  * @returns The query object containing the user data and status of the query.
  */
-export const useAuth = () => {
+export const useAuth = () => { 
   return useQuery({
     queryKey: ['auth'], 
     queryFn: getMe, 
     retry: false,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 0,
+    enabled: false,
   });
 };
-

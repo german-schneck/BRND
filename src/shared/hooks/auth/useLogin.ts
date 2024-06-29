@@ -1,5 +1,5 @@
 // Dependencies
-import {useMutation} from '@tanstack/react-query';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
 
 // Services
 import {LogInParams, logIn} from '@/services/auth';
@@ -13,7 +13,8 @@ import {LogInParams, logIn} from '@/services/auth';
  * @returns A mutation object that can be used to track the status of the login request.
  */
 export const useLogIn = () => {
-
+  const queryClient = useQueryClient();
+  
   return useMutation({
     /**
      * The function to be called to perform the login operation.
@@ -28,11 +29,11 @@ export const useLogIn = () => {
       username,
       photoUrl
     }),
-    onSuccess: async (response) => {
-      if (response && response.data) {
-        const {isCreated} = response.data;
-        window.location.href = isCreated ? '/welcome' : '/'; // Using this because navigation() hook doesn't work
-      } 
+    onSuccess(data) {
+      if (data) {
+        const {user} = data;
+        queryClient.setQueryData(['auth'], user);
+      }
     },
     onError: (e) => {
       console.log(e);

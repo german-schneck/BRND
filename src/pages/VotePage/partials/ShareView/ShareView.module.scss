@@ -1,0 +1,75 @@
+@import "@/styles/index.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  @include baseLayout();
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 48px;
+  gap: 14px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 114px;
+  height: 28px;
+
+  @include isDesktopL() {
+    width: 164px;
+    height: 40px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  flex: 0;
+}
+
+.title {
+  background: none;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #FF9533 0%, #FFE835 100%);
+}
+
+.box {
+  display: flex;
+  flex: 0;
+  padding: 12px;
+  border: 1px solid #2F2F2F;
+  border-radius: 16px;
+  flex-direction: column;
+  gap: 8px;
+  color: #F7FCF8;
+}
+
+.places {
+  display: flex;
+  flex-direction: column;
+}
+
+.podium {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.action {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  width: 100%;
+  justify-content: center;
+}

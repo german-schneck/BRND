@@ -50,6 +50,10 @@
   position: relative;
   z-index: 2;
 
+  span {
+    word-break: break-word;
+  }
+
   &:after {
     transition: all 200ms ease-in;
     opacity: 0;
@@ -68,5 +72,9 @@
 .top {
   display: flex;
   flex: 1;
+
+  img {
+    border-radius: 100%;
+  }
 }
 
