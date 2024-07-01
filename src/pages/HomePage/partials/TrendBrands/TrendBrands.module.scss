@@ -1,0 +1,51 @@
+@import "@/styles/index.scss";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 240px);
+  overflow: hidden;
+  gap: 28px;
+}
+
+.feature {
+  position: relative;
+  height: 204px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style-type: none;
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: 204px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.brand {
+  width: 148px;
+  height: 148px;
+}
+
+.brandCard {
+  background: #0A0B0D99;
+  backdrop-filter: blur(4px);
+  div[data-id="container"] {
+    background-color: transparent;
+  }
+}

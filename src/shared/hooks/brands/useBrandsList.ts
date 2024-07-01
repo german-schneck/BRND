@@ -9,7 +9,7 @@ import {getBrandList} from '@/services/brands';
 import {Brand, ListBrandTypes} from './types';
 
 // Utils
-import {normalizeState} from '../../utils/state';
+import {normalizeState} from '@/utils/state';
 
 export const useBrandList = (searchQuery: string = '', pageId: number = 1, order: ListBrandTypes, limit: number = 27) => {
   const brandsRef = useRef<Record<Brand['id'], Brand>>({});
@@ -19,7 +19,7 @@ export const useBrandList = (searchQuery: string = '', pageId: number = 1, order
     queryKey: ['brands', searchQuery, pageId, limit, order], 
     queryFn: () => getBrandList(searchQuery, String(pageId), String(limit), order), 
     retry: false,
-    staleTime: 0,
+    staleTime: 900000,
     enabled: false,
     placeholderData: (prev) => prev,
   });

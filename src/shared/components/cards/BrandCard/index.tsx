@@ -1,5 +1,4 @@
 // Dependencies
-import React from 'react';
 import classNames from 'clsx';
 import {AnimatePresence, motion} from 'framer-motion';
 
@@ -9,6 +8,9 @@ import styles from './BrandCard.module.scss';
 // Components
 import Typography from '../../Typography';
 
+// Hooks
+import {BrandStateScoreType} from '@/hooks/brands';
+
 // Assets
 import ScoreUpDownIcon from '@/assets/icons/score-updown-icon.svg?react';
 import ScoreEqualIcon from '@/assets/icons/score-equal-icon.svg?react';
@@ -16,21 +18,25 @@ import ScoreEqualIcon from '@/assets/icons/score-equal-icon.svg?react';
 interface BrandCardProps {
   name: string;
   photoUrl: string;
+  size?: 'm' | 'l';
   orientation?: 'left' | 'center' | 'right';
   selected?: boolean;
   onSelect?: () => void;
   score: number;
-  variation: 'equal' | 'up' | 'down';
+  variation: BrandStateScoreType;
+  className?: string;
 }
 
 export default function BrandCard({
   name,
   photoUrl,
-  orientation = 'left',
   score,
+  size = 'm',
+  orientation = 'left',
   variation = 'equal',
   selected,
   onSelect,
+  className = ''
 }: BrandCardProps) {
 
   /**
@@ -49,8 +55,25 @@ export default function BrandCard({
     );
   };
 
+  const sizes = {
+    m: {
+      image: 28,
+      title: {
+        size: 12,
+        lineHeight: 14
+      }
+    },
+    l: {
+      image: 32,
+      title: {
+        size: 22,
+        lineHeight: 26
+      }
+    }
+  };
+
   return (
-    <div className={classNames(styles.item, selected && styles.selected)} onClick={() => onSelect?.()}>
+    <div className={classNames(styles.item, selected && styles.selected, className)} onClick={() => onSelect?.()}>
       <AnimatePresence>
         {selected && (
           <motion.div
@@ -62,16 +85,16 @@ export default function BrandCard({
           />
         )}
       </AnimatePresence>
-      <div className={styles.container}>
+      <div data-id="container" className={styles.container}>
         <div className={styles.top}>
-          <img src={photoUrl} width={28} height={28} alt={`${name} logo`} />
+          <img src={photoUrl} width={sizes[size].image} height={sizes[size].image} alt={`${name} logo`} />
 
           <div className={styles.score}>
             <Typography weight={'regular'} variant={'geist'} size={12} lineHeight={12} textAlign={'center'}>{score}</Typography>
             {renderVariation(variation)}
           </div>
         </div>
-        <Typography as={'p'} size={12} lineHeight={14} weight={'semiBold'}>{name}</Typography>
+        <Typography as={'p'} size={sizes[size].title.size} lineHeight={sizes[size].title.lineHeight} weight={'semiBold'}>{name}</Typography>
       </div>
     </div>
   );

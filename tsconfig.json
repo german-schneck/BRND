@@ -31,7 +31,8 @@
       "@/styles/*": ["shared/styles/*"],
       "@/pages/*": ["pages/*"],
       "@/config/*": ["config/*"],
-      "@/hocs/*": ["shared/hocs/*"]
+      "@/hocs/*": ["shared/hocs/*"],
+      "@/utils/*": ["shared/utils/*"]
     }
   },
   "include": ["src"],

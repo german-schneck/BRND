@@ -16,7 +16,10 @@ import styles from './BrandsList.module.scss';
 import CheckLabelIcon from '@/assets/icons/check-label-icon.svg?react';
 
 // Hooks
-import {Brand, useBrandList} from '../../hooks/brands';
+import {Brand, useBrandList} from '@/hooks/brands';
+
+// Utils
+import {getBrandScoreVariation} from '@/utils/brand';
 
 interface BrandsListProps {
   config?: {
@@ -95,7 +98,7 @@ export default function BrandsList({
                   photoUrl={brand.imageUrl}
                   orientation={index % 3 === 0 ? 'left' : index % 3 === 1 ? 'center' : 'right'}
                   score={brand.score}
-                  variation={brand.stateScore === 0 ? 'equal' : brand.stateScore === 1 ? 'up' : 'down'}
+                  variation={getBrandScoreVariation(brand.stateScore)}
 
                   {...(isSelectable && {
                     selected: selected?.id === brand.id,

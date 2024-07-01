@@ -25,6 +25,7 @@ export default defineConfig({
       '@/styles': path.resolve(__dirname, 'src/shared/styles/'),
       '@/pages': path.resolve(__dirname, 'src/pages/'),
       '@/config': path.resolve(__dirname, 'src/config/'),
+      '@/utils': path.resolve(__dirname, 'src/shared/utils/'),
     },
   },
 });

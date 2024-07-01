@@ -10,3 +10,5 @@ export type Brand = {
 }
 
 export type ListBrandTypes = 'all' | 'new' | 'trending';
+
+export type BrandStateScoreType = 'up' | 'equal' | 'down';
