@@ -6,7 +6,6 @@
 }
 
 .view {
-  padding-top: 62px;
   padding-left: 14px;
   padding-right: 14px;
   padding-bottom: 30px;
@@ -16,6 +15,6 @@
   position: fixed;
   width: 100%;
   @include baseLayout();
-  bottom: 16px;
-  padding: 0 8px;
+  bottom: 0;
+  z-index: 50;
 }

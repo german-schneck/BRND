@@ -14,9 +14,7 @@ interface AppLayoutProps {
 const AppLayout: React.FC<AppLayoutProps> = ({children}) => {
   return (
     <div className={styles.layout}>
-      <div className={styles.view}>
-        {children}
-      </div>
+      {children}
 
       <div className={styles.bar}>
         <NavigationBar />

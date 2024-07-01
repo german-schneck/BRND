@@ -28,7 +28,6 @@ const Button: React.FC<ButtonProps> = ({
       {variant === 'primary' && (
         <span className={styles.effect} />
       )}
-    
       {iconLeft && (
         <div className={styles.icon}>
           {iconLeft}

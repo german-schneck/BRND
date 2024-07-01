@@ -5,4 +5,8 @@ export type Brand = {
   url: string;
   channel: string;
   profile: string;
+  stateScore: number;
+  score: number;
 }
+
+export type ListBrandTypes = 'all' | 'new' | 'trending';

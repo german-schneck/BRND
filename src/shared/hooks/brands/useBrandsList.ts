@@ -6,18 +6,18 @@ import {useQuery} from '@tanstack/react-query';
 import {getBrandList} from '@/services/brands';
 
 // Types
-import {Brand} from './types';
+import {Brand, ListBrandTypes} from './types';
 
 // Utils
 import {normalizeState} from '../../utils/state';
 
-export const useBrandList = (searchQuery: string = '', pageId: number = 1) => {
+export const useBrandList = (searchQuery: string = '', pageId: number = 1, order: ListBrandTypes, limit: number = 27) => {
   const brandsRef = useRef<Record<Brand['id'], Brand>>({});
   const countRef = useRef<number>(0);
 
   const result = useQuery({
-    queryKey: ['brands', searchQuery, pageId], 
-    queryFn: () => getBrandList(searchQuery, String(pageId)), 
+    queryKey: ['brands', searchQuery, pageId, limit, order], 
+    queryFn: () => getBrandList(searchQuery, String(pageId), String(limit), order), 
     retry: false,
     staleTime: 0,
     enabled: false,

@@ -5,8 +5,21 @@
   flex-direction: column;
   flex: 1;
   @include baseLayout();
-  padding-left: 14px;
-  padding-right: 14px;
-  padding-top: 48px;
   gap: 32px;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.tabs {
+  width: 100%;
+  padding-top: 20px;
 }

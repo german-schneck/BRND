@@ -7,7 +7,7 @@ import styles from './Podium.module.scss';
 
 // Components
 import PodiumColumn from './partials/PodiumColumn';
-import BrandSelector from '../BrandSelector';
+import BrandsList from '../BrandsList';
 import Button from '../Button';
 
 // Hooks
@@ -68,9 +68,18 @@ function Podium({isAnimated = true, initial = [], onVote, variant = 'selection'}
             {...(variant === 'selection' ? {
               onClick: () => {
                 open(
-                  <BrandSelector 
-                    onSelect={(brand) => handleSelectBrand(brand, i)}
-                  />
+                  <div className={styles.selector}>
+                    <BrandsList 
+                      isSelectable={true}
+                      isFinderEnabled={true}
+                      config={{
+                        limit: 27,
+                        order: 'all'
+                      }}
+                      className={styles.list}
+                      onSelect={(brand) => handleSelectBrand(brand, i)}
+                    />
+                  </div>
                 );
               }
             } : {})}

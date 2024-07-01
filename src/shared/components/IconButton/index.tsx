@@ -15,10 +15,20 @@ const IconButton: React.FC<IconButtonProps> = ({
   variant = 'primary',
   icon,
   onClick,
-}) => (
-  <button className={classNames(styles.layout, styles[variant])} onClick={onClick}>
-    {icon}
-  </button>
-);
+}) => {
+  
+  return (
+    <button className={classNames(styles.layout, styles[variant])} onClick={onClick}>
+      <div className={styles.container}>
+        {variant === 'primary' && (
+          <span className={styles.effect} />
+        )}
+        <div className={styles.icon}>
+          {icon}
+        </div>
+      </div>
+    </button>
+  );
+};
 
 export default IconButton;

@@ -21,21 +21,23 @@ export interface GetBrandListResponse {
   brands: Brand[];
   count: number;
 }
-
 /**
  * Retrieves the list of brands from the brand service.
  * 
  * @param {string} searchQuery - The search query to filter the brands.
  * @param {string} pageId - The ID of the page to retrieve.
+ * @param {string} [limit='27'] - The number of brands to retrieve per page. Defaults to '27'.
+ * @param {'all' | 'new' | 'trending'} order - The order in which to retrieve the brands.
  * @returns {Promise<GetBrandListResponse>} A promise that resolves with the list of brands and the count.
  */
-export const getBrandList = async (searchQuery: string, pageId: string): Promise<GetBrandListResponse> =>
+export const getBrandList = async (searchQuery: string, pageId: string, limit: string = '27', order: 'all' | 'new' | 'trending' = 'all'): Promise<GetBrandListResponse> =>
   await request<GetBrandListResponse>(`${BRAND_SERVICE}/list`, {
     method: 'GET',
     params: {
       search: searchQuery,
       pageId,
-      limit: '27'
+      limit,
+      order,
     }
   });
 

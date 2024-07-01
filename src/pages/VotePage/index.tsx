@@ -17,7 +17,6 @@ import {useAuth} from '@/hooks/auth';
 // Hocs
 import withProtectionRoute from '@/hocs/withProtectionRoute';
 
-
 function VotePage(): React.ReactNode {
   const [view, setView] = useState<[VotingViewEnum, Brand[]]>([VotingViewEnum.PODIUM, []]);
   const {data} = useAuth();

@@ -1,0 +1,41 @@
+@import "@/styles/index.scss";
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  color: #FFFFFF4D;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 8px 14px;
+  padding-bottom: 18px;
+  text-transform: uppercase;
+
+  font-size: 16px;
+  line-height: 20px;
+
+  @include isMobile() {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &.active {
+    color: #fff;
+  }
+}
+
+.indicator {
+  height: 2px;
+  background: linear-gradient(88.53deg, #ff9633 9.34%, #FF0000 25.62%, #0C00FF 69.6%, #00FF00 90.78%);
+  position: absolute;
+  border-radius: 2px;
+  bottom: 0;
+  left: 0;
+}

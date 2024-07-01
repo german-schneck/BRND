@@ -1,31 +1,44 @@
 .layout {
   display: flex;
-  border-radius: 36px;
   height: 36px;
-  width: 36px;
   align-items: center;
   justify-content: center;
+  position: relative;
+  border-radius: 36px;
+  cursor: pointer;
 }
 
 .primary {
-  background: #FFFFFF;
+  position: relative;
+  border: none;
+  overflow: hidden;
+  background: linear-gradient(88.53deg, #FF9533 9.34%, #FF0000 36.21%, #0C00FF 63.09%, #00FF00 90.78%);
+  padding: 1px;
 
-  border: 1px solid;
-
-  border-image-source: linear-gradient(0deg, #463659, #463659),
-    linear-gradient(90deg, #FFFFFF 0%, #FF0000 33%, #0C00FF 66%, #00FF00 100%);
-  
-  svg {
-    fill: #000000;
+  .container {
+    display: flex;
+    flex: 1;
+    background-color: #000;
+    padding: 0 12px;
+    border-radius: 36px;
   }
+
+  .effect {
+    inset: 0;
+    position: absolute;
+    background: linear-gradient(88.53deg, #FF9533 9.34%, #FF0000 36.21%, #0C00FF 63.09%, #00FF00 90.78%);
+    filter: blur(20px);
+  }
+
+  color: #fff;
 }
 
 .secondary {
-  background-color: #FFC3FF;
-  border: 1px solid #463659
+  background-color: transparent;
+  border: 1px solid transparent;
 
   svg {
-    fill: #4C2897;
+    fill: #fff;
   }
 }
 
@@ -44,4 +57,15 @@
   svg {
     fill: #fff;
   }
+}
+
+.container, .icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
 }
