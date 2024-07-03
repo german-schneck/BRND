@@ -5,7 +5,7 @@ import {request} from './api';
 import {AUTH_SERVICE} from '@/config/api';
 
 // Types
-import {User} from '../shared/hooks/auth';
+import {User} from '../shared/hooks/user';
 
 /* =======================================
    = = = = = = = = = = = = = = = = = = = =

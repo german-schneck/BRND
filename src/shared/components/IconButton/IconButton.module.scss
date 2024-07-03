@@ -36,27 +36,19 @@
 .secondary {
   background-color: transparent;
   border: 1px solid transparent;
-
-  svg {
-    fill: #fff;
-  }
+  color: #fff;
 }
 
 .outline {
   background-color: transparent;
-  border: 1px solid #FFFFFF
-
-  svg {
-    fill: #fff;
-  }
+  border: 1px solid #FFFFFF;
+  color: #fff;
 }
 
 .solid {
   background-color: #222325;
   border: none;
-  svg {
-    fill: #fff;
-  }
+  color: #fff;
 }
 
 .container, .icon {

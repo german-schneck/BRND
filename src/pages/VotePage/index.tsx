@@ -1,6 +1,6 @@
 // Dependencies
-import React, {useCallback, useState} from 'react';
-import {Navigate} from 'react-router-dom';
+import React, {useCallback, useEffect, useState} from 'react';
+import {Navigate, useParams} from 'react-router-dom';
 
 // Components
 import PodiumView from './partials/PodiumView';
@@ -13,13 +13,18 @@ import {VotingViewEnum} from './types';
 // Hooks
 import {Brand} from '@/hooks/brands';
 import {useAuth} from '@/hooks/auth';
+import {useUserVotes} from '@/hooks/user/useUserVotes';
 
 // Hocs
 import withProtectionRoute from '@/hocs/withProtectionRoute';
+import LoaderIndicator from '../../shared/components/LoaderIndicator';
 
 function VotePage(): React.ReactNode {
+  const unixDate = useParams<{ unixDate?: string }>().unixDate;
+  const {data: votes, isFetching} = useUserVotes(Number(unixDate));
+  const {data: user} = useAuth();
+  
   const [view, setView] = useState<[VotingViewEnum, Brand[]]>([VotingViewEnum.PODIUM, []]);
-  const {data} = useAuth();
 
   /**
    * Navigates to a different view based on the provided id and selection.
@@ -60,11 +65,20 @@ function VotePage(): React.ReactNode {
     }
   };
 
-  if (data?.hasVotedToday) {
+  useEffect(() => {
+    if (unixDate && !isFetching && votes?.length) {
+      const brands = votes?.map((vote) => vote.brand);
+      navigateToView(VotingViewEnum.SHARE, brands);
+    }
+  }, [isFetching, votes, unixDate]);
+
+  if ((user && user.hasVotedToday) && !unixDate || (!isFetching && !votes?.length)) {
     return (<Navigate to={'/'} />);
   }
 
-  return renderView();
+  return isFetching ? (
+    <LoaderIndicator size={30} variant={'fullscreen'} />
+  ) : renderView();
 }
 
 export default withProtectionRoute(VotePage, 'only-connected');

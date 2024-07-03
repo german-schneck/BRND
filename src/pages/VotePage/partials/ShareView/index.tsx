@@ -1,5 +1,6 @@
 // Dependencies
 import {useCallback} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 // Components
 import Podium from '@/components/Podium';
@@ -7,7 +8,7 @@ import Typography from '@/components/Typography';
 import Button from '@/components/Button';
 
 // Types
-import {VotingViewEnum, VotingViewProps} from '../../types';
+import {VotingViewProps} from '../../types';
 
 // StyleSheet
 import styles from './ShareView.module.scss';
@@ -18,14 +19,15 @@ import ShareIcon from '@/assets/icons/share-icon.svg?react';
 
 interface ShareViewProps extends VotingViewProps {}
 
-export default function ShareView({navigateToView, currentBrands}: ShareViewProps) {
+export default function ShareView({currentBrands}: ShareViewProps) {
+  const navigate = useNavigate();
   
   /**
    * Handles the click event for the "Skip" button.
    * Navigates to the CONGRATS view with the current brands.
    */
   const handleClickSkip = useCallback(() => {
-    navigateToView(VotingViewEnum.CONGRATS, currentBrands);
+    navigate('/');
   }, []);
 
   /**

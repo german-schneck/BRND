@@ -7,6 +7,7 @@ import NotFoundPage from '../pages/NotFoundPage';
 import VotePage from '../pages/VotePage';
 import HomePage from '../pages/HomePage';
 import WelcomePage from '../pages/WelcomePage';
+import ProfilePage from '../pages/ProfilePage';
 
 export const router = createBrowserRouter([
   {
@@ -18,8 +19,15 @@ export const router = createBrowserRouter([
       {path: 'new', element: <HomePage />},
     ],
   },
+  {
+    path: '/profile',
+    element: <ProfilePage />,
+    children: [
+      {path: '', element: <ProfilePage />},
+    ],
+  },
   {path: '/welcome', element: <WelcomePage />},
-  {path: '/vote', element: <VotePage />},
+  {path: '/vote/:unixDate?', element: <VotePage />},
   {path: '/login', element: <LoginPage />},
   {path: '*', element: <NotFoundPage />},
 ]);

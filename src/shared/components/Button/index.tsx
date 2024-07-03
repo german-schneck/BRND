@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
         </div>
       )}
       <div className={styles.caption}>
-        <Typography variant={'geist'} weight={'medium'} size={18} lineHeight={22}>{caption}</Typography>
+        <Typography variant={'geist'} weight={'medium'} size={16} lineHeight={20}>{caption}</Typography>
       </div>
       {iconRight && (
         <div className={styles.icon}>

@@ -1,0 +1,89 @@
+@import "@/styles/index.scss";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 402px);
+  overflow: hidden;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+}
+
+.brands {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 220px;
+
+  & > * {
+    position: relative;
+    margin-left: -20px;
+    z-index: 1;
+  }
+
+  & > *:first-child {
+    margin-left: 0;
+  }
+
+  & > *:last-child {
+    z-index: 2;
+  }
+}
+
+.data {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  flex-direction: column;
+  gap: 18px;
+
+  color: #8A8A8A;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.action {
+  width: 30px;
+  height: 30px;
+}
+
+.view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #202020;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #272727;
+  }  
+}

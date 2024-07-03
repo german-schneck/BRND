@@ -27,13 +27,26 @@ const TabNavigator: React.FC<TabNavigatorProps> = ({tabs}) => {
     setActiveIndex(currentIndex);
   }, [location.pathname, tabs]);
 
-  useEffect(() => {
+  const updateIndicator = () => {
     const activeTab = document.querySelector<HTMLDivElement>(`.${styles.tab}.${styles.active}`);
     if (activeTab) {
       setIndicatorWidth(activeTab.clientWidth);
       setIndicatorOffset(activeTab.offsetLeft);
     }
+  };
+
+  useEffect(() => {
+    updateIndicator();
+    window.addEventListener('resize', updateIndicator);
+
+    return () => {
+      window.removeEventListener('resize', updateIndicator);
+    };
   }, [activeIndex]);
+
+  useEffect(() => {
+    updateIndicator();
+  });
 
   return (
     <nav className={styles.layout}>

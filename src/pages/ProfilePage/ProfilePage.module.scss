@@ -1,0 +1,81 @@
+@import "@/styles/index.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  @include baseLayout();
+  gap: 32px;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.tabs {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.image {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  overflow: hidden;
+  border: 4px solid #FFFFFF26;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.points {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
