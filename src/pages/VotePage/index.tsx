@@ -65,14 +65,14 @@ function VotePage(): React.ReactNode {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     if (unixDate && !isFetching && votes?.length) {
       const brands = votes?.map((vote) => vote.brand);
       navigateToView(VotingViewEnum.SHARE, brands);
     }
   }, [isFetching, votes, unixDate]);
 
-  if ((user && user.hasVotedToday) && !unixDate || (!isFetching && !votes?.length)) {
+  if ((user && user.hasVotedToday) && !unixDate || (unixDate && !isFetching && !votes?.length)) {
     return (<Navigate to={'/'} />);
   }
 
