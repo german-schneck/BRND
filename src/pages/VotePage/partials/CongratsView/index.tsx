@@ -1,6 +1,8 @@
 // Dependencies
 import {useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
+import Confetti from 'react-confetti';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 // Components
 import Typography from '@/components/Typography';
@@ -14,6 +16,7 @@ import Logo from '@/assets/images/logo.svg';
 
 export default function CongratsView() {
   const navigate = useNavigate();
+  const {width, height} = useWindowSize();
 
   /**
    * Handle click event for the continue button.
@@ -25,6 +28,12 @@ export default function CongratsView() {
   
   return (
     <div className={styles.body}>
+      <div className={styles.effect}>
+        <Confetti
+          width={width}
+          height={height}
+        />
+      </div>
       <div className={styles.container}>
         <div className={styles.center}>
           <img src={Logo} className={styles.logo} alt="Logo" />
