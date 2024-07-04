@@ -81,3 +81,15 @@ export const voteBrands = async (body: VoteBrandsParams) =>
     method: 'POST',
     body
   });
+
+/**
+ * Fetches a brand by its ID.
+ * 
+ * @param {Brand['id']} id - The ID of the brand to fetch.
+ * @returns {Promise<Brand>} A promise that resolves to the brand data.
+ */
+export const getBrandById = async (id: Brand['id']): Promise<Brand> => {
+  return await request<Brand>(`${BRAND_SERVICE}/brand/${id}`, {
+    method: 'GET'
+  });
+};

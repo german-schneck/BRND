@@ -8,6 +8,7 @@ import VotePage from '../pages/VotePage';
 import HomePage from '../pages/HomePage';
 import WelcomePage from '../pages/WelcomePage';
 import ProfilePage from '../pages/ProfilePage';
+import BrandPage from '../pages/BrandPage';
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
     children: [
       {path: '', element: <ProfilePage />},
     ],
+  },
+  {
+    path: '/brand/:id',
+    element: <BrandPage />,
   },
   {path: '/welcome', element: <WelcomePage />},
   {path: '/vote/:unixDate?', element: <VotePage />},

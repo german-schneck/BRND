@@ -1,0 +1,105 @@
+@import "@/styles/index.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  @include baseLayout();
+  gap: 8px;
+  padding: 0 12px;
+  overflow: hidden;
+  height: 100vh;
+  padding-bottom: 60px;
+}
+
+.header {
+  padding-top: 46px;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.container {
+  width: 100%;
+  overflow: auto;
+  padding-bottom: 24px;
+  padding-top: 16px;
+}
+
+.backBtn {
+  > div:nth-child(1) {
+    padding: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0%, 100%));
+  gap: 24px;
+}
+
+.image {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  aspect-ratio: 1;
+}
+
+.center, .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+
+.bottom {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.score {
+  font-size: 4cqw;
+}
+
+.label {
+  color: #8A8A8A;
+  text-transform: uppercase;
+}
+
+.grey {
+  color: #8A8A8A;
+}
+
+.profile {
+  gap: 4px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-left: auto;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: #848586;
+    transition: color 150ms linear;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}

@@ -41,7 +41,7 @@ function ProfilePage(): React.ReactNode {
           <div className={styles.user}>
             <div className={styles.profile}>
               <div className={styles.image}>
-                <img src={data?.photoUrl} width={40} height={40} />
+                <img src={data?.photoUrl} width={40} height={40} alt={data?.username} />
               </div>
               <div className={styles.points}>
                 <Typography variant={'geist'} weight={'bold'} size={32} lineHeight={40}>{data?.points}</Typography>
