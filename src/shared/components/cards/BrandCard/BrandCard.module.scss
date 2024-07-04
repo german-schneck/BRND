@@ -11,7 +11,7 @@
   transition: all 200ms linear;
   position: relative;
   padding: 0px;
-  transition: all 0.3s linear;
+  cursor: pointer;
 
   &.selected {
     padding: 1.5px;

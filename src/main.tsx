@@ -20,14 +20,10 @@ const queryClient = new QueryClient();
 import {router} from './config/router';
 import {farcasterConfig} from './config/farcaster';
 
-// Managers
-import BottomSheetManager from './shared/managers/BottomSheetManager';
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthKitProvider config={farcasterConfig}>
       <QueryClientProvider client={queryClient}>
-        <BottomSheetManager />
         <RouterProvider router={router} />
       </QueryClientProvider>
     </AuthKitProvider>

@@ -16,15 +16,15 @@ import ScoreUpDownIcon from '@/assets/icons/score-updown-icon.svg?react';
 import ScoreEqualIcon from '@/assets/icons/score-equal-icon.svg?react';
 
 interface BrandCardProps {
-  name: string;
-  photoUrl: string;
-  size?: 'm' | 'l';
-  orientation?: 'left' | 'center' | 'right';
-  selected?: boolean;
-  onSelect?: () => void;
-  score: number;
-  variation: BrandStateScoreType;
-  className?: string;
+  readonly name: string;
+  readonly photoUrl: string;
+  readonly size?: 'm' | 'l';
+  readonly orientation?: 'left' | 'center' | 'right';
+  readonly selected?: boolean;
+  readonly onClick: () => void;
+  readonly score: number;
+  readonly variation: BrandStateScoreType;
+  readonly className?: string;
 }
 
 export default function BrandCard({
@@ -35,7 +35,7 @@ export default function BrandCard({
   orientation = 'left',
   variation = 'equal',
   selected,
-  onSelect,
+  onClick,
   className = ''
 }: BrandCardProps) {
 
@@ -73,7 +73,7 @@ export default function BrandCard({
   };
 
   return (
-    <div className={classNames(styles.item, selected && styles.selected, className)} onClick={() => onSelect?.()}>
+    <div className={classNames(styles.item, selected && styles.selected, className)} onClick={onClick}>
       <AnimatePresence>
         {selected && (
           <motion.div

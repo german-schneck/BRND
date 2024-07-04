@@ -2,6 +2,7 @@
 import {useEffect, useMemo, useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import classNames from 'clsx';
+import {useNavigate} from 'react-router-dom';
 
 // Components
 import SearchInput from '@/components/SearchInput';
@@ -22,14 +23,14 @@ import {Brand, useBrandList} from '@/hooks/brands';
 import {getBrandScoreVariation} from '@/utils/brand';
 
 interface BrandsListProps {
-  config?: {
+  readonly config?: {
     order: 'new' | 'trending' | 'all';
     limit: number;
   },
-  className?: string;
-  isFinderEnabled?: boolean;
-  isSelectable?: boolean;
-  onSelect?: (brand: Brand) => void;
+  readonly className?: string;
+  readonly isFinderEnabled?: boolean;
+  readonly isSelectable?: boolean;
+  readonly onSelect?: (brand: Brand) => void;
 }
 
 export default function BrandsList({
@@ -42,6 +43,7 @@ export default function BrandsList({
   isFinderEnabled = true, 
   isSelectable = false
 }: BrandsListProps) {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selected, setSelected] = useState<Brand | null>(null);
   const [pageId, setPageId] = useState<number>(1);
@@ -100,9 +102,11 @@ export default function BrandsList({
                   score={brand.score}
                   variation={getBrandScoreVariation(brand.stateScore)}
 
-                  {...(isSelectable && {
+                  {...(isSelectable ? {
                     selected: selected?.id === brand.id,
-                    onSelect: () => setSelected(selected?.id === brand.id ? null : brand)
+                    onClick: () => setSelected(selected?.id === brand.id ? null : brand)
+                  } : {
+                    onClick: () => navigate(`/brand/${brand.id}`)
                   })}
                 />
               </li>

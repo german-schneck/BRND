@@ -70,13 +70,12 @@ function VotePage(): React.ReactNode {
   };
 
   useEffect(() => { 
-    if (unixDate && !isFetching && votes?.length) {
-      const brands = votes.map((vote) => vote.brand);
-      navigateToView(isSuccess ? VotingViewEnum.CONGRATS : VotingViewEnum.SHARE, brands);
+    if (unixDate && !isFetching && votes?.id) {
+      navigateToView(isSuccess ? VotingViewEnum.CONGRATS : VotingViewEnum.SHARE, [votes.brand2, votes.brand1, votes.brand3]);
     }
   }, [isFetching, votes, unixDate, isSuccess]);
 
-  if ((user && user.hasVotedToday) && !unixDate || (unixDate && !isFetching && !votes?.length)) {
+  if ((user && user.hasVotedToday) && !unixDate || (unixDate && !isFetching && !votes?.id)) {
     return (<Navigate to={'/'} />);
   }
 

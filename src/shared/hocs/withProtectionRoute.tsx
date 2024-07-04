@@ -7,6 +7,7 @@ import {useAuth} from '@/hooks/auth';
 
 // Components
 import LoaderIndicator from '../components/LoaderIndicator';
+import BottomSheetManager from '../managers/BottomSheetManager';
 
 const withProtectionRoute = (WrappedComponent: React.ComponentType, permission: 'always' | 'only-connected' | 'only-disconnected'): React.ComponentType => {
   return (props) => {
@@ -29,7 +30,12 @@ const withProtectionRoute = (WrappedComponent: React.ComponentType, permission: 
       }
     }
 
-    return <WrappedComponent {...props} />;
+    return (
+      <>
+        <WrappedComponent {...props} />
+        <BottomSheetManager />
+      </>
+    );
   };
 };
 

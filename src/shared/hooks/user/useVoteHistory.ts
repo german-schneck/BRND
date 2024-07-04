@@ -3,7 +3,7 @@ import {useRef} from 'react';
 import {useQuery} from '@tanstack/react-query';
 
 // Services
-import {getUserVotesHistory} from '../../../services/user';
+import {getUserVotesHistory} from '@/services/user';
 
 // Types
 import {User, UserVoteHistory} from './types';
@@ -22,8 +22,7 @@ export const useVoteHistory = (userId: User['id'], pageId: number) => {
   });
 
   if (!result.isError) {
-    console.log(result.data);
-    const votes = result.data || {};
+    const votes = result.data?.data || {};
 
     if (pageId === 1) {
       votesRef.current = votes;
@@ -33,7 +32,7 @@ export const useVoteHistory = (userId: User['id'], pageId: number) => {
         ...votes,
       };
     }
-    countRef.current = result.data?.count || 0;
+    countRef.current = result.data?.count ?? 0;
   }
 
   return {

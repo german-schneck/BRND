@@ -1,5 +1,6 @@
 // Dependencies
-import {useEffect, useMemo} from 'react';
+import {useCallback, useEffect, useMemo} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 // Components
 import BrandCard from '@/components/cards/BrandCard';
@@ -17,6 +18,7 @@ import {getBrandScoreVariation} from '@/utils/brand';
 import FeatureFarcasterBrand from '@/assets/images/feature-farcaster-brand.svg?react';
 
 function TrendBrands() {
+  const navigate = useNavigate();
   const {data, refetch} = useBrandList('', 1, 'trending', 7);
 
   useEffect(() => {
@@ -33,6 +35,15 @@ function TrendBrands() {
     const brandKeys: Brand['id'][] = Object.keys(data.brands).map(Number);
     return data.brands[brandKeys[0]];
   }, [data?.brands]);
+
+  /**
+   * Handles the click event on a brand card and navigates to the brand's page.
+   *
+   * @param {Brand['id']} id - The ID of the brand.
+   */
+  const handleClickCard = useCallback((id: Brand['id']) => {
+    navigate(`/brand/${id}`);
+  }, []);
   
   return (
     <div className={styles.layout}>
@@ -49,6 +60,7 @@ function TrendBrands() {
               name={mainBrand.name}
               photoUrl={mainBrand.imageUrl}
               score={mainBrand.score}
+              onClick={() => handleClickCard(mainBrand.id)}
               variation={getBrandScoreVariation(mainBrand.stateScore)}
             />
           </div>
@@ -64,6 +76,7 @@ function TrendBrands() {
                 photoUrl={brand.imageUrl}
                 score={brand.score}
                 variation={getBrandScoreVariation(brand.stateScore)}
+                onClick={() => handleClickCard(brand.id)}
               />
             </li>
           ))}
