@@ -17,15 +17,17 @@ export enum UserRoleEnum {
 }
 
 export interface UserVoteHistory {
-  id: number;
+  id: string;
   date: string;
-  position: number;
-  brand: Brand;
+  brand1: Brand;
+  brand2: Brand;
+  brand3: Brand;
 }
 
 export interface UserVote {
-  id: number;
+  id: string;
   date: string;
-  position: number;
-  brand: Brand;
+  brand1: Brand;
+  brand2: Brand;
+  brand3: Brand;
 }

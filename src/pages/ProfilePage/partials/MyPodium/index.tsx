@@ -51,15 +51,27 @@ function MyPodium() {
             {Object.keys(history.data).map((date, index) => (
               <li key={`--podium-key-${index.toString()}`} className={styles.item}>
                 <div className={styles.brands}>
-                  {history.data[date].map((vote, i) => (
-                    <BrandCard
-                      key={`--podium-key-${i.toString()}`}
-                      score={vote.brand.score}
-                      variation={getBrandScoreVariation(vote.brand.stateScore)}
-                      name={vote.brand.name}
-                      photoUrl={vote.brand.imageUrl}
-                    />
-                  ))}
+                  <BrandCard
+                    key={'--podium-key-1'}
+                    score={history.data[date].brand1.score}
+                    variation={getBrandScoreVariation(history.data[date].brand1.stateScore)}
+                    name={history.data[date].brand1.name}
+                    photoUrl={history.data[date].brand1.imageUrl}
+                  />
+                  <BrandCard
+                    key={'--podium-key-2'}
+                    score={history.data[date].brand2.score}
+                    variation={getBrandScoreVariation(history.data[date].brand2.stateScore)}
+                    name={history.data[date].brand2.name}
+                    photoUrl={history.data[date].brand2.imageUrl}
+                  />
+                  <BrandCard
+                    key={'--podium-key-3'}
+                    score={history.data[date].brand3.score}
+                    variation={getBrandScoreVariation(history.data[date].brand3.stateScore)}
+                    name={history.data[date].brand3.name}
+                    photoUrl={history.data[date].brand3.imageUrl}
+                  />
                 </div>
                 <div className={styles.data}>
                   <Typography variant={'geist'} size={14} lineHeight={14} weight={'medium'}>

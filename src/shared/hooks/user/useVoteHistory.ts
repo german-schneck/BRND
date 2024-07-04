@@ -9,7 +9,7 @@ import {getUserVotesHistory} from '../../../services/user';
 import {User, UserVoteHistory} from './types';
 
 export const useVoteHistory = (userId: User['id'], pageId: number) => {
-  const votesRef = useRef<Record<string, UserVoteHistory[]>>({});
+  const votesRef = useRef<Record<string, UserVoteHistory>>({});
   const countRef = useRef<number>(0);
 
   const result = useQuery({
@@ -22,7 +22,8 @@ export const useVoteHistory = (userId: User['id'], pageId: number) => {
   });
 
   if (!result.isError) {
-    const votes = result.data?.data || {};
+    console.log(result.data);
+    const votes = result.data || {};
 
     if (pageId === 1) {
       votesRef.current = votes;

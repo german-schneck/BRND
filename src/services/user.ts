@@ -15,7 +15,7 @@ import {User, UserVoteHistory, UserVote} from '../shared/hooks/user';
  * @returns A promise that resolves with an object containing the count of votes and the user's vote history data.
  */
 export const getUserVotesHistory = async (id: User['id'], pageId: number) =>
-  await request<{count: number, data: Record<string, UserVoteHistory[]>}>(`${USER_SERVICE}/user/${id}/vote-history`, {
+  await request<{count: number, data: Record<string, UserVoteHistory>}>(`${USER_SERVICE}/user/${id}/vote-history`, {
     method: 'GET',
     params: {
       pageId: String(pageId),
@@ -30,6 +30,6 @@ export const getUserVotesHistory = async (id: User['id'], pageId: number) =>
  * @returns A promise that resolves with an object containing the count of votes and the user's vote history data.
  */
 export const getUserVotes = async (unixDate: number) =>
-  await request<UserVote[]>(`${USER_SERVICE}/votes/${unixDate}`, {
+  await request<UserVote>(`${USER_SERVICE}/votes/${unixDate}`, {
     method: 'GET',
   });
