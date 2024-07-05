@@ -1,14 +1,14 @@
 // Dependencies
-import {useEffect, useState} from 'react';
-import {formatDistanceToNow} from 'date-fns/formatDistanceToNow';
-import {useNavigate} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
+import { useNavigate } from 'react-router-dom';
 
 // StyleSheet
 import styles from './MyPodium.module.scss';
 
 // Hooks
-import {useVoteHistory} from '@/hooks/user';
-import {useAuth} from '@/hooks/auth';
+import { useVoteHistory } from '@/hooks/user';
+import { useAuth } from '@/hooks/auth';
 
 // Components
 import BrandCard from '@/components/cards/BrandCard';
@@ -16,7 +16,7 @@ import Typography from '@/components/Typography';
 import IconButton from '@/components/IconButton';
 
 // Utils
-import {getBrandScoreVariation} from '@/shared/utils/brand';
+import { getBrandScoreVariation } from '@/shared/utils/brand';
 
 // Assets
 import ShareIcon from '@/assets/icons/share-icon.svg?react';
@@ -25,14 +25,14 @@ function MyPodium() {
   const navigate = useNavigate();
   const [pageId, setPageId] = useState<number>(1);
 
-  const {data: user} = useAuth();
-  const {data: history, isFetching, refetch} = useVoteHistory(user?.id ?? '', pageId);
+  const { data: user } = useAuth();
+  const { data: history, isFetching, refetch } = useVoteHistory(user?.id ?? '', pageId);
 
   useEffect(() => {
     if (user?.id) {
       refetch();
     }
-  }, [user?.id, pageId]);
+  }, [user?.id, pageId, refetch]);
 
   /**
    * Handles the scroll event of the list.
@@ -40,7 +40,7 @@ function MyPodium() {
    * @param {React.UIEvent<HTMLDivElement>} e - The scroll event.
    */
   const handleScrollList = (e: React.UIEvent<HTMLDivElement>) => {
-    const {scrollTop, scrollHeight, clientHeight} = e.currentTarget;
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
     const calc = scrollTop + clientHeight + 50;
     if ((calc) >= scrollHeight && !isFetching && history) {
       const totalItems = Object.keys(history.data).length;
@@ -85,7 +85,7 @@ function MyPodium() {
                 </div>
                 <div className={styles.data}>
                   <Typography variant={'geist'} size={14} lineHeight={14} weight={'medium'}>
-                    {formatDistanceToNow(new Date(date).getTime(), {addSuffix: true}).includes('hour') ? 'today' : formatDistanceToNow(new Date(date).getTime(), {addSuffix: true})}
+                    {formatDistanceToNow(new Date(date).getTime(), { addSuffix: true }).includes('hour') ? 'today' : formatDistanceToNow(new Date(date).getTime(), { addSuffix: true })}
                   </Typography>
                   <div className={styles.actions}>
                     <IconButton 

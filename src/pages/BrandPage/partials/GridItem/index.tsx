@@ -12,11 +12,12 @@ interface GridItemProps {
   variant?: 'primary' | 'green';
   title?: string;
   children: React.ReactNode;
+  className?: string;
 }
 
-const GridItem: React.FC<GridItemProps> = ({variant = 'primary', children, title}) => {
+const GridItem: React.FC<GridItemProps> = ({ variant = 'primary', children, className, title }) => {
   return (
-    <div className={classNames(styles.layout, styles[variant])}>
+    <div className={classNames(styles.layout, styles[variant], className)}>
       <div className={styles.container}>
         {title && (
           <Typography as={'h5'} variant={'druk'} weight={'text-wide'} size={10} lineHeight={12} className={styles.title}>{title}</Typography>

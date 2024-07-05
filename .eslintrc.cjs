@@ -11,12 +11,12 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
-    'indent': ['error', 2],
+    'indent': ['error', 2, { 'SwitchCase': 1 }],
     'object-curly-spacing': ['error', 'always'],
     'quotes': ['error', 'single'],
     'semi': ['error', 'always'],
     'no-multiple-empty-lines': ['error', { 'max': 1 }],
     'react-hooks/exhaustive-deps': 'warn',
-    "react-refresh/only-export-components": "warn"
+    "react-refresh/only-export-components": "off"
   },
 }

@@ -1,6 +1,6 @@
 // Dependencies
 import classNames from 'clsx';
-import {AnimatePresence, motion} from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // StyleSheet
 import styles from './BrandCard.module.scss';
@@ -9,11 +9,14 @@ import styles from './BrandCard.module.scss';
 import Typography from '../../Typography';
 
 // Hooks
-import {BrandStateScoreType} from '@/hooks/brands';
+import { BrandStateScoreType } from '@/hooks/brands';
 
 // Assets
 import ScoreUpDownIcon from '@/assets/icons/score-updown-icon.svg?react';
 import ScoreEqualIcon from '@/assets/icons/score-equal-icon.svg?react';
+
+// Utils
+import { shortenNumber } from '@/utils/number';
 
 interface BrandCardProps {
   readonly name: string;
@@ -71,17 +74,49 @@ export default function BrandCard({
       }
     }
   };
+  
+  /**
+   * Gets the initial position for the animation based on the orientation.
+   * @param {string} orientation - The orientation of the animation ('left', 'center', or any other value).
+   * @returns {Object} The initial position with x and y coordinates.
+   */
+  const getInitialPosition = (orientation: string) => {
+    switch (orientation) {
+      case 'left':
+        return { x: '-100%', y: '-100%' };
+      case 'center':
+        return { y: '-100%' };
+      default:
+        return { x: '100%', y: '-100%' };
+    }
+  };
+
+  /**
+   * Gets the exit position for the animation based on the orientation.
+   * @param {string} orientation - The orientation of the animation ('left', 'center', or any other value).
+   * @returns {Object} The exit position with x and y coordinates.
+   */
+  const getExitPosition = (orientation: string) => {
+    switch (orientation) {
+      case 'left':
+        return { x: '100%', y: '100%' };
+      case 'center':
+        return { y: '100%' };
+      default:
+        return { x: '-100%', y: '100%' };
+    }
+  };
 
   return (
-    <div className={classNames(styles.item, selected && styles.selected, className)} onClick={onClick}>
+    <button className={classNames(styles.item, selected && styles.selected, className)} onClick={onClick}>
       <AnimatePresence>
         {selected && (
           <motion.div
             className={styles.effect}
-            initial={orientation === 'left' ? {x: '-100%', y: '-100%'} : orientation === 'center' ? {y: '-100%'} : {x: '100%', y: '-100%'}}
-            animate={{x: 0, y: 0}}
-            exit={orientation === 'left' ? {x: '100%', y: '100%'} : orientation === 'center' ? {y: '100%'} : {x: '-100%', y: '100%'}}
-            transition={{duration: 0.25, ease: 'easeInOut'}}
+            initial={getInitialPosition(orientation)}
+            animate={{ x: 0, y: 0 }}
+            exit={getExitPosition(orientation)}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
           />
         )}
       </AnimatePresence>
@@ -90,12 +125,12 @@ export default function BrandCard({
           <img src={photoUrl} width={sizes[size].image} height={sizes[size].image} alt={`${name} logo`} />
 
           <div className={styles.score}>
-            <Typography weight={'regular'} variant={'geist'} size={12} lineHeight={12} textAlign={'center'}>{score}</Typography>
+            <Typography weight={'regular'} variant={'geist'} size={12} lineHeight={12} textAlign={'center'}>{shortenNumber(score)}</Typography>
             {renderVariation(variation)}
           </div>
         </div>
         <Typography as={'p'} size={sizes[size].title.size} lineHeight={sizes[size].title.lineHeight} weight={'semiBold'}>{name}</Typography>
       </div>
-    </div>
+    </button>
   );
 }

@@ -1,0 +1,27 @@
+@import "@/styles/index.scss";
+
+.layout {
+  background-color: #FFFFFF1A;
+  border: 1px solid #463659;
+  border-radius: 12px;
+  padding: 16px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title, .header {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+.header {
+  gap: 8px;
+}
+
+.avatar {
+  border-radius: 40px;
+}

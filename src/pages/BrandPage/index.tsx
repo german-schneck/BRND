@@ -1,5 +1,5 @@
 // Dependencies
-import {useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'clsx';
 
 // // StyleSheet
@@ -23,15 +23,16 @@ import GlobeIcon from '@/assets/icons/globe-icon.svg?react';
 import withProtectionRoute from '@/hocs/withProtectionRoute';
 
 // Hooks
-import {useBrand} from '@/hooks/brands';
+import { useBrand } from '@/hooks/brands';
 
 // Utils
-import {shortenNumber} from '@/utils/number';
+import { shortenNumber } from '@/utils/number';
+import CastItem from './partials/CastItem';
 
 function BrandPage() {
   const navigate = useNavigate();
-  const {id} = useParams<{ id?: string;}>();
-  const {data, isLoading, isFetching} = useBrand(Number(id));
+  const { id } = useParams<{ id?: string;}>();
+  const { data, isLoading, isFetching } = useBrand(Number(id));
   
   /**
    * Determines the size based on the given score.
@@ -41,14 +42,14 @@ function BrandPage() {
    */
   function getSize(score: number): number {
     switch (true) {
-    case score > 1000000:
-      return 26;
-    case score > 100000:
-      return 24;
-    case score > 10000:
-      return 28;
-    default:
-      return 56;
+      case score > 1000000:
+        return 26;
+      case score > 100000:
+        return 24;
+      case score > 10000:
+        return 28;
+      default:
+        return 56;
     }
   }
 
@@ -69,8 +70,8 @@ function BrandPage() {
               />
               <div className={styles.head}>
                 <div className={styles.title}>
-                  <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={styles.grey}># 3</Typography>
-                  <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22}>{data.name}</Typography>
+                  <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography>
+                  <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.name}</Typography>
                 </div>
                 <div className={styles.actions}>
                   <IconButton icon={<ExportIcon />} variant={'secondary'} onClick={() => {}} />
@@ -80,30 +81,62 @@ function BrandPage() {
               </div>
             </div>
             <div className={styles.container}>
-              <div className={styles.grid}>
-                <img src={data.imageUrl} className={styles.image} width={'100%'} height={'100%'} alt={data.name} />
-                <GridItem variant={'green'} title={'Score'}>
-                  <div className={styles.center}>
-                    <Typography variant={'druk'} weight={'wide'} className={styles.score} size={getSize(data.score)}>{shortenNumber(data.score)}</Typography>
+              <div className={classNames(styles.grid, styles.inline)}>
+                <div className={styles.grid}>
+                  <img src={data.imageUrl} className={styles.image} width={'100%'} height={'100%'} alt={data.name} />
+                  <GridItem variant={'green'} title={'Score'}>
+                    <div className={styles.center}>
+                      <Typography variant={'druk'} weight={'wide'} className={styles.score} size={getSize(data.score)}>{shortenNumber(data.score)}</Typography>
+                    </div>
+                  </GridItem>
+                  <GridItem title={'Farcaster'}>
+                    <div className={classNames(styles.bottom, styles.profile)}>
+                      <Typography variant={'geist'} weight={'regular'}>{data.profile}</Typography>
+                      <Typography variant={'geist'} weight={'regular'} className={styles.grey}>{data.channel}</Typography>
+                    </div>
+                  </GridItem>
+                  <GridItem title={'Followers'}>
+                    <div className={styles.bottom}>
+                      <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>All</Typography>
+                      <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{shortenNumber(data.followerCount)}</Typography>
+                    </div>
+                  </GridItem>
+                  <GridItem title={'Ranking'}>
+                    <div className={styles.bottom}>
+                      <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>Global</Typography>
+                      <Typography variant={'druk'} weight={'wide'} size={32}>9<Typography as={'span'} size={12} className={styles.grey}>/80</Typography></Typography>
+                    </div>
+                  </GridItem>
+                </div>
+                <GridItem title={'Description'} className={styles.box}>
+                  <div className={styles.boxBody}>
+                    <Typography size={16} lineHeight={20}>{data.description}</Typography>
                   </div>
                 </GridItem>
-                <GridItem title={'Farcaster'}>
-                  <div className={classNames(styles.bottom, styles.profile)}>
-                    <Typography variant={'geist'} weight={'regular'}>{data.profile}</Typography>
-                    <Typography variant={'geist'} weight={'regular'} className={styles.grey}>{data.channel}</Typography>
-                  </div>
-                </GridItem>
-                <GridItem title={'Followers'}>
-                  <div className={styles.bottom}>
-                    <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>All</Typography>
-                    <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{shortenNumber(data.followerCount)}</Typography>
-                  </div>
-                </GridItem>
-                <GridItem title={'Ranking'}>
-                  <div className={styles.bottom}>
-                    <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>Global</Typography>
-                    <Typography variant={'druk'} weight={'wide'} size={32}>9<Typography as={'span'} size={12} className={styles.grey}>/80</Typography></Typography>
-                  </div>
+
+                <GridItem title={'Latest casts'} className={classNames(styles.box, styles.purple, styles.casts)}>
+                  <CastItem
+                    user={{
+                      photoUrl: data.imageUrl,
+                      username: data.name
+                    }}
+                    message={'I called Frequency image #1 “Disco” because it reminds me of early PC visualizations of music.'}
+                  />
+                  <CastItem
+                    user={{
+                      photoUrl: data.imageUrl,
+                      username: data.name
+                    }}
+                    message={'I called Frequency image #1 “Disco” because it reminds me of early PC visualizations of music.'}
+                  />
+                  <CastItem
+                    user={{
+                      photoUrl: data.imageUrl,
+                      username: data.name
+                    }}
+                    message={'I called Frequency image #1 “Disco” because it reminds me of early PC visualizations of music.'}
+                  />
+                  
                 </GridItem>
               </div>
             </div>

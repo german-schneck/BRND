@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react';
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 // // StyleSheet
 import styles from './ProfilePage.module.scss';
@@ -20,10 +20,10 @@ import GoBackIcon from '@/assets/icons/go-back-icon.svg?react';
 import withProtectionRoute from '@/hocs/withProtectionRoute';
 
 // Hooks
-import {useAuth} from '@/hooks/auth';
+import { useAuth } from '@/hooks/auth';
 
 function ProfilePage(): React.ReactNode {
-  const {data} = useAuth();
+  const { data } = useAuth();
   const navigate = useNavigate();
 
   return (
