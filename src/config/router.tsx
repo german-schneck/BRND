@@ -10,30 +10,39 @@ import WelcomePage from '../pages/WelcomePage';
 import ProfilePage from '../pages/ProfilePage';
 import BrandPage from '../pages/BrandPage';
 
+// Providers
+import {AppProvider} from '../shared/providers/AppProvider';
+
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <AppProvider />,
     children: [
-      {path: 'all', element: <HomePage />},
-      {path: 'trending', element: <HomePage />},
-      {path: 'new', element: <HomePage />},
-    ],
-  },
-  {
-    path: '/profile',
-    element: <ProfilePage />,
-    children: [
-      {path: '', element: <ProfilePage />},
-    ],
-  },
-  {
-    path: '/brand/:id',
-    element: <BrandPage />,
-  },
-  {path: '/welcome', element: <WelcomePage />},
-  {path: '/vote/:unixDate?', element: <VotePage />},
-  {path: '/login', element: <LoginPage />},
-  {path: '*', element: <NotFoundPage />},
+      {
+        path: '/',
+        element: <HomePage />,
+        children: [
+          {path: 'all', element: <HomePage />},
+          {path: 'trending', element: <HomePage />},
+          {path: 'new', element: <HomePage />},
+        ],
+      },
+      {
+        path: '/profile',
+        element: <ProfilePage />,
+        children: [
+          {path: '', element: <ProfilePage />},
+        ],
+      },
+      {
+        path: '/brand/:id',
+        element: <BrandPage />,
+      },
+      {path: '/welcome', element: <WelcomePage />},
+      {path: '/vote/:unixDate?', element: <VotePage />},
+      {path: '/login', element: <LoginPage />},
+      {path: '*', element: <NotFoundPage />},
+    ]
+  }
 ]);
 

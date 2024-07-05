@@ -1,0 +1,15 @@
+@import "@/styles/index.scss";
+
+.backdrop {
+  background-color: #080809b6;
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+
+.container {
+  padding: 12px;
+}

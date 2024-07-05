@@ -1,5 +1,5 @@
 // Dependencies
-import React, {useCallback, useMemo} from 'react';
+import {useCallback, useMemo} from 'react';
 import {SignInButton, UseSignInData, useProfile} from '@farcaster/auth-kit';
 import {motion} from 'framer-motion';
 import {useNavigate} from 'react-router-dom';
@@ -19,7 +19,7 @@ import Typography from '@/components/Typography';
 // Hocs
 import withProtectionRoute from '@/hocs/withProtectionRoute';
 
-function LoginPage(): React.ReactNode {
+function LoginPage() {
   const logIn = useLogIn();
   const navigate = useNavigate();
   const {isAuthenticated} = useProfile();
@@ -35,8 +35,8 @@ function LoginPage(): React.ReactNode {
    * @param {string} data.nonce - A unique nonce used during the sign-in process.
    */
   const handleSignInSuccess = useCallback((data: UseSignInData) => {
-    if (data && (data.fid && data.signature && data.message && data.username && data.pfpUrl)) {
-      void logIn.mutate({
+    if (data?.fid && data?.signature && data?.message && data?.username && data?.pfpUrl) {
+      logIn.mutate({
         fid: data.fid,
         signature: data.signature,
         domain: 'example.com',
@@ -45,13 +45,21 @@ function LoginPage(): React.ReactNode {
         username: data.username,
         photoUrl: data.pfpUrl,
       }, {
-        onSuccess: async (data) => {
+        onSuccess(data) {
           if (data) {
-            await refetch();
-            const {isCreated, hasVotedToday} = data;
-            navigate(isCreated ? '/welcome' : !hasVotedToday ? '/vote' : '/');
+            refetch().then(() => {
+              const {isCreated, hasVotedToday} = data;
+              
+              let navigatePath = '/';
+              if (isCreated) {
+                navigatePath = '/welcome';
+              } else if (!hasVotedToday) {
+                navigatePath = '/vote';
+              }
+              navigate(navigatePath);
+            });
           }
-        },
+        }
       });
     }
   }, [navigate]);
@@ -107,7 +115,7 @@ function LoginPage(): React.ReactNode {
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           transition={{duration: 0.5, delay: 0.2}}>
-          <img src={Logo} className={styles.logo} />
+          <img src={Logo} className={styles.logo} alt={'BRND logotype'} />
 
           <div className={styles.field}>
             <Typography weight={'bold'} className={styles.title} textAlign={'center'}>

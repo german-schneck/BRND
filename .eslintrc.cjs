@@ -11,16 +11,12 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      {allowConstantExport: true}
-    ],
     'indent': ['error', 2],
-    'object-curly-spacing': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
     'quotes': ['error', 'single'],
     'semi': ['error', 'always'],
     'no-multiple-empty-lines': ['error', { 'max': 1 }],
-    'react-hooks/exhaustive-deps': 'off',
-    'react-refresh/only-export-components': 'off'
+    'react-hooks/exhaustive-deps': 'warn',
+    "react-refresh/only-export-components": "warn"
   },
 }

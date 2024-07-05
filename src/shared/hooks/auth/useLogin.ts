@@ -1,8 +1,11 @@
 // Dependencies
-import {useMutation, useQueryClient} from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 // Services
-import {LogInParams, logIn} from '@/services/auth';
+import { LogInParams, logIn } from '@/services/auth';
+
+// Hooks
+import { ModalsIds, useModal } from '../ui/useModal';
 
 /**
  * Custom hook to perform a login operation.
@@ -14,13 +17,14 @@ import {LogInParams, logIn} from '@/services/auth';
  */
 export const useLogIn = () => {
   const queryClient = useQueryClient();
-  
+  const { openModal } = useModal();
+
   return useMutation({
     /**
      * The function to be called to perform the login operation.
      * @param {LogInParams} params - The login parameters.
      */
-    mutationFn: ({fid, signature, message, domain, nonce, username, photoUrl}: LogInParams) => logIn({
+    mutationFn: ({ fid, signature, message, domain, nonce, username, photoUrl }: LogInParams) => logIn({
       fid,
       signature,
       message,
@@ -31,13 +35,15 @@ export const useLogIn = () => {
     }),
     onSuccess(data) {
       if (data) {
-        const {user} = data;
+        const { user } = data;
         queryClient.setQueryData(['auth'], user);
       }
     },
-    onError: (e) => {
-      console.log(e);
-      console.log('Error on login');
+    onError: () => {
+      openModal(ModalsIds.ERROR, {
+        title: 'Unable to connect to the platform.',
+        message: 'The service is probably down, try again later.',
+      });
     }
   }); 
 };

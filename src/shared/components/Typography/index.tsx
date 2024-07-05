@@ -6,12 +6,12 @@ import classNames from 'clsx';
 import styles from './Typography.module.scss';
 
 // Types
-import {TypographyProps} from './types';
+import { TypographyProps } from './types';
 
 const Typography: React.FC<TypographyProps> = ({
   as: Component = 'p', 
   variant = 'geist', 
-  weight = variant === 'geist' ? 'wide' : 'regular',
+  weight = variant === 'druk' ? 'wide' : 'regular',
   size = undefined,
   lineHeight = undefined,
   children,
