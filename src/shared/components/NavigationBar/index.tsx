@@ -1,7 +1,7 @@
 // Dependencies
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'clsx';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // StyleSheet
 import styles from './NavigationBar.module.scss';
@@ -10,18 +10,21 @@ import styles from './NavigationBar.module.scss';
 import FlagIcon from '@/assets/icons/flag.svg?react';
 import AddIcon from '@/assets/icons/add.svg?react';
 import ShareIcon from '@/assets/icons/share-icon.svg?react';
+import ExportAppIcon from '@/assets/icons/export-app-icon.svg?react';
 
 // Components
 import Typography from '../Typography';
 import IconButton from '../IconButton';
 
 // Hooks
-import {useAuth} from '@/hooks/auth';
+import { useAuth } from '@/hooks/auth';
+import { ModalsIds, useModal } from '@/hooks/ui';
 
 interface NavigationBarProps {}
 
 const NavigationBar: React.FC<NavigationBarProps> = () => {
-  const {data} = useAuth();
+  const { data } = useAuth();
+  const { openModal } = useModal();
   const navigate = useNavigate();
 
   /**
@@ -34,7 +37,22 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
     navigate(data?.hasVotedToday ? `/vote/${currentUnixDate}` : '/vote');
   }, [data, navigate]);
   
-  const handleClickHowToWorks = useCallback(() => {}, []);
+  /**
+   * Handles the click event for the "How It Works" button.
+   * Opens a modal with instructions on how to add the app to the home screen.
+   */
+  const handleClickHowToWorks = useCallback(() => {
+    openModal(ModalsIds.BOTTOM_ALERT, {
+      title: 'Add BRND to your home screen',
+      content: (
+        <div className={styles.list}>
+          <Typography size={14} weight={'regular'} lineHeight={18}>1. Tap the <span><ExportAppIcon /></span> share icon at the bottom of the screen</Typography>
+          <Typography size={14} weight={'regular'} lineHeight={18}>2. Select add to home screen</Typography>
+          <Typography size={14} weight={'regular'} lineHeight={18}>3. Let's go play!</Typography>
+        </div>
+      )
+    });
+  }, [openModal]);
 
   /**
    * Handles the click event for the user button.
@@ -54,7 +72,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
       </div>
       <button className={classNames(styles.icon, styles.user)} onClick={handleClickUser}>
         <Typography weight={'regular'} size={14} lineHeight={18}>{data?.points}</Typography>
-        <img className={styles.avatar} src={data?.photoUrl} width={32} height={32} />
+        <img alt={data?.username} className={styles.avatar} src={data?.photoUrl} width={32} height={32} />
       </button>
     </div>
   );

@@ -1,0 +1,22 @@
+.layout {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100vh;
+  padding-bottom: 40px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 12px;
+  gap: 12px;
+}

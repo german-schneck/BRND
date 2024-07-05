@@ -12,4 +12,5 @@
 
 .container {
   padding: 12px;
+  @include baseLayout();
 }

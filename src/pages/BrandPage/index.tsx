@@ -65,7 +65,7 @@ function BrandPage() {
                 variant={'underline'} 
                 caption={'Go Back'} 
                 iconLeft={<GoBackIcon />}
-                onClick={() => navigate('/')} 
+                onClick={() => navigate(-1)} 
                 className={styles.backBtn}
               />
               <div className={styles.head}>

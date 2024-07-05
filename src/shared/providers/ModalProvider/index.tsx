@@ -1,15 +1,15 @@
 // Dependecies
 import React from 'react';
-import {AnimatePresence} from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // Types
-import {BaseModalProps, ModalData} from './types';
+import { BaseModalProps, ModalData, ModalsIds } from './types';
 
 // Hooks
-import {useModal} from '@/hooks/ui/useModal';
+import { useModal } from '@/hooks/ui/useModal';
 
 // Modals
-import {modals} from './modals';
+import { modals } from './modals';
 
 // StyleSheet
 import styles from './ModalProvider.module.scss';
@@ -33,8 +33,8 @@ interface ModalLayoutProps {
  * @param {React.ReactNode} props.children - The child components to be rendered within the ModalProvider.
  * @returns {JSX.Element} The rendered ModalProvider component.
  */
-export const ModalProvider: React.FC<ModalLayoutProps> = ({children}) => {
-  const {id, data, closeModal: handleClose} = useModal();
+export const ModalProvider: React.FC<ModalLayoutProps> = ({ children }) => {
+  const { id, data, closeModal: handleClose } = useModal();
 
   /**
    * Determines the modal content based on the current modal id.
@@ -43,19 +43,29 @@ export const ModalProvider: React.FC<ModalLayoutProps> = ({children}) => {
    * @constant
    * @type {(React.FC<BaseModalProps<ModalData[ModalsIds]>> | null)}
    */
-  const ModalContent = id ? modals[id] : null;
+  const ModalContent = id ? (modals as Record<ModalsIds, React.FC<BaseModalProps<ModalData[ModalsIds]>>>)[id] : null;
 
   return (
     <>
       <AnimatePresence>
         {id && (
-          <div className={styles.backdrop}>
+          <motion.div
+            className={styles.backdrop}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}>
             <div className={styles.container}>
               {ModalContent && id && (
-                <ModalContent {...(data as BaseModalProps<ModalData[typeof id]>)} handleClose={handleClose} />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1, duration: 0.25 }}>
+                  <ModalContent {...(data as BaseModalProps<ModalData[typeof id]>)} handleClose={handleClose} />
+                </motion.div>
               )}
             </div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
       {children}

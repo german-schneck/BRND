@@ -3,6 +3,7 @@
  */
 export enum ModalsIds {
   ERROR = 'ERROR',
+  BOTTOM_ALERT = 'BOTTOM_ALERT',
 }
 
 /**
@@ -10,6 +11,7 @@ export enum ModalsIds {
  */
 export type ModalData = {
   [ModalsIds.ERROR]: ErrorModalData;
+  [ModalsIds.BOTTOM_ALERT]: BottomAlertData;
 };
 
 /**
@@ -42,4 +44,15 @@ export type ErrorModalData = {
   title: string;
   message: string;
   onRetry?: () => void;
+};
+
+/**
+ * Type representing the data structure for a bottom alert.
+ *
+ * @property {string} title - The title of the bottom alert.
+ * @property {React.ReactNode[] | React.ReactNode} content - The content of the bottom alert, which can be a single React node or an array of React nodes.
+ */
+export type BottomAlertData = {
+  title: string;
+  content: React.ReactNode[] | React.ReactNode;
 };

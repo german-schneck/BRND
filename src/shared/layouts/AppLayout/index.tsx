@@ -8,10 +8,10 @@ import NavigationBar from '@/components/NavigationBar';
 import styles from './AppLayout.module.scss';
 
 interface AppLayoutProps {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 }
 
-const AppLayout: React.FC<AppLayoutProps> = ({children}) => {
+const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <div className={styles.layout}>
       {children}
