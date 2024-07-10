@@ -12,7 +12,7 @@ import AddIcon from '@/assets/icons/add-solid.svg?react';
 import BPointIcon from '@/assets/icons/point-b.svg?react';
 
 // Hooks
-import {Brand} from '@/hooks/brands';
+import { Brand } from '@/hooks/brands';
 
 interface PodiumColumnProps {
   variant: 'primary' | 'secondary';
@@ -21,7 +21,7 @@ interface PodiumColumnProps {
   onClick?: () => void;
 }
 
-export default function PodiumColumn({variant, selected, position, onClick}: PodiumColumnProps) {
+export default function PodiumColumn({ variant, selected, position, onClick }: PodiumColumnProps) {
 
   /**
    * A mapping of podium positions to their respective points.

@@ -1,6 +1,6 @@
 // Dependencies
-import {useCallback, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
+import { useCallback, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // StyleSheet
 import styles from './Podium.module.scss';
@@ -12,7 +12,7 @@ import Button from '../Button';
 
 // Hooks
 import useBottomSheet from '@/hooks/ui/useBottomSheet';
-import {Brand} from '@/hooks/brands';
+import { Brand } from '@/hooks/brands';
 
 // Assets
 import SquareArrowRightIcon from '@/assets/icons/square-arrow-right.svg?react';
@@ -24,9 +24,9 @@ interface PodiumProps {
   isAnimated?: boolean;
 }
 
-function Podium({isAnimated = true, initial = [], onVote, variant = 'selection'}: PodiumProps) {
+function Podium({ isAnimated = true, initial = [], onVote, variant = 'selection' }: PodiumProps) {
   const [selected, setSelected] = useState<Brand[]>(initial);
-  const {open, close} = useBottomSheet();
+  const { open, close } = useBottomSheet();
 
   /**
    * Array of animation delays for each podium column.
@@ -43,23 +43,23 @@ function Podium({isAnimated = true, initial = [], onVote, variant = 'selection'}
    * @returns {void}
    */
   const handleSelectBrand = useCallback((brand: Brand, index: number): void => {
-    void setSelected((prevSelected) => {
+    setSelected((prevSelected) => {
       const newSelected = [...prevSelected];
       newSelected[index] = brand;
       return newSelected;
     });
-    void close();
+    close();
   }, [close]);
 
   return (
     <div className={styles.body}>
-      {Array.from({length: 3}).map((_, i) => (
+      {Array.from({ length: 3 }).map((_, i) => (
         <motion.div
           key={`--podium-key-${i.toString()}`}
           className={styles.column}
-          initial={isAnimated ? {opacity: 0, y: 50} : {}}
-          animate={isAnimated ? {opacity: 1, y: 0} : {}}
-          transition={isAnimated ? {duration: 0.1, delay: animDelays[i] || 0, type: 'spring', stiffness: 100} : {}}
+          initial={isAnimated ? { opacity: 0, y: 50 } : {}}
+          animate={isAnimated ? { opacity: 1, y: 0 } : {}}
+          transition={isAnimated ? { duration: 0.1, delay: animDelays[i] || 0, type: 'spring', stiffness: 100 } : {}}
         >
           <PodiumColumn
             variant={'secondary'}
@@ -92,10 +92,10 @@ function Podium({isAnimated = true, initial = [], onVote, variant = 'selection'}
           {(selected.length === 3) && (
             <motion.div 
               className={styles.footer}
-              initial={{y: 300}}
-              animate={{y: 0}}
-              exit={{y: 300}}
-              transition={{type: 'spring', stiffness: 300, damping: 20}}
+              initial={{ y: 300 }}
+              animate={{ y: 0 }}
+              exit={{ y: 300 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               <Button 
                 iconLeft={(<SquareArrowRightIcon />)} 
