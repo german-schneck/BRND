@@ -55,7 +55,7 @@
 .image {
   width: 100%;
   height: 170px;
-  object-fit: cover;
+  object-fit: scale-down;
   aspect-ratio: 1;
   border-radius: 12px;
   overflow: hidden;
@@ -90,6 +90,11 @@
 
 .profile {
   gap: 4px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 .actions {

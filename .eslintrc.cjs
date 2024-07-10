@@ -17,6 +17,7 @@ module.exports = {
     'semi': ['error', 'always'],
     'no-multiple-empty-lines': ['error', { 'max': 1 }],
     'react-hooks/exhaustive-deps': 'warn',
-    "react-refresh/only-export-components": "off"
+    "react-refresh/only-export-components": "off",
+    'react-hooks/exhaustive-deps': 'off',
   },
 }

@@ -1,9 +1,12 @@
+import { Brand } from '../../hooks/brands';
+
 /**
  * Enum representing the different types of modal identifiers.
  */
 export enum ModalsIds {
   ERROR = 'ERROR',
   BOTTOM_ALERT = 'BOTTOM_ALERT',
+  SHARE_BRAND = 'SHARE_BRAND'
 }
 
 /**
@@ -12,6 +15,7 @@ export enum ModalsIds {
 export type ModalData = {
   [ModalsIds.ERROR]: ErrorModalData;
   [ModalsIds.BOTTOM_ALERT]: BottomAlertData;
+  [ModalsIds.SHARE_BRAND]: ShareBrandModalData;
 };
 
 /**
@@ -45,6 +49,15 @@ export type ErrorModalData = {
   message: string;
   onRetry?: () => void;
 };
+
+/**
+ * Type representing the data structure for the share brand modal.
+ *
+ * @property {string} id - The unique identifier for the brand to be shared.
+ */
+export type ShareBrandModalData = {
+  id: Brand['id'];
+}
 
 /**
  * Type representing the data structure for a bottom alert.

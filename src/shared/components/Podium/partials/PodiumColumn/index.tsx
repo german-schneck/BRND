@@ -21,7 +21,7 @@ interface PodiumColumnProps {
   onClick?: () => void;
 }
 
-export default function PodiumColumn({ variant, selected, position, onClick }: PodiumColumnProps) {
+export default function PodiumColumn({ variant, selected, position, onClick }: Readonly<PodiumColumnProps>) {
 
   /**
    * A mapping of podium positions to their respective points.
@@ -52,7 +52,7 @@ export default function PodiumColumn({ variant, selected, position, onClick }: P
         {selected && (
           <div className={styles.points}>
             <Typography size={16} lineHeight={20} weight={'bold'} textAlign={'center'}>{points[position]}</Typography>
-            <BPointIcon />
+            <BPointIcon width={14} height={14} />
           </div>
         )}
       </div>

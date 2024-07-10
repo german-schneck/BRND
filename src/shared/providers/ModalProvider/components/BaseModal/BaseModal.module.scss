@@ -3,6 +3,7 @@
   border: 1px solid #2F2F2F;
   background: #0A0B0D;
   border-radius: 12px;
+  width: 100%;
 
   &:before {
     content: "";
@@ -27,4 +28,5 @@
   position: relative;
   z-index: 2;
   padding: 12px;
+  width: 100%;
 }

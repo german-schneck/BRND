@@ -43,11 +43,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  flex: 1;
   background-color: #0A0B0D;
   padding: 12px;
   transition: all 200ms linear;
-  border-radius: 12px;
+  border-radius: 13px;
   position: relative;
   z-index: 2;
   width: 100%;

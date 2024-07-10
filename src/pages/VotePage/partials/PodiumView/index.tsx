@@ -37,7 +37,7 @@ export default function PodiumView({ navigateToView }: PodiumViewProps) {
    * @param {Brand[]} brands - An array of selected brands.
    */
   const handleSubmitVote = useCallback((brands: Brand[]) => {
-    void voteBrands.mutate({
+    voteBrands.mutate({
       ids: [
         brands[1].id,
         brands[0].id,

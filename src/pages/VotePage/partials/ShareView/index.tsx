@@ -1,6 +1,6 @@
 // Dependencies
-import {useCallback} from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Components
 import Podium from '@/components/Podium';
@@ -8,7 +8,7 @@ import Typography from '@/components/Typography';
 import Button from '@/components/Button';
 
 // Types
-import {VotingViewProps} from '../../types';
+import { VotingViewProps } from '../../types';
 
 // StyleSheet
 import styles from './ShareView.module.scss';
@@ -19,7 +19,7 @@ import ShareIcon from '@/assets/icons/share-icon.svg?react';
 
 interface ShareViewProps extends VotingViewProps {}
 
-export default function ShareView({currentBrands}: ShareViewProps) {
+export default function ShareView({ currentBrands }: ShareViewProps) {
   const navigate = useNavigate();
   
   /**
@@ -35,7 +35,7 @@ export default function ShareView({currentBrands}: ShareViewProps) {
    * Opens a new window with the specified URL.
    */
   const handleClickShare = useCallback(() => {
-    window.open('https://example.com', '_blank');
+    window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20podium%20of%20Brands%20with:%0A%F0%9F%A5%87${currentBrands[1].name}%0A%F0%9F%A5%88${currentBrands[0].name}%0A%F0%9F%A5%89${currentBrands[2].name}%0A%0A`, '_blank');
   }, []);
 
   /**

@@ -1,7 +1,7 @@
 // Dependencies
-import React, {useCallback, useMemo, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import {useNavigate} from 'react-router-dom';
+import React, { useCallback, useMemo, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'clsx';
 
 // StyleSheet
@@ -9,6 +9,8 @@ import styles from './WelcomePage.module.scss';
 
 // Assets
 import Logo from '@/assets/images/logo.svg';
+import BRND1Icon from '@/assets/images/brnd-welcome-1.svg?react';
+import BRND2Icon from '@/assets/images/brnd-welcome-2.svg?react';
 
 // Components
 import Typography from '@/components/Typography';
@@ -28,10 +30,10 @@ import withProtectionRoute from '@/hocs/withProtectionRoute';
  * - A description string.
  * - A URL string for the image.
  */
-const steps: Array<[string[], string, string]> = [
-  [['Score', 'your favourite brands'], 'Build your daily podiums to rank and discover the Farcaster ecosystem brands.','https://dummyimage.com/200x200/000/fff'],
-  [['Earn', 'brnd points'], 'Boost your top brands and win with them','https://dummyimage.com/200x200/000/fff'],
-  [['Share', 'on frame'], 'Engage your close community by sharing your favorite brands from the ecosystem','https://dummyimage.com/200x200/000/fff']
+const steps: Array<[string[], string, React.ReactNode]> = [
+  [['Score', 'your favourite brands'], 'Build your daily podiums to rank and discover the Farcaster ecosystem brands.', <BRND1Icon />],
+  [['Earn', 'brnd points'], 'Boost your top brands and win with them', <BRND2Icon />],
+  [['Share', 'on frame'], 'Engage your close community by sharing your favorite brands from the ecosystem', <div className={styles.border}><BRND2Icon /></div>],
 ];
 
 function WelcomePage(): React.ReactNode {
@@ -62,14 +64,14 @@ function WelcomePage(): React.ReactNode {
   }, [stepId, navigate]);
 
   /**
-   * Renders a slide row with a title, description, and image.
+   * Renders a slide row with a title, description, and component.
    * 
    * @param {string[]} text - An array containing the title parts.
    * @param {string} description - The description text.
-   * @param {string} imageUrl - The URL of the image to be displayed.
+   * @param {React.ReactNode} component - The React component to be displayed.
    * @returns {JSX.Element} The rendered slide row component.
    */
-  const renderSlideRow = useCallback((text: string[], description: string, imageUrl: string): JSX.Element => (
+  const renderSlideRow = useCallback((text: string[], description: string, component: React.ReactNode): JSX.Element => (
     <div className={styles.field}>
       <Typography variant={'druk'} size={28} lineHeight={34} weight={'wide'}>
         <span className={styles.title}>{text[0]}</span> {text.slice(1).join(' ')}
@@ -78,7 +80,7 @@ function WelcomePage(): React.ReactNode {
         {description}
       </Typography>
       <div className={styles.image}>
-        <img src={imageUrl} alt={text.join(' ')} width={170} height={170} /> 
+        {component}
       </div>
     </div> 
   ), []);
@@ -91,7 +93,7 @@ function WelcomePage(): React.ReactNode {
   const renderStepIndicator = useMemo((): JSX.Element => (
     <div className={styles.steps}>
       {steps.map((_, index) => (
-        <div key={index} className={classNames(styles.dot, {[styles.active]: index === stepId})} />
+        <div key={index} className={classNames(styles.dot, { [styles.active]: index === stepId })} />
       ))}
     </div>
   ), [stepId]);
@@ -106,9 +108,9 @@ function WelcomePage(): React.ReactNode {
             <AnimatePresence mode="popLayout">
               <motion.div
                 key={stepId}
-                initial={{x: '100%', opacity: 0}}
-                animate={{x: 0, opacity: 1, transition: {type: 'spring', stiffness: 100, damping: 20}}}
-                exit={{x: '-100%', opacity: 0, transition: {type: 'spring', stiffness: 100, damping: 20}}}
+                initial={{ x: '100%', opacity: 0 }}
+                animate={{ x: 0, opacity: 1, transition: { type: 'spring', stiffness: 100, damping: 20 } }}
+                exit={{ x: '-100%', opacity: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } }}
               >
                 {renderSlideRow(...steps[stepId])}
               </motion.div>
