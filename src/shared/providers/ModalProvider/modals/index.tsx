@@ -1,15 +1,14 @@
 // Types
-import {BaseModalProps, ModalData, ModalsIds} from '../types';
+import { ModalsIds } from '../types';
 
 // Modals
-import {ErrorModal} from './ErrorModal';
+import { ErrorModal } from './ErrorModal';
+import { BottomAlertModal } from './BottomAlertModal';
+import { ShareBrandModal } from './ShareBrandModal';
 
-/**
- * A record of modal components mapped by their respective modal IDs.
- *
- * @type {Record<ModalsIds, React.FC<BaseModalProps<ModalData[ModalsIds]>>>}
- */
-export const modals: Record<ModalsIds, React.FC<BaseModalProps<ModalData[ModalsIds]>>> = {
+export const modals = {
   [ModalsIds.ERROR]: ErrorModal,
+  [ModalsIds.BOTTOM_ALERT]: BottomAlertModal,
+  [ModalsIds.SHARE_BRAND]: ShareBrandModal
 };
 

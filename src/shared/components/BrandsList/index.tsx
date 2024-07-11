@@ -1,8 +1,8 @@
 // Dependencies
-import {useEffect, useMemo, useState} from 'react';
-import {motion, AnimatePresence} from 'framer-motion';
+import { useEffect, useMemo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'clsx';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Components
 import SearchInput from '@/components/SearchInput';
@@ -17,10 +17,10 @@ import styles from './BrandsList.module.scss';
 import CheckLabelIcon from '@/assets/icons/check-label-icon.svg?react';
 
 // Hooks
-import {Brand, useBrandList} from '@/hooks/brands';
+import { Brand, useBrandList } from '@/hooks/brands';
 
 // Utils
-import {getBrandScoreVariation} from '@/utils/brand';
+import { getBrandScoreVariation } from '@/utils/brand';
 
 interface BrandsListProps {
   readonly config?: {
@@ -48,7 +48,7 @@ export default function BrandsList({
   const [selected, setSelected] = useState<Brand | null>(null);
   const [pageId, setPageId] = useState<number>(1);
   
-  const {data, isLoading, isFetching, refetch} = useBrandList(searchQuery, pageId, config.order, config.limit);
+  const { data, isLoading, isFetching, refetch } = useBrandList(searchQuery, pageId, config.order, config.limit);
 
   /**
    * Memoized list of brands derived from the data object.
@@ -62,7 +62,7 @@ export default function BrandsList({
    * @param {React.UIEvent<HTMLDivElement>} e - The scroll event.
    */
   const handleScrollList = (e: React.UIEvent<HTMLDivElement>) => {
-    const {scrollTop, scrollHeight, clientHeight} = e.currentTarget;
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
     const calc = scrollTop + clientHeight + 50;
     if ((calc) >= scrollHeight && !isFetching) {
       if (Object.keys(data.brands).length < data.count) {
@@ -78,6 +78,16 @@ export default function BrandsList({
   useEffect(() => {
     setPageId(1);
   }, [searchQuery]);
+
+  useEffect(() => {
+    // Disable scroll on body when component mounts
+    document.body.style.overflow = 'hidden';
+
+    // Re-enable scroll on body when component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   return (
     <div className={styles.layout}>
@@ -119,10 +129,10 @@ export default function BrandsList({
           {selected && (
             <motion.div 
               className={styles.footer}
-              initial={{y: 300}}
-              animate={{y: 0}}
-              exit={{y: 300}}
-              transition={{type: 'spring', stiffness: 300, damping: 20}}
+              initial={{ y: 300 }}
+              animate={{ y: 0 }}
+              exit={{ y: 300 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               <Button 
                 iconLeft={(<CheckLabelIcon />)} 

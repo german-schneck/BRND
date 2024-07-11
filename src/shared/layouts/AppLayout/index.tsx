@@ -7,18 +7,25 @@ import NavigationBar from '@/components/NavigationBar';
 // StyleSheet
 import styles from './AppLayout.module.scss';
 
+// Hooks
+import { useAuth } from '@/hooks/auth';
+
 interface AppLayoutProps {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 }
 
-const AppLayout: React.FC<AppLayoutProps> = ({children}) => {
+const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+  const { data:user } = useAuth();
+
   return (
     <div className={styles.layout}>
       {children}
 
-      <div className={styles.bar}>
-        <NavigationBar />
-      </div>
+      {user && (
+        <div className={styles.bar}>
+          <NavigationBar />
+        </div>
+      )}
     </div>
   );
 };

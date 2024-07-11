@@ -1,5 +1,5 @@
 // Dependencies
-import {createBrowserRouter} from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 // Pages
 import LoginPage from '../pages/LoginPage';
@@ -11,7 +11,7 @@ import ProfilePage from '../pages/ProfilePage';
 import BrandPage from '../pages/BrandPage';
 
 // Providers
-import {AppProvider} from '../shared/providers/AppProvider';
+import { AppProvider } from '../shared/providers/AppProvider';
 
 export const router = createBrowserRouter([
   {
@@ -22,26 +22,26 @@ export const router = createBrowserRouter([
         path: '/',
         element: <HomePage />,
         children: [
-          {path: 'all', element: <HomePage />},
-          {path: 'trending', element: <HomePage />},
-          {path: 'new', element: <HomePage />},
+          { path: 'all', element: <HomePage /> },
+          { path: 'trending', element: <HomePage /> },
+          { path: 'new', element: <HomePage /> },
         ],
       },
       {
         path: '/profile',
         element: <ProfilePage />,
         children: [
-          {path: '', element: <ProfilePage />},
+          { path: '', element: <ProfilePage /> },
         ],
       },
       {
         path: '/brand/:id',
         element: <BrandPage />,
       },
-      {path: '/welcome', element: <WelcomePage />},
-      {path: '/vote/:unixDate?', element: <VotePage />},
-      {path: '/login', element: <LoginPage />},
-      {path: '*', element: <NotFoundPage />},
+      { path: '/welcome', element: <WelcomePage /> },
+      { path: '/vote/:unixDate?', element: <VotePage /> },
+      { path: '/login', element: <LoginPage /> },
+      { path: '*', element: <NotFoundPage /> },
     ]
   }
 ]);

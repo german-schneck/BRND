@@ -1,6 +1,6 @@
 // Dependencies
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {Navigate, useLocation, useParams} from 'react-router-dom';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 
 // Components
 import PodiumView from './partials/PodiumView';
@@ -8,26 +8,31 @@ import ShareView from './partials/ShareView';
 import CongratsView from './partials/CongratsView';
 
 // Types
-import {VotingViewEnum} from './types';
+import { VotingViewEnum } from './types';
 
 // Hooks
-import {Brand} from '@/hooks/brands';
-import {useAuth} from '@/hooks/auth';
-import {useUserVotes} from '@/hooks/user/useUserVotes';
+import { Brand } from '@/hooks/brands';
+import { useAuth } from '@/hooks/auth';
+import { useUserVotes } from '@/hooks/user/useUserVotes';
 
 // Hocs
 import withProtectionRoute from '@/hocs/withProtectionRoute';
 import LoaderIndicator from '../../shared/components/LoaderIndicator';
 
 function VotePage(): React.ReactNode {
-  const {unixDate} = useParams<{ unixDate?: string;}>();
-  const {search} = useLocation();
+  const { unixDate } = useParams<{ unixDate?: string;}>();
+  const { search } = useLocation();
   
-  const {data: votes, isFetching} = useUserVotes(Number(unixDate));
-  const {data: user} = useAuth();
+  const { data: votes, isFetching } = useUserVotes(Number(unixDate));
+  const { data: user } = useAuth();
 
   const [view, setView] = useState<[VotingViewEnum, Brand[]]>([VotingViewEnum.PODIUM, []]);
 
+  /**
+   * Determines if the voting process was successful based on the URL search parameters.
+   *
+   * @returns {boolean} True if the 'success' parameter is present in the URL search parameters, otherwise false.
+   */
   const isSuccess = useMemo<boolean>(() => new URLSearchParams(search).get('success') === '', [search]);
 
   /**
@@ -58,14 +63,14 @@ function VotePage(): React.ReactNode {
    */
   const renderView = (): React.ReactNode => {
     switch (view[0]) {
-    case VotingViewEnum.PODIUM:
-      return <PodiumView {...mapToProps} />;
+      case VotingViewEnum.PODIUM:
+        return <PodiumView {...mapToProps} />;
 
-    case VotingViewEnum.SHARE:
-      return <ShareView {...mapToProps} />;
+      case VotingViewEnum.SHARE:
+        return <ShareView {...mapToProps} />;
 
-    case VotingViewEnum.CONGRATS:
-      return <CongratsView />;
+      case VotingViewEnum.CONGRATS:
+        return <CongratsView />;
     }
   };
 
@@ -73,7 +78,7 @@ function VotePage(): React.ReactNode {
     if (unixDate && !isFetching && votes?.id) {
       navigateToView(isSuccess ? VotingViewEnum.CONGRATS : VotingViewEnum.SHARE, [votes.brand2, votes.brand1, votes.brand3]);
     }
-  }, [isFetching, votes, unixDate, isSuccess]);
+  }, [isFetching, votes, unixDate, isSuccess, navigateToView]);
 
   if ((user && user.hasVotedToday) && !unixDate || (unixDate && !isFetching && !votes?.id)) {
     return (<Navigate to={'/'} />);

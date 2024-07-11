@@ -1,5 +1,6 @@
 // Dependencies
 import { useNavigate, useParams } from 'react-router-dom';
+import { useCallback } from 'react';
 import classNames from 'clsx';
 
 // // StyleSheet
@@ -12,11 +13,12 @@ import Button from '@/components/Button';
 import LoaderIndicator from '@/components/LoaderIndicator';
 import GridItem from './partials/GridItem';
 import IconButton from '@/components/IconButton';
+import CastItem from './partials/CastItem';
 
 // Assets
 import GoBackIcon from '@/assets/icons/go-back-icon.svg?react';
 import ExportIcon from '@/assets/icons/export-icon.svg?react';
-import GitHubIcon from '@/assets/icons/github-icon.svg?react';
+// import GitHubIcon from '@/assets/icons/github-icon.svg?react';
 import GlobeIcon from '@/assets/icons/globe-icon.svg?react';
 
 // Hocs
@@ -24,15 +26,36 @@ import withProtectionRoute from '@/hocs/withProtectionRoute';
 
 // Hooks
 import { useBrand } from '@/hooks/brands';
+import { useAuth } from '@/hooks/auth';
+import { ModalsIds, useModal } from '@/hooks/ui';
 
 // Utils
 import { shortenNumber } from '@/utils/number';
-import CastItem from './partials/CastItem';
 
 function BrandPage() {
   const navigate = useNavigate();
   const { id } = useParams<{ id?: string;}>();
+  const { data: user } = useAuth();
   const { data, isLoading, isFetching } = useBrand(Number(id));
+  const { openModal } = useModal();
+
+  /**
+   * Opens the brand's website in a new tab.
+   */
+  const handleClickWebsite = useCallback(() => {
+    window.open(data?.brand.url);
+  }, [data?.brand.url]);
+
+  /**
+   * Opens the share modal for the brand.
+   */
+  const handleClickShare = useCallback(() => {
+    if (data?.brand.id) {
+      openModal(ModalsIds.SHARE_BRAND, {
+        id: data.brand.id
+      });
+    }
+  }, [data?.brand.id]);
   
   /**
    * Determines the size based on the given score.
@@ -53,6 +76,13 @@ function BrandPage() {
     }
   }
 
+  /**
+   * Extracts the rank ID and ranking from the brand's ranking string.
+   * 
+   * @type {[string, string]} - An array containing the rank ID and ranking.
+   */
+  const [rankId, ofRanking] = data?.brand.ranking?.split('/') || [];
+
   return (
     <AppLayout>
       <div className={styles.body}>
@@ -61,22 +91,24 @@ function BrandPage() {
         ) : (
           <>
             <div className={styles.header}>
-              <Button
-                variant={'underline'} 
-                caption={'Go Back'} 
-                iconLeft={<GoBackIcon />}
-                onClick={() => navigate('/')} 
-                className={styles.backBtn}
-              />
+              {user && (
+                <Button
+                  variant={'underline'} 
+                  caption={'Go Back'} 
+                  iconLeft={<GoBackIcon />}
+                  onClick={() => navigate(-1)} 
+                  className={styles.backBtn}
+                />
+              )}
               <div className={styles.head}>
                 <div className={styles.title}>
-                  <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography>
+                  {/* <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography> */}
                   <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.brand.name}</Typography>
                 </div>
                 <div className={styles.actions}>
-                  <IconButton icon={<ExportIcon />} variant={'secondary'} onClick={() => {}} />
-                  <IconButton icon={<GitHubIcon />} variant={'secondary'} onClick={() => {}} />
-                  <IconButton icon={<GlobeIcon />} variant={'secondary'} onClick={() => {}} />
+                  <IconButton icon={<ExportIcon />} variant={'secondary'} onClick={handleClickShare} />
+                  {/* <IconButton icon={<GitHubIcon />} variant={'secondary'} onClick={() => {}} /> */}
+                  <IconButton icon={<GlobeIcon />} variant={'secondary'} onClick={handleClickWebsite} />
                 </div>
               </div>
             </div>
@@ -91,8 +123,16 @@ function BrandPage() {
                   </GridItem>
                   <GridItem title={'Farcaster'}>
                     <div className={classNames(styles.bottom, styles.profile)}>
-                      <Typography variant={'geist'} weight={'regular'}>{data.brand.profile}</Typography>
-                      <Typography variant={'geist'} weight={'regular'} className={styles.grey}>{data.brand.channel}</Typography>
+                      <Typography variant={'geist'} weight={'regular'}>
+                        <a href={`https://warpcast.com/${data.profile.slice(1)}`} target={'_blank'}>
+                          {data.brand.profile}
+                        </a>
+                      </Typography>
+                      <Typography variant={'geist'} weight={'regular'} className={styles.grey}>
+                        <a href={`https://warpcast.com/~/channel/${data.channel.slice(1)}`} target={'_blank'}>
+                          {data.brand.channel}
+                        </a>
+                      </Typography>
                     </div>
                   </GridItem>
                   <GridItem title={'Followers'}>
@@ -104,7 +144,12 @@ function BrandPage() {
                   <GridItem title={'Ranking'}>
                     <div className={styles.bottom}>
                       <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>Global</Typography>
-                      <Typography variant={'druk'} weight={'wide'} size={32}>9<Typography as={'span'} size={12} className={styles.grey}>/80</Typography></Typography>
+                      <Typography variant={'druk'} weight={'wide'} size={32}>{rankId}<Typography as={'span'} size={12} className={styles.grey}>/{ofRanking}</Typography></Typography>
+                    </div>
+                  </GridItem>
+                  <GridItem title={'Cateogry'}>
+                    <div className={styles.bottom}>
+                      <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{data.brand.category.name}</Typography>                   
                     </div>
                   </GridItem>
                 </div>
@@ -140,4 +185,4 @@ function BrandPage() {
   );
 }
 
-export default withProtectionRoute(BrandPage, 'only-connected');
+export default withProtectionRoute(BrandPage, 'always');

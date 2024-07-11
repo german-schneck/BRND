@@ -35,7 +35,7 @@ function ProfilePage(): React.ReactNode {
               variant={'underline'} 
               caption={'Go Back'} 
               iconLeft={<GoBackIcon />}
-              onClick={() => navigate('/')} 
+              onClick={() => navigate(-1)} 
             />
           </div>
           <div className={styles.user}>

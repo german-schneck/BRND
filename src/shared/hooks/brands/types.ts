@@ -7,11 +7,20 @@ export type Brand = {
   profile: string;
   stateScore: number;
   score: number;
+  ranking: string;
   createdAt: string;
   updatedAt: string;
   description: string;
   followerCount: number;
   warpcastUrl: string;
+  category: Category;
+}
+
+export type Category = {
+  id: number;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type ListBrandTypes = 'all' | 'new' | 'trending';
