@@ -124,12 +124,12 @@ function BrandPage() {
                   <GridItem title={'Farcaster'}>
                     <div className={classNames(styles.bottom, styles.profile)}>
                       <Typography variant={'geist'} weight={'regular'}>
-                        <a href={`https://warpcast.com/${data.profile.slice(1)}`} target={'_blank'}>
+                        <a href={`https://warpcast.com/${data.brand.profile.slice(1)}`} target={'_blank'}>
                           {data.brand.profile}
                         </a>
                       </Typography>
                       <Typography variant={'geist'} weight={'regular'} className={styles.grey}>
-                        <a href={`https://warpcast.com/~/channel/${data.channel.slice(1)}`} target={'_blank'}>
+                        <a href={`https://warpcast.com/~/channel/${data.brand.channel.slice(1)}`} target={'_blank'}>
                           {data.brand.channel}
                         </a>
                       </Typography>
