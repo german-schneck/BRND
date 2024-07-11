@@ -50,12 +50,12 @@ function BrandPage() {
    * Opens the share modal for the brand.
    */
   const handleClickShare = useCallback(() => {
-    if (data?.brand.id) {
+    if (data?.brand?.id) {
       openModal(ModalsIds.SHARE_BRAND, {
-        id: data.brand.id
+        id: data.brand?.id
       });
     }
-  }, [data?.brand.id]);
+  }, [data?.brand?.id]);
   
   /**
    * Determines the size based on the given score.
@@ -86,7 +86,7 @@ function BrandPage() {
   return (
     <AppLayout>
       <div className={styles.body}>
-        {(isFetching || isLoading || !data) ? (
+        {(isFetching || isLoading || !data || !data.brand) ? (
           <LoaderIndicator variant={'fullscreen'} />
         ) : (
           <>
