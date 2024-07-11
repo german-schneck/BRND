@@ -36,8 +36,10 @@ function BrandPage() {
   const navigate = useNavigate();
   const { id } = useParams<{ id?: string;}>();
   const { data: user } = useAuth();
-  const { data, isLoading, isFetching } = useBrand(Number(id));
+  const { data , isLoading, isFetching } = useBrand(Number(id));
   const { openModal } = useModal();
+
+  console.log('data', data);
 
   /**
    * Opens the brand's website in a new tab.
