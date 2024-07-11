@@ -81,7 +81,7 @@ function BrandPage() {
    * 
    * @type {[string, string]} - An array containing the rank ID and ranking.
    */
-  const [rankId, ofRanking] = data?.brand.ranking?.split('/') || [];
+  const [rankId, ofRanking] = data?.brand?.ranking?.split('/') || [];
 
   return (
     <AppLayout>
