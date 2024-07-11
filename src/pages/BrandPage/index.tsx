@@ -43,7 +43,7 @@ function BrandPage() {
    * Opens the brand's website in a new tab.
    */
   const handleClickWebsite = useCallback(() => {
-    if (data && data !== undefined) {
+    if (data?.brand && data?.brand !== undefined) {
       window.open(data?.brand.url);
     }
   }, [data?.brand.url]);
