@@ -17,3 +17,12 @@ export type Brand = {
 export type ListBrandTypes = 'all' | 'new' | 'trending';
 
 export type BrandStateScoreType = 'up' | 'equal' | 'down';
+
+export type BrandCast = {
+  creator: string;
+  creatorPfp: string;
+  creatorPowerBadge: boolean;
+  text: string;
+  image?: string;
+};
+

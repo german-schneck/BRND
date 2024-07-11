@@ -5,7 +5,7 @@ import {request} from './api';
 import {BRAND_SERVICE} from '@/config/api';
 
 // Types
-import {Brand} from '../shared/hooks/brands';
+import {Brand, BrandCast} from '../shared/hooks/brands';
 
 /* =======================================
    = = = = = = = = = = = = = = = = = = = =
@@ -21,6 +21,12 @@ export interface GetBrandListResponse {
   brands: Brand[];
   count: number;
 }
+
+export type BrandResponse = {
+  brand: Brand;
+  casts: BrandCast[];
+};
+
 /**
  * Retrieves the list of brands from the brand service.
  * 
@@ -88,8 +94,8 @@ export const voteBrands = async (body: VoteBrandsParams) =>
  * @param {Brand['id']} id - The ID of the brand to fetch.
  * @returns {Promise<Brand>} A promise that resolves to the brand data.
  */
-export const getBrandById = async (id: Brand['id']): Promise<Brand> => {
-  return await request<Brand>(`${BRAND_SERVICE}/brand/${id}`, {
+export const getBrandById = async (id: Brand['id']): Promise<BrandResponse> => {
+  return await request<BrandResponse>(`${BRAND_SERVICE}/brand/${id}`, {
     method: 'GET'
   });
 };

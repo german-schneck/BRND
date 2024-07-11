@@ -71,7 +71,7 @@ function BrandPage() {
               <div className={styles.head}>
                 <div className={styles.title}>
                   <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography>
-                  <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.name}</Typography>
+                  <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.brand.name}</Typography>
                 </div>
                 <div className={styles.actions}>
                   <IconButton icon={<ExportIcon />} variant={'secondary'} onClick={() => {}} />
@@ -83,22 +83,22 @@ function BrandPage() {
             <div className={styles.container}>
               <div className={classNames(styles.grid, styles.inline)}>
                 <div className={styles.grid}>
-                  <img src={data.imageUrl} className={styles.image} width={'100%'} height={'100%'} alt={data.name} />
+                  <img src={data.brand.imageUrl} className={styles.image} width={'100%'} height={'100%'} alt={data.brand.name} />
                   <GridItem variant={'green'} title={'Score'}>
                     <div className={styles.center}>
-                      <Typography variant={'druk'} weight={'wide'} className={styles.score} size={getSize(data.score)}>{shortenNumber(data.score)}</Typography>
+                      <Typography variant={'druk'} weight={'wide'} className={styles.score} size={getSize(data.brand.score)}>{shortenNumber(data.brand.score)}</Typography>
                     </div>
                   </GridItem>
                   <GridItem title={'Farcaster'}>
                     <div className={classNames(styles.bottom, styles.profile)}>
-                      <Typography variant={'geist'} weight={'regular'}>{data.profile}</Typography>
-                      <Typography variant={'geist'} weight={'regular'} className={styles.grey}>{data.channel}</Typography>
+                      <Typography variant={'geist'} weight={'regular'}>{data.brand.profile}</Typography>
+                      <Typography variant={'geist'} weight={'regular'} className={styles.grey}>{data.brand.channel}</Typography>
                     </div>
                   </GridItem>
                   <GridItem title={'Followers'}>
                     <div className={styles.bottom}>
                       <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>All</Typography>
-                      <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{shortenNumber(data.followerCount)}</Typography>
+                      <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{shortenNumber(data.brand.followerCount)}</Typography>
                     </div>
                   </GridItem>
                   <GridItem title={'Ranking'}>
@@ -110,33 +110,26 @@ function BrandPage() {
                 </div>
                 <GridItem title={'Description'} className={styles.box}>
                   <div className={styles.boxBody}>
-                    <Typography size={16} lineHeight={20}>{data.description}</Typography>
+                    <Typography size={16} lineHeight={20}>{data.brand.description}</Typography>
                   </div>
                 </GridItem>
 
                 <GridItem title={'Latest casts'} className={classNames(styles.box, styles.purple, styles.casts)}>
-                  <CastItem
-                    user={{
-                      photoUrl: data.imageUrl,
-                      username: data.name
-                    }}
-                    message={'I called Frequency image #1 “Disco” because it reminds me of early PC visualizations of music.'}
-                  />
-                  <CastItem
-                    user={{
-                      photoUrl: data.imageUrl,
-                      username: data.name
-                    }}
-                    message={'I called Frequency image #1 “Disco” because it reminds me of early PC visualizations of music.'}
-                  />
-                  <CastItem
-                    user={{
-                      photoUrl: data.imageUrl,
-                      username: data.name
-                    }}
-                    message={'I called Frequency image #1 “Disco” because it reminds me of early PC visualizations of music.'}
-                  />
-                  
+                  {data.casts.map((cast, index) => (
+                    <CastItem
+                      key={'castitem--key--' + index.toString()}
+                      user={{
+                        photoUrl: cast.creatorPfp,
+                        username: cast.creator
+                      }}
+                      message={cast.text}
+                      attach={{
+                        type: 'image',
+                        src: cast?.image as string
+                      }}
+                    />
+                  ))}
+                 
                 </GridItem>
               </div>
             </div>

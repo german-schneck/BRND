@@ -10,6 +10,7 @@ import Typography from '@/components/Typography';
 
 // Assets
 import CastImage from '@/assets/images/cast-image.png';
+import { isImage } from '@/shared/utils/image';
 
 interface CastItemProps {
   user: {
@@ -29,15 +30,18 @@ const CastItem: React.FC<CastItemProps> = ({ user, message, attach, className })
     if (!attach)
       return null;
 
-    switch (attach.type) {
-      case 'video':
-      case 'image':
-      default:
-        return (
-          <img src={attach.src} alt={`${user.username}'s attached`} />
-        ); 
+    if (isImage(attach.src)) {
+      switch (attach.type) {
+        case 'video':
+        case 'image':
+        default:
+          return (
+            <img src={attach.src} alt={`${attach.src}`} />
+          ); 
+      }
     }
-  }, [attach, user.username]);
+
+  }, [attach]);
   
   return (
     <div className={classNames(styles.layout, className)}>
