@@ -36,7 +36,7 @@ const CastItem: React.FC<CastItemProps> = ({ user, message, attach, className })
         case 'image':
         default:
           return (
-            <img src={attach.src} alt={`${attach.src}`} />
+            <img src={attach.src} className={styles.image} alt={`${attach.src}`} />
           ); 
       }
     }
