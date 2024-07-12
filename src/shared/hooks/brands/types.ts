@@ -33,5 +33,6 @@ export type BrandCast = {
   creatorPowerBadge: boolean;
   text: string;
   image?: string;
+  warpcastUrl: string;
 };
 

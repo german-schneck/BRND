@@ -1,6 +1,6 @@
 // Dependencies
 import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // Components
 import Podium from '@/components/Podium';
@@ -21,6 +21,9 @@ interface ShareViewProps extends VotingViewProps {}
 
 export default function ShareView({ currentBrands }: ShareViewProps) {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log('location', location);
   
   /**
    * Handles the click event for the "Skip" button.
@@ -36,6 +39,7 @@ export default function ShareView({ currentBrands }: ShareViewProps) {
    */
   const handleClickShare = useCallback(() => {
     window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20podium%20of%20Brands%20with:%0A%F0%9F%A5%87${currentBrands[1].name}%0A%F0%9F%A5%88${currentBrands[0].name}%0A%F0%9F%A5%89${currentBrands[2].name}%0A%0A`, '_blank');
+    navigate(location.pathname + '?success');
   }, []);
 
   /**
