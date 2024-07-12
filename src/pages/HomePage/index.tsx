@@ -29,24 +29,24 @@ function HomePage(): React.ReactNode {
             <TabNavigator
               tabs={[
                 {
-                  label: 'All',
-                  path: '/all'
+                  label: 'Top',
+                  path: '/top'
                 },
                 {
                   label: 'New',
                   path: '/'
                 },
                 {
-                  label: 'Trending',
-                  path: '/trending'
-                }
+                  label: 'All',
+                  path: '/all'
+                },
               ]}
             />
           </div>
         </div>
         <Routes>
           <Route path="/" element={<NewBrands />} />
-          <Route path="/trending" element={<TrendBrands />} />
+          <Route path="/top" element={<TrendBrands />} />
           <Route path="/all" element={<AllBrands />} />
         </Routes>
       </div>

@@ -39,7 +39,7 @@ export default function ShareView({ currentBrands }: ShareViewProps) {
    */
   const handleClickShare = useCallback(() => {
     window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20podium%20of%20Brands%20with:%0A%F0%9F%A5%87${currentBrands[1].name}%0A%F0%9F%A5%88${currentBrands[0].name}%0A%F0%9F%A5%89${currentBrands[2].name}%0A%0A`, '_blank');
-    navigate(location.pathname + '?success');
+    location.pathname === '/vote' ? navigate(`${location.pathname}/${Math.floor(Date.now()/1000)}?success`) : navigate(location.pathname + '?success');
   }, []);
 
   /**

@@ -137,19 +137,19 @@ function BrandPage() {
                       </Typography>
                     </div>
                   </GridItem>
-                  <GridItem title={'Followers'}>
-                    <div className={styles.bottom}>
-                      <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>All</Typography>
-                      <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{shortenNumber(data.brand.followerCount)}</Typography>
-                    </div>
-                  </GridItem>
                   <GridItem title={'Ranking'}>
                     <div className={styles.bottom}>
                       <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>Global</Typography>
                       <Typography variant={'druk'} weight={'wide'} size={32}>{rankId}<Typography as={'span'} size={12} className={styles.grey}>/{ofRanking}</Typography></Typography>
                     </div>
                   </GridItem>
-                  <GridItem title={'Cateogry'}>
+                  <GridItem title={'Followers'}>
+                    <div className={styles.bottom}>
+                      <Typography variant={'geist'} weight={'regular'} className={styles.label} size={10} lineHeight={12}>All</Typography>
+                      <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{shortenNumber(data.brand.followerCount)}</Typography>
+                    </div>
+                  </GridItem>
+                  <GridItem title={'Category'}>
                     <div className={styles.bottom}>
                       <Typography variant={'druk'} weight={'wide'} size={18} lineHeight={22}>{data.brand.category.name}</Typography>                   
                     </div>

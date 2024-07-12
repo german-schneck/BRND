@@ -22,9 +22,9 @@ export const router = createBrowserRouter([
         path: '/',
         element: <HomePage />,
         children: [
-          { path: 'all', element: <HomePage /> },
-          { path: 'trending', element: <HomePage /> },
+          { path: 'top', element: <HomePage /> },
           { path: 'new', element: <HomePage /> },
+          { path: 'all', element: <HomePage /> },
         ],
       },
       {

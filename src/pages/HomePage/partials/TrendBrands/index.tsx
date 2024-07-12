@@ -19,7 +19,7 @@ import FeatureFarcasterBrand from '@/assets/images/feature-farcaster-brand.svg?r
 
 function TrendBrands() {
   const navigate = useNavigate();
-  const {data, refetch} = useBrandList('', 1, 'trending', 7);
+  const {data, refetch} = useBrandList('', 1, 'top', 7);
 
   useEffect(() => {
     refetch();

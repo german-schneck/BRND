@@ -7,6 +7,8 @@ export type Brand = {
   profile: string;
   stateScore: number;
   score: number;
+  stateScoreWeek: number;
+  scoreWeek: number;
   ranking: string;
   createdAt: string;
   updatedAt: string;
@@ -14,6 +16,7 @@ export type Brand = {
   followerCount: number;
   warpcastUrl: string;
   category: Category;
+  banned: number;
 }
 
 export type Category = {
@@ -23,7 +26,7 @@ export type Category = {
   updatedAt: Date;
 }
 
-export type ListBrandTypes = 'all' | 'new' | 'trending';
+export type ListBrandTypes = 'all' | 'new' | 'top';
 
 export type BrandStateScoreType = 'up' | 'equal' | 'down';
 

@@ -33,10 +33,10 @@ export type BrandResponse = {
  * @param {string} searchQuery - The search query to filter the brands.
  * @param {string} pageId - The ID of the page to retrieve.
  * @param {string} [limit='27'] - The number of brands to retrieve per page. Defaults to '27'.
- * @param {'all' | 'new' | 'trending'} order - The order in which to retrieve the brands.
+ * @param {'top' | 'new' | 'all'} order - The order in which to retrieve the brands.
  * @returns {Promise<GetBrandListResponse>} A promise that resolves with the list of brands and the count.
  */
-export const getBrandList = async (searchQuery: string, pageId: string, limit: string = '27', order: 'all' | 'new' | 'trending' = 'all'): Promise<GetBrandListResponse> =>
+export const getBrandList = async (searchQuery: string, pageId: string, limit: string = '27', order: 'top' | 'new' | 'all' = 'all'): Promise<GetBrandListResponse> =>
   await request<GetBrandListResponse>(`${BRAND_SERVICE}/list`, {
     method: 'GET',
     params: {

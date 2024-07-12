@@ -24,7 +24,7 @@ import { getBrandScoreVariation } from '@/utils/brand';
 
 interface BrandsListProps {
   readonly config?: {
-    order: 'new' | 'trending' | 'all';
+    order: 'new' | 'top' | 'all';
     limit: number;
   },
   readonly className?: string;
