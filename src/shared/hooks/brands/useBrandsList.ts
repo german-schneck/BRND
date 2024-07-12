@@ -24,8 +24,6 @@ export const useBrandList = (order: ListBrandTypes, searchQuery: string = '', pa
   if (!result.isError && !result.isLoading) {
     const brands = result.data?.brands || [];
 
-    console.log({ pageId });
-
     if (searchQuery !== '' && pageId === 1) {
       brandsRef.current = brands;
     } else {
@@ -38,8 +36,6 @@ export const useBrandList = (order: ListBrandTypes, searchQuery: string = '', pa
     }
     countRef.current = result.data?.count ?? 0;
   }
-
-  console.log(brandsRef.current);
 
   return {
     ...result,

@@ -54,6 +54,7 @@
   width: 100%;
   aspect-ratio: 116/116;
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .number {
@@ -88,6 +89,8 @@
     border-radius: 100%;
     object-fit: cover;
   }
+
+  cursor: pointer;
 }
 
 

@@ -22,8 +22,6 @@ interface ShareViewProps extends VotingViewProps {}
 export default function ShareView({ currentBrands }: ShareViewProps) {
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log('location', location);
   
   /**
    * Handles the click event for the "Skip" button.

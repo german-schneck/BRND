@@ -21,7 +21,6 @@ export const ShareBrandModal: React.FC<BaseModalProps<ShareBrandModalData>> = ({
 
   const handleClickCopyToClipboard = useCallback(() => {
     navigator.clipboard.writeText(link).then(() => {
-      console.log('Link copied to clipboard');
       setLinkCopied(true);
     }).catch(err => {
       console.error('Failed to copy the link: ', err);

@@ -58,9 +58,9 @@ function TrendBrands() {
               className={styles.brandCard}
               name={mainBrand.name}
               photoUrl={mainBrand.imageUrl}
-              score={mainBrand.score}
+              score={mainBrand.scoreWeek}
               onClick={() => handleClickCard(mainBrand.id)}
-              variation={getBrandScoreVariation(mainBrand.stateScore)}
+              variation={getBrandScoreVariation(mainBrand.stateScoreWeek)}
             />
           </div>
         </div>
@@ -73,8 +73,8 @@ function TrendBrands() {
               <BrandCard
                 name={brand.name}
                 photoUrl={brand.imageUrl}
-                score={brand.score}
-                variation={getBrandScoreVariation(brand.stateScore)}
+                score={brand.scoreWeek}
+                variation={getBrandScoreVariation(brand.stateScoreWeek)}
                 onClick={() => handleClickCard(brand.id)}
               />
             </li>

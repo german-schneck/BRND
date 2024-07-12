@@ -39,8 +39,6 @@ function BrandPage() {
   const { data , isLoading, isFetching } = useBrand(Number(id));
   const { openModal } = useModal();
 
-  console.log('data', data);
-
   /**
    * Opens the brand's website in a new tab.
    */
