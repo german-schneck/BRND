@@ -10,6 +10,7 @@ import { Brand, useVoteBrands } from '@/hooks/brands';
 import Podium from '@/components/Podium';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
+import IconButton from '@/components/IconButton';
 
 // Types
 import { VotingViewEnum, VotingViewProps } from '../../types';
@@ -80,11 +81,10 @@ export default function PodiumView({ navigateToView }: PodiumViewProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}>
-        <Button
-          variant={'underline'} 
-          caption={'Go Back'} 
-          iconLeft={<GoBackIcon />}
-          onClick={() => navigate(-1)} 
+        <IconButton
+          variant={'solid'} 
+          icon={<GoBackIcon />}
+          onClick={() => navigate('/home')} 
           className={styles.backBtn}
         />
         <div className={styles.center}>

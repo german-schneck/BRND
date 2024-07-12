@@ -9,6 +9,7 @@ import HomePage from '../pages/HomePage';
 import WelcomePage from '../pages/WelcomePage';
 import ProfilePage from '../pages/ProfilePage';
 import BrandPage from '../pages/BrandPage';
+import ClaimedPage from '../pages/ClaimedPage';
 
 // Providers
 import { AppProvider } from '../shared/providers/AppProvider';
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
       { path: '/welcome', element: <WelcomePage /> },
       { path: '/vote/:unixDate?', element: <VotePage /> },
       { path: '/login', element: <LoginPage /> },
+      { path: '/claimed', element: <ClaimedPage /> },
       { path: '*', element: <NotFoundPage /> },
     ]
   }

@@ -9,8 +9,9 @@ import styles from './WelcomePage.module.scss';
 
 // Assets
 import Logo from '@/assets/images/logo.svg';
-import BRND1Icon from '@/assets/images/brnd-welcome-1.svg?react';
-import BRND2Icon from '@/assets/images/brnd-welcome-2.svg?react';
+import WelcomeImage1 from '@/assets/images/welcome-image-1.png';
+import WelcomeImage2 from '@/assets/images/welcome-image-2.png';
+import WelcomeImage3 from '@/assets/images/welcome-image-3.png';
 
 // Components
 import Typography from '@/components/Typography';
@@ -31,9 +32,9 @@ import withProtectionRoute from '@/hocs/withProtectionRoute';
  * - A URL string for the image.
  */
 const steps: Array<[string[], string, React.ReactNode]> = [
-  [['Score', 'your favourite brands'], 'Build your daily podiums to rank and discover the Farcaster ecosystem brands.', <BRND1Icon />],
-  [['Earn', 'brnd points'], 'Boost your top brands and win with them', <BRND2Icon />],
-  [['Share', 'on frame'], 'Engage your close community by sharing your favorite brands from the ecosystem', <div className={styles.border}><BRND2Icon /></div>],
+  [['Score', 'your favourite brands'], 'Build your daily podiums to rank and discover the Farcaster ecosystem brands.', <img key={0} src={WelcomeImage1} alt={'Welcome slider 1'} width={248} height={248} />],
+  [['Earn', 'brnd points'], 'Boost your top brands and win with them', <img key={0} src={WelcomeImage2} alt={'Welcome slider 2'} width={248} height={248} />],
+  [['Share', 'on frame'], 'Engage your close community by sharing your favorite brands from the ecosystem', <img key={0} src={WelcomeImage3} alt={'Welcome slider 3'} width={248} height={248} />],
 ];
 
 function WelcomePage(): React.ReactNode {

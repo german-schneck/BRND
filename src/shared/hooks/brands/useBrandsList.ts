@@ -1,18 +1,15 @@
 // Dependencies
-import {useRef} from 'react';
-import {useQuery} from '@tanstack/react-query';
+import { useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 // Services
-import {getBrandList} from '@/services/brands';
+import { getBrandList } from '@/services/brands';
 
 // Types
-import {Brand, ListBrandTypes} from './types';
+import { Brand, ListBrandTypes } from './types';
 
-// Utils
-import {normalizeState} from '@/utils/state';
-
-export const useBrandList = (searchQuery: string = '', pageId: number = 1, order: ListBrandTypes, limit: number = 27) => {
-  const brandsRef = useRef<Record<Brand['id'], Brand>>({});
+export const useBrandList = (order: ListBrandTypes, searchQuery: string = '', pageId: number = 1, limit: number = 27) => {
+  const brandsRef = useRef<Brand[]>([]);
   const countRef = useRef<number>(0);
 
   const result = useQuery({
@@ -24,20 +21,25 @@ export const useBrandList = (searchQuery: string = '', pageId: number = 1, order
     placeholderData: (prev) => prev,
   });
 
-  if (!result.isError) {
+  if (!result.isError && !result.isLoading) {
     const brands = result.data?.brands || [];
 
-    const normalizedBrands = normalizeState(brands, 'id');
-    if (searchQuery && pageId === 1) {
-      brandsRef.current = normalizedBrands;
+    console.log({ pageId });
+
+    if (searchQuery !== '' && pageId === 1) {
+      brandsRef.current = brands;
     } else {
-      brandsRef.current = {
+      const existingBrandIds = new Set(brandsRef.current.map(brand => brand.id));
+      const newBrands = brands.filter(brand => !existingBrandIds.has(brand.id));
+      brandsRef.current = [
         ...brandsRef.current,
-        ...normalizedBrands,
-      };
+        ...newBrands,
+      ];
     }
-    countRef.current = result.data?.count || 0;
+    countRef.current = result.data?.count ?? 0;
   }
+
+  console.log(brandsRef.current);
 
   return {
     ...result,

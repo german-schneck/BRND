@@ -11,6 +11,7 @@ import MyPodium from './partials/MyPodium';
 import TabNavigator from '@/components/TabNavigator';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
+import IconButton from '@/components/IconButton';
 
 // Assets
 import PointBIcon from '@/assets/icons/point-b.svg?react';
@@ -31,11 +32,11 @@ function ProfilePage(): React.ReactNode {
       <div className={styles.body}>
         <div className={styles.header}>
           <div className={styles.left}>
-            <Button
-              variant={'underline'} 
-              caption={'Go Back'} 
-              iconLeft={<GoBackIcon />}
+            <IconButton
+              variant={'solid'} 
+              icon={<GoBackIcon />}
               onClick={() => navigate(-1)} 
+              className={styles.backBtn}
             />
           </div>
           <div className={styles.user}>

@@ -9,6 +9,8 @@
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   border-top: 1px solid #303540;
+
+  padding-bottom: 20px;
 }
 
 .icon {
@@ -68,4 +70,11 @@
     width: 22px;
     height: 22px;
   }
+}
+
+.points {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
 }

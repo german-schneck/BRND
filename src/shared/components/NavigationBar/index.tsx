@@ -11,6 +11,7 @@ import FlagIcon from '@/assets/icons/flag.svg?react';
 import AddIcon from '@/assets/icons/add.svg?react';
 import ShareIcon from '@/assets/icons/share-icon.svg?react';
 import ExportAppIcon from '@/assets/icons/export-app-icon.svg?react';
+import BPointIcon from '@/assets/icons/point-b.svg?react';
 
 // Components
 import Typography from '../Typography';
@@ -71,7 +72,10 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
         <IconButton variant={'primary'} icon={data?.hasVotedToday ? <ShareIcon /> : <AddIcon />} onClick={handleClickMain} />
       </div>
       <button className={classNames(styles.icon, styles.user)} onClick={handleClickUser}>
-        <Typography weight={'regular'} size={14} lineHeight={18}>{data?.points}</Typography>
+        <div className={styles.points}>
+          <Typography weight={'regular'} size={14} lineHeight={18}>{data?.points}</Typography>
+          <BPointIcon width={15} height={12} />
+        </div>
         <img alt={data?.username} className={styles.avatar} src={data?.photoUrl} width={32} height={32} />
       </button>
     </div>

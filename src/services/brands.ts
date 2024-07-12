@@ -1,11 +1,11 @@
 // API Dependency
-import {request} from './api';
+import { request } from './api';
 
 // Configuration
-import {BRAND_SERVICE} from '@/config/api';
+import { BRAND_SERVICE } from '@/config/api';
 
 // Types
-import {Brand, BrandCast} from '../shared/hooks/brands';
+import { Brand, BrandCast } from '../shared/hooks/brands';
 
 /* =======================================
    = = = = = = = = = = = = = = = = = = = =
@@ -88,6 +88,10 @@ export const voteBrands = async (body: VoteBrandsParams) =>
     body
   });
 
+/* =======================================
+   = = = = = = = = = = = = = = = = = = = =
+   ======================================= */
+
 /**
  * Fetches a brand by its ID.
  * 
@@ -99,3 +103,23 @@ export const getBrandById = async (id: Brand['id']): Promise<BrandResponse> => {
     method: 'GET'
   });
 };
+
+/* =======================================
+   = = = = = = = = = = = = = = = = = = = =
+   ======================================= */
+
+export interface ClaimBrandParams {
+  name: string;
+}
+  
+/**
+   * Sends a claim request to the brand service.
+   * 
+   * @param {ClaimBrandParams} body - The parameters required for claiming brands.
+   * @returns {Promise<void>} A promise that resolves when the request is complete.
+   */
+export const claimBrand = async (body: ClaimBrandParams) =>
+  await request(`${BRAND_SERVICE}/request`, {
+    method: 'POST',
+    body
+  });

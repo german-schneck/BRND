@@ -18,7 +18,7 @@ import CastItem from './partials/CastItem';
 // Assets
 import GoBackIcon from '@/assets/icons/go-back-icon.svg?react';
 import ExportIcon from '@/assets/icons/export-icon.svg?react';
-// import GitHubIcon from '@/assets/icons/github-icon.svg?react';
+import FavoriteIcon from '@/assets/icons/favorite-icon.svg?react';
 import GlobeIcon from '@/assets/icons/globe-icon.svg?react';
 
 // Hocs
@@ -85,6 +85,13 @@ function BrandPage() {
    */
   const [rankId, ofRanking] = data?.brand?.ranking?.split('/') || [];
 
+  /**
+   * Determines if the footer should be visible based on the user's voting status.
+   *
+   * @type {boolean} - True if the user has voted today, false otherwise.
+   */
+  const isFooterVisible = user && !user.hasVotedToday;
+
   return (
     <AppLayout>
       <div className={styles.body}>
@@ -93,25 +100,28 @@ function BrandPage() {
         ) : (
           <>
             <div className={styles.header}>
-              {user && (
-                <Button
-                  variant={'underline'} 
-                  caption={'Go Back'} 
-                  iconLeft={<GoBackIcon />}
-                  onClick={() => navigate(-1)} 
-                  className={styles.backBtn}
-                />
-              )}
               <div className={styles.head}>
-                <div className={styles.title}>
-                  {/* <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography> */}
-                  <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.brand.name}</Typography>
-                </div>
+                {user && (
+                  <IconButton
+                    variant={'solid'} 
+                    icon={<GoBackIcon />}
+                    onClick={() => navigate(-1)} 
+                    className={styles.backBtn}
+                  />
+                )}
                 <div className={styles.actions}>
                   <IconButton icon={<ExportIcon />} variant={'secondary'} onClick={handleClickShare} />
                   {/* <IconButton icon={<GitHubIcon />} variant={'secondary'} onClick={() => {}} /> */}
                   <IconButton icon={<GlobeIcon />} variant={'secondary'} onClick={handleClickWebsite} />
                 </div>
+              </div>
+
+              <div className={styles.head}>
+                <div className={styles.title}>
+                  {/* <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography> */}
+                  <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.brand.name}</Typography>
+                </div>
+
               </div>
             </div>
             <div className={styles.container}>
@@ -169,6 +179,7 @@ function BrandPage() {
                         photoUrl: cast.creatorPfp,
                         username: cast.creator
                       }}
+                      url={cast.warpcastUrl}
                       message={cast.text}
                       attach={{
                         type: 'image',
@@ -179,8 +190,17 @@ function BrandPage() {
                  
                 </GridItem>
               </div>
+              {isFooterVisible && (
+                <div className={styles.divider} />
+              )}
             </div>
           </>
+        )}
+
+        {isFooterVisible && ( 
+          <div className={styles.footer}>
+            <Button caption={'Add To Podium'} iconLeft={<FavoriteIcon />} onClick={() => navigate('/vote')} />
+          </div>
         )}
       </div>
     </AppLayout>

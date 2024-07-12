@@ -14,6 +14,9 @@
 
 .header {
   padding-top: 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .head {
@@ -37,9 +40,8 @@
 }
 
 .backBtn {
-  > div:nth-child(1) {
-    padding: 0;
-  }
+  width: 36px;
+  height: 36px;
 }
 
 .grid {
@@ -154,4 +156,18 @@
 
 .position {
   white-space: nowrap;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+
+  @include baseLayout();
+  z-index: 50;
+}
+
+.divider {
+  height: 70px;
 }
