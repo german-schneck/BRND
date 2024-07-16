@@ -94,7 +94,7 @@ function WelcomePage(): React.ReactNode {
   const renderStepIndicator = useMemo((): JSX.Element => (
     <div className={styles.steps}>
       {steps.map((_, index) => (
-        <div key={index} className={classNames(styles.dot, { [styles.active]: index === stepId })} />
+        <div key={`--step-${index.toString()}`} className={classNames(styles.dot, { [styles.active]: index === stepId })} />
       ))}
     </div>
   ), [stepId]);
