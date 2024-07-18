@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // // StyleSheet
 import styles from './HomePage.module.scss';

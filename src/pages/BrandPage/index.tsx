@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback } from 'react';
 import classNames from 'clsx';
 
-// // StyleSheet
+// StyleSheet
 import styles from './BrandPage.module.scss';
 
 // Components
@@ -119,7 +119,6 @@ function BrandPage() {
                   {/* <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography> */}
                   <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.brand.name}</Typography>
                 </div>
-
               </div>
             </div>
             <div className={styles.container}>
