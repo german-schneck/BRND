@@ -10,7 +10,7 @@ import styles from './NavigationBar.module.scss';
 import HomeIcon from '@/assets/icons/home.svg?react';
 import AddIcon from '@/assets/icons/add.svg?react';
 import ShareIcon from '@/assets/icons/share-icon.svg?react';
-import ExportAppIcon from '@/assets/icons/export-app-icon.svg?react';
+//import ExportAppIcon from '@/assets/icons/export-app-icon.svg?react';
 import BPointIcon from '@/assets/icons/point-b.svg?react';
 
 // Components
@@ -19,13 +19,13 @@ import IconButton from '../IconButton';
 
 // Hooks
 import { useAuth } from '@/hooks/auth';
-import { ModalsIds, useModal } from '@/hooks/ui';
+//import { ModalsIds, useModal } from '@/hooks/ui';
 
 interface NavigationBarProps {}
 
 const NavigationBar: React.FC<NavigationBarProps> = () => {
   const { data } = useAuth();
-  const { openModal } = useModal();
+  //const { openModal } = useModal();
   const navigate = useNavigate();
 
   /**
