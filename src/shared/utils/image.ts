@@ -15,6 +15,8 @@ export function isImage(url: string): boolean {
   if (url.includes('https://app.layer3.xyz')) return false;
   if (url.includes('https://www.frameboard.com')) return false;
   if (url.includes('https://perl.xyz')) return false;
+  if (url.endsWith('.dev')) return false;
+  if (url.endsWith('.dev/')) return false;
 
   return true;
 }
