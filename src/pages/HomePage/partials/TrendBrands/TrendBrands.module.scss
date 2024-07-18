@@ -21,9 +21,11 @@
 
 .grid {
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(3, minmax(0%, 100%));
+  gap: 8px;
+  grid-template-columns: repeat(1, minmax(0%, 100%));
   list-style-type: none;
+  overflow: auto;
+  padding-bottom: 12px;
 }
 
 .image {
@@ -42,10 +44,3 @@
   height: 148px;
 }
 
-.brandCard {
-  background: #0A0B0D99;
-  backdrop-filter: blur(4px);
-  div[data-id="container"] {
-    background-color: transparent;
-  }
-}

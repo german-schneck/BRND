@@ -1,4 +1,4 @@
-import {BrandStateScoreType} from '@/hooks/brands';
+import { BrandStateScoreType } from '@/hooks/brands';
 
 /**
  * Returns the brand score variation based on the state score.

@@ -16,6 +16,7 @@ import { getBrandScoreVariation } from '@/utils/brand';
 
 // Assets
 import FeatureFarcasterBrand from '@/assets/images/feature-farcaster-brand.svg?react';
+import { BrandListItem } from '../../../../shared/components/BrandListItem';
 
 function TrendBrands() {
   const navigate = useNavigate();
@@ -48,29 +49,34 @@ function TrendBrands() {
     <div className={styles.layout}>
 
       {mainBrand && (
-        <div className={styles.feature}>
-          <div className={styles.image}>
-            <FeatureFarcasterBrand />
-          </div>
-          <div className={styles.brand}>
-            <BrandCard
-              size={'l'}
-              className={styles.brandCard}
-              name={mainBrand.name}
-              photoUrl={mainBrand.imageUrl}
-              score={mainBrand.scoreWeek}
-              onClick={() => handleClickCard(mainBrand.id)}
-              variation={getBrandScoreVariation(mainBrand.stateScoreWeek)}
-            />
+        <div className={styles.inner}>
+          <div className={styles.feature}>
+            <div className={styles.image}>
+              <FeatureFarcasterBrand />
+            </div>
+            <div className={styles.brand}>
+              <BrandCard
+                size={'l'}
+                selected={true}
+                orientation={'center'}
+                className={styles.brandCard}
+                name={mainBrand.name}
+                photoUrl={mainBrand.imageUrl}
+                score={mainBrand.scoreWeek}
+                onClick={() => handleClickCard(mainBrand.id)}
+                variation={getBrandScoreVariation(mainBrand.stateScoreWeek)}
+              />
+            </div>
           </div>
         </div>
       )}
       
       {(data.brands && (data.brands).length > 1) && (
         <ul className={styles.grid}>
-          {data.brands.slice(1).map((brand, index) => (
+          {data.brands.map((brand, index) => (
             <li key={`--brand-item-${index.toString()}`}>
-              <BrandCard
+              <BrandListItem
+                position={index + 1}
                 name={brand.name}
                 photoUrl={brand.imageUrl}
                 score={brand.scoreWeek}

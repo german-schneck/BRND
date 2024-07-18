@@ -1,0 +1,64 @@
+@import "@/styles/index.scss";
+
+.layout {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  height: 100%;
+  flex-direction: row;
+  background: #16181D;
+  border: 1px solid #2F2F2F;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.position {
+  align-items: center;
+  justify-content: center;
+  color: #8A8A8A;
+  height: 100%;
+  display: flex;
+  width: 28px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #fff;
+}
+
+.img {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  margin-left: auto;
+  color: #8A8A8A;
+
+  .equal {
+    color: #008CFF;
+    top: -1px;
+    position: relative;
+  }
+  
+  .up {
+    color: #00FF00;
+  }
+  
+  .down {
+    color: #FF0000;
+    transform: rotate(180deg);
+  }
+}
