@@ -7,9 +7,10 @@ export type Brand = {
   profile: string;
   stateScore: number;
   score: number;
+  ranking: string;
   stateScoreWeek: number;
   scoreWeek: number;
-  ranking: string;
+  rankingWeek: number;
   createdAt: string;
   updatedAt: string;
   description: string;

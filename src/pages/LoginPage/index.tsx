@@ -172,7 +172,7 @@ function LoginPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <SignInButton hideSignOut={true} onSuccess={handleSignInSuccess} /> 
+            <SignInButton hideSignOut={true} onSuccess={handleSignInSuccess} />
             <Button caption={'Add to home screen'} variant={'underline'} onClick={handleClickHowToWorks} />
           </motion.div> 
         )}

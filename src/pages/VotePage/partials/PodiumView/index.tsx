@@ -84,7 +84,7 @@ export default function PodiumView({ navigateToView }: PodiumViewProps) {
         <IconButton
           variant={'solid'} 
           icon={<GoBackIcon />}
-          onClick={() => navigate('/home')} 
+          onClick={() => navigate('/')} 
           className={styles.backBtn}
         />
         <div className={styles.center}>

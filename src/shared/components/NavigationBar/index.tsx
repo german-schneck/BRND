@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './NavigationBar.module.scss';
 
 // Assets
-import FlagIcon from '@/assets/icons/flag.svg?react';
+import HomeIcon from '@/assets/icons/home.svg?react';
 import AddIcon from '@/assets/icons/add.svg?react';
 import ShareIcon from '@/assets/icons/share-icon.svg?react';
 import ExportAppIcon from '@/assets/icons/export-app-icon.svg?react';
@@ -42,6 +42,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
    * Handles the click event for the "How It Works" button.
    * Opens a modal with instructions on how to add the app to the home screen.
    */
+  /*
   const handleClickHowToWorks = useCallback(() => {
     openModal(ModalsIds.BOTTOM_ALERT, {
       title: 'Add BRND to your home screen',
@@ -54,6 +55,11 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
       )
     });
   }, [openModal]);
+  */
+
+  const handleClickGoHome = useCallback(() => {
+    navigate('/top');
+  }, []);
 
   /**
    * Handles the click event for the user button.
@@ -66,7 +72,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
   return (
     <div className={classNames(styles.layout)}>
       <div className={styles.icon}>
-        <IconButton variant={'secondary'} icon={<FlagIcon />} onClick={handleClickHowToWorks} />
+        <IconButton variant={'secondary'} icon={<HomeIcon />} onClick={handleClickGoHome} />
       </div>
       <div className={styles.icon}>
         <IconButton variant={'primary'} icon={data?.hasVotedToday ? <ShareIcon /> : <AddIcon />} onClick={handleClickMain} />

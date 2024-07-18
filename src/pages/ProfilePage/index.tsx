@@ -2,6 +2,8 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
+export const URL_HOW_IT_WORKS = import.meta.env.VITE_APP_HOW_IT_WORKS;
+
 // // StyleSheet
 import styles from './ProfilePage.module.scss';
 
@@ -51,7 +53,7 @@ function ProfilePage(): React.ReactNode {
             </div>
             <Typography variant={'geist'} weight={'regular'} size={15} textAlign={'center'} lineHeight={20}>Total BRND points earned for your contribution</Typography>
             <div className={styles.center}>
-              <Button caption={'How it works'} variant={'primary'} onClick={() => {}} />
+              <Button caption={'How it works'} variant={'primary'} onClick={() => {window.open(URL_HOW_IT_WORKS, '_blank');}} />
             </div>
           </div>
           <div className={styles.tabs}>
