@@ -1,9 +1,7 @@
 // Dependencies
-import React from 'react';
-import {NavLink} from 'react-router-dom';
-import {motion} from 'framer-motion';
-import {useState, useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import classNames from 'clsx';
 
 // Stylesheet
@@ -11,22 +9,23 @@ import styles from './TabNavigator.module.scss';
 
 // Components
 import Typography from '../Typography';
+import { useDebounce } from 'react-use';
 
 interface TabNavigatorProps {
   tabs: Array<{ path: string, label: string }>;
 }
 
-const TabNavigator: React.FC<TabNavigatorProps> = ({tabs}) => {
+const TabNavigator: React.FC<TabNavigatorProps> = ({ tabs }) => {
   const location = useLocation();
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [indicatorWidth, setIndicatorWidth] = useState<number>(0);
   const [indicatorOffset, setIndicatorOffset] = useState<number>(0);
 
-  useEffect(() => {
-    const currentIndex: number = tabs.findIndex(tab => tab.path === location.pathname);
-    setActiveIndex(currentIndex);
-  }, [location.pathname, tabs]);
-
+  /**
+   * Updates the indicator's width and offset based on the active tab.
+   * Finds the active tab element using the active class and updates the state
+   * with the tab's client width and offset left position.
+   */
   const updateIndicator = () => {
     const activeTab = document.querySelector<HTMLDivElement>(`.${styles.tab}.${styles.active}`);
     if (activeTab) {
@@ -34,6 +33,11 @@ const TabNavigator: React.FC<TabNavigatorProps> = ({tabs}) => {
       setIndicatorOffset(activeTab.offsetLeft);
     }
   };
+    
+  useEffect(() => {
+    const currentIndex: number = tabs.findIndex(tab => tab.path === location.pathname);
+    setActiveIndex(currentIndex);
+  }, [location.pathname, tabs]);
 
   useEffect(() => {
     updateIndicator();
@@ -44,26 +48,24 @@ const TabNavigator: React.FC<TabNavigatorProps> = ({tabs}) => {
     };
   }, [activeIndex]);
 
-  useEffect(() => {
-    updateIndicator();
-  });
+  useDebounce(updateIndicator, 100);
 
   return (
     <nav className={styles.layout}>
       {tabs.map((tab, index) => (
         <NavLink
-          key={index}
+          key={`--tab-index-${index.toString()}`}
           to={tab.path}
-          className={({isActive}) => classNames(styles.tab, isActive && styles.active)}
+          className={({ isActive }) => classNames(styles.tab, isActive && styles.active)}
         >
           <Typography variant={'druk'} weight={'wide'} >{tab.label}</Typography>
         </NavLink>
       ))}
       <motion.div
         className={styles.indicator}
-        initial={{x: 0, width: 0}}
-        animate={{x: indicatorOffset, width: indicatorWidth}}
-        transition={{type: 'spring', stiffness: 300, damping: 30}}
+        initial={{ x: 0, width: 0 }}
+        animate={{ x: indicatorOffset, width: indicatorWidth }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       />
     </nav>
   );
