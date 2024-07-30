@@ -20,6 +20,8 @@ import GoBackIcon from '@/assets/icons/go-back-icon.svg?react';
 import ExportIcon from '@/assets/icons/export-icon.svg?react';
 import FavoriteIcon from '@/assets/icons/favorite-icon.svg?react';
 import GlobeIcon from '@/assets/icons/globe-icon.svg?react';
+import ScoreUpDownIcon from '@/assets/icons/score-updown-icon.svg?react';
+import ScoreEqualIcon from '@/assets/icons/score-equal-icon.svg?react';
 
 // Hocs
 import withProtectionRoute from '@/hocs/withProtectionRoute';
@@ -31,6 +33,7 @@ import { ModalsIds, useModal } from '@/hooks/ui';
 
 // Utils
 import { shortenNumber } from '@/utils/number';
+import { getBrandScoreVariation } from '../../shared/utils/brand';
 
 function BrandPage() {
   const navigate = useNavigate();
@@ -75,6 +78,37 @@ function BrandPage() {
         return 56;
     }
   }
+
+  const renderVariation = () => {
+    if (!data?.brand) {
+      return null;
+    }
+
+    const variation = getBrandScoreVariation(data?.brand.stateScoreWeek);
+
+    const iconClass = styles[variation];
+    const IconComponent = variation === 'equal' ? ScoreEqualIcon : ScoreUpDownIcon;
+
+    return (
+      <GridItem 
+        variant={variation == 'equal' ? 'blue' : variation === 'down' ? 'red' : 'green'} 
+        title={'Score'} 
+        rightElement={
+          <div className={classNames(styles.indicator, iconClass)}>
+            <Typography weight={'light'} size={12} lineHeight={14}>{variation === 'up' ? '+' : variation === 'down' ? '-' : ''}{data?.brand.scoreWeek}</Typography>
+  
+            <div className={styles.icon}>
+              <IconComponent />
+            </div>
+          </div>
+        }>
+        <div className={styles.center}>
+          <Typography variant={'druk'} weight={'wide'} className={styles.score} size={getSize(data.brand.score)}>{shortenNumber(data.brand.score)}</Typography>
+        </div>
+      </GridItem>
+    );
+
+  };
 
   /**
    * Extracts the rank ID and ranking from the brand's ranking string.
@@ -125,11 +159,7 @@ function BrandPage() {
               <div className={classNames(styles.grid, styles.inline)}>
                 <div className={styles.grid}>
                   <img src={data.brand.imageUrl} className={styles.image} width={'100%'} height={'100%'} alt={data.brand.name} />
-                  <GridItem variant={'green'} title={'Score'}>
-                    <div className={styles.center}>
-                      <Typography variant={'druk'} weight={'wide'} className={styles.score} size={getSize(data.brand.score)}>{shortenNumber(data.brand.score)}</Typography>
-                    </div>
-                  </GridItem>
+                  {renderVariation()}
                   <GridItem title={'Farcaster'}>
                     <div className={classNames(styles.bottom, styles.profile)}>
                       <Typography variant={'geist'} weight={'regular'}>

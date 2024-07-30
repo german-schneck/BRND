@@ -9,19 +9,27 @@ import styles from './GridItem.module.scss';
 import Typography from '@/components/Typography';
 
 interface GridItemProps {
-  variant?: 'primary' | 'green';
+  variant?: 'primary' | 'green' | 'red' | 'blue';
   title?: string;
   children: React.ReactNode;
   className?: string;
+  rightElement?: React.ReactNode;
 }
 
-const GridItem: React.FC<GridItemProps> = ({ variant = 'primary', children, className, title }) => {
+const GridItem: React.FC<GridItemProps> = ({ variant = 'primary', children, className, rightElement, title }) => {
   return (
     <div className={classNames(styles.layout, styles[variant], className)}>
       <div className={styles.container}>
-        {title && (
-          <Typography as={'h5'} variant={'druk'} weight={'text-wide'} size={10} lineHeight={12} className={styles.title}>{title}</Typography>
-        )}
+        <div className={styles.header}>
+          {title && (
+            <Typography as={'h5'} variant={'druk'} weight={'text-wide'} size={10} lineHeight={12} className={styles.title}>{title}</Typography>
+          )}
+          {rightElement && (
+            <div className={styles.right}>
+              {rightElement}
+            </div>
+          )}
+        </div>
         {children}
       </div>
     </div>

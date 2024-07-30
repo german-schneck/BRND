@@ -32,6 +32,48 @@
       }
     }
   }
+
+  &.red {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.15) 1.82%, rgb(209 37 37 / 75%) 49.13%, rgba(255, 255, 255, 0.15) 94.55%);
+
+    .container {
+      position: relative;
+      background: #0A0B0D;
+
+      .title {
+        color: #9B92A5;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: radial-gradient(50% 50% at 50% 50%, rgb(209 37 37 / 25%) 0%, rgb(209 37 37 / 5%) 100%);
+      }
+    }
+  }
+
+  &.blue {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.15) 1.82%, rgb(37 112 209 / 75%) 49.13%, rgba(255, 255, 255, 0.15) 94.55%);
+
+    .container {
+      position: relative;
+      background: #0A0B0D;
+
+      .title {
+        color: #9B92A5;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: radial-gradient(50% 50% at 50% 50%, rgb(37 116 209 / 25%) 0%, rgb(37 74 209 / 5%) 100%);
+      }
+    }
+  }
 }
 
 .container {
@@ -53,4 +95,13 @@
 .title {
   color: #fff;
   text-transform: uppercase;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.right {
+  margin-left: auto;
 }

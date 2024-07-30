@@ -171,3 +171,56 @@
 .divider {
   height: 70px;
 }
+
+.indicator {
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+
+  &.up {
+    color: #00FF00;
+
+    background: #00FF0026;
+    border: 1px solid #FFFFFF1A;
+    color: #00FF00;
+
+    svg {
+      color: #00FF00;
+    }
+  }
+
+  &.equal {
+    background: rgb(0 136 255 / 15%);
+    border: 1px solid rgb(255 255 255 / 10%);
+    color: #008CFF;
+
+    svg {
+      color: #008CFF;
+      top: -1px;
+      position: relative;
+    }
+  }
+
+  &.down {
+    background: rgb(255 0 0 / 15%);
+    border: 1px solid rgb(255 255 255 / 10%);
+    color: #ff0000;
+
+    svg {
+      color: #FF0000;
+      transform: rotate(180deg);
+    }
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+    margin-left: auto;
+  }
+}
+

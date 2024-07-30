@@ -5,9 +5,9 @@
 // Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {AuthKitProvider} from '@farcaster/auth-kit';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {RouterProvider} from 'react-router-dom';
+import { AuthKitProvider } from '@farcaster/auth-kit';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RouterProvider } from 'react-router-dom';
 
 // SCSS StyleSheet
 import './shared/styles/global.scss';
@@ -17,8 +17,8 @@ import '@farcaster/auth-kit/styles.css';
 const queryClient = new QueryClient();
 
 // Configuration
-import {router} from './config/router';
-import {farcasterConfig} from './config/farcaster';
+import { router } from './config/router';
+import { farcasterConfig } from './config/farcaster';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
