@@ -5,7 +5,7 @@ import {request} from './api';
 import {USER_SERVICE} from '@/config/api';
 
 // Types
-import {User, UserVoteHistory, UserVote} from '../shared/hooks/user';
+import {User, UserVoteHistory, UserVote, UserBrand} from '../shared/hooks/user';
 
 /**
  * Retrieves the vote history of a user from the user service.
@@ -31,5 +31,10 @@ export const getUserVotesHistory = async (id: User['id'], pageId: number) =>
  */
 export const getUserVotes = async (unixDate: number) =>
   await request<UserVote>(`${USER_SERVICE}/votes/${unixDate}`, {
+    method: 'GET',
+  });
+
+export const getUserBrands = async () =>
+  await request<UserBrand[]>(`${USER_SERVICE}/brands`, {
     method: 'GET',
   });

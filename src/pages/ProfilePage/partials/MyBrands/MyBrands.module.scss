@@ -1,0 +1,18 @@
+@import "@/styles/index.scss";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 402px);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(1, minmax(0%, 100%));
+  list-style-type: none;
+  overflow: auto;
+  padding-bottom: 12px;
+}
+

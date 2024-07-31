@@ -10,6 +10,7 @@ import styles from './ProfilePage.module.scss';
 // Components
 import AppLayout from '@/shared/layouts/AppLayout';
 import MyPodium from './partials/MyPodium';
+import MyBrands from './partials/MyBrands';
 import TabNavigator from '@/components/TabNavigator';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
@@ -37,7 +38,7 @@ function ProfilePage(): React.ReactNode {
             <IconButton
               variant={'solid'} 
               icon={<GoBackIcon />}
-              onClick={() => navigate(-1)} 
+              onClick={() => navigate('/')} 
               className={styles.backBtn}
             />
           </div>
@@ -60,15 +61,20 @@ function ProfilePage(): React.ReactNode {
             <TabNavigator
               tabs={[
                 {
-                  label: 'Podiums',
+                  label: 'Rank',
                   path: '/profile'
-                }
+                },
+                {
+                  label: 'Podiums',
+                  path: '/profile/podium'
+                },
               ]}
             />
           </div>
         </div>
         <Routes>
-          <Route path="/" element={<MyPodium />} />
+          <Route path="/" element={<MyBrands />} />
+          <Route path="/podium" element={<MyPodium />} />
         </Routes>
       </div>
     </AppLayout>

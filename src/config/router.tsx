@@ -33,6 +33,7 @@ export const router = createBrowserRouter([
         element: <ProfilePage />,
         children: [
           { path: '', element: <ProfilePage /> },
+          { path: 'podium', element: <ProfilePage /> },
         ],
       },
       {
