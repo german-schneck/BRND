@@ -25,6 +25,7 @@ import useBottomSheet from '@/hooks/ui/useBottomSheet';
 import { getBrandScoreVariation } from '@/utils/brand';
 
 interface BrandsListProps {
+  readonly value: Brand['id'][];
   readonly config?: {
     order: 'new' | 'top' | 'all';
     limit: number;
@@ -36,6 +37,7 @@ interface BrandsListProps {
 }
 
 export default function BrandsList({
+  value = [],
   className = '', 
   onSelect, 
   config = {
@@ -124,6 +126,7 @@ export default function BrandsList({
                 orientation={index % 3 === 0 ? 'left' : index % 3 === 1 ? 'center' : 'right'}
                 score={brand.score}
                 variation={getBrandScoreVariation(brand.stateScore)}
+                disabled={!!value.find(e => e === brand.id)}
 
                 {...(isSelectable ? {
                   selected: selected?.id === brand.id,

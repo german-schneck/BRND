@@ -14,7 +14,7 @@
   cursor: pointer;
   color: #fff;
 
-  &.selected {
+  &.selected, &.disabled {
     padding: 1.5px;
     border-color: transparent;
 
@@ -29,6 +29,11 @@
         opacity: 1;
       }
     }
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
   }
 }
 

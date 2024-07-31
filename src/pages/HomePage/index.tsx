@@ -2,8 +2,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-// // StyleSheet
+// StyleSheet
 import styles from './HomePage.module.scss';
+
+// Hooks
+import useDisableScrollBody from '@/hooks/ui/useDisableScrollBody';
 
 // Components
 import AppLayout from '../../shared/layouts/AppLayout';
@@ -19,6 +22,8 @@ import Logo from '@/assets/images/logo.svg';
 import withProtectionRoute from '@/hocs/withProtectionRoute';
 
 function HomePage(): React.ReactNode {
+  useDisableScrollBody();
+  
   return (
     <AppLayout>
       <div className={styles.body}>

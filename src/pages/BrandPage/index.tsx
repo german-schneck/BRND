@@ -30,10 +30,11 @@ import withProtectionRoute from '@/hocs/withProtectionRoute';
 import { useBrand } from '@/hooks/brands';
 import { useAuth } from '@/hooks/auth';
 import { ModalsIds, useModal } from '@/hooks/ui';
+import useDisableScrollBody from '@/hooks/ui/useDisableScrollBody';
 
 // Utils
 import { shortenNumber } from '@/utils/number';
-import { getBrandScoreVariation } from '../../shared/utils/brand';
+import { getBrandScoreVariation } from '@/utils/brand';
 
 function BrandPage() {
   const navigate = useNavigate();
@@ -41,7 +42,8 @@ function BrandPage() {
   const { data: user } = useAuth();
   const { data , isLoading, isFetching } = useBrand(Number(id));
   const { openModal } = useModal();
-
+  useDisableScrollBody();
+  
   /**
    * Opens the brand's website in a new tab.
    */

@@ -28,6 +28,7 @@ interface BrandCardProps {
   readonly score: number;
   readonly variation: BrandStateScoreType;
   readonly className?: string;
+  readonly disabled?: boolean;
 }
 
 export default function BrandCard({
@@ -39,7 +40,8 @@ export default function BrandCard({
   variation = 'equal',
   selected,
   onClick,
-  className = ''
+  className = '',
+  disabled = false
 }: BrandCardProps) {
 
   /**
@@ -108,7 +110,7 @@ export default function BrandCard({
   };
 
   return (
-    <button className={classNames(styles.item, selected && styles.selected, className)} onClick={onClick}>
+    <button disabled={disabled} className={classNames(styles.item, selected && styles.selected, disabled && styles.disabled, className)} onClick={onClick}>
       <AnimatePresence>
         {selected && (
           <motion.div
