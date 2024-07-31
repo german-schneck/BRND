@@ -4,24 +4,26 @@ import { useNavigate } from 'react-router-dom';
 
 // Components
 import BrandCard from '@/components/cards/BrandCard';
+import { BrandListItem } from '@/components/BrandListItem';
 
 // StyleSheet
 import styles from './TrendBrands.module.scss';
 
 // Hook
 import { Brand, useBrandList } from '@/hooks/brands';
+import useDisableScrollBody from '@/hooks/ui/useDisableScrollBody';
 
 // Utils
 import { getBrandScoreVariation } from '@/utils/brand';
 
 // Assets
 import FeatureFarcasterBrand from '@/assets/images/feature-farcaster-brand.svg?react';
-import { BrandListItem } from '../../../../shared/components/BrandListItem';
 
 function TrendBrands() {
   const navigate = useNavigate();
   const { data, refetch } = useBrandList('top', '', 1, 10);
-
+  useDisableScrollBody();
+  
   useEffect(() => {
     refetch();
   }, []);
