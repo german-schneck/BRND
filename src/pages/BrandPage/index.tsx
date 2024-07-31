@@ -77,7 +77,7 @@ function BrandPage() {
       case score > 10000:
         return 28;
       default:
-        return 56;
+        return 32;
     }
   }
 
