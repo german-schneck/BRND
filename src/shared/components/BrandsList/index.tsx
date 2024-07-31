@@ -25,7 +25,7 @@ import useBottomSheet from '@/hooks/ui/useBottomSheet';
 import { getBrandScoreVariation } from '@/utils/brand';
 
 interface BrandsListProps {
-  readonly value: Brand['id'][];
+  readonly value?: Brand['id'][];
   readonly config?: {
     order: 'new' | 'top' | 'all';
     limit: number;
