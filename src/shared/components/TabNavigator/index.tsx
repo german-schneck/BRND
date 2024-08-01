@@ -48,6 +48,15 @@ const TabNavigator: React.FC<TabNavigatorProps> = ({ tabs }) => {
     };
   }, [activeIndex]);
 
+  /**
+   * Determines if a given path is active based on the current location.
+   * @param {string} path - The path to evaluate.
+   * @returns {boolean} - True if the path is active, false otherwise.
+   */
+  const isPathActive = (path: string): boolean => {
+    return location.pathname === path;
+  };
+
   useDebounce(updateIndicator, 100);
 
   return (
@@ -56,7 +65,7 @@ const TabNavigator: React.FC<TabNavigatorProps> = ({ tabs }) => {
         <NavLink
           key={`--tab-index-${index.toString()}`}
           to={tab.path}
-          className={({ isActive }) => classNames(styles.tab, isActive && styles.active)}
+          className={classNames(styles.tab, isPathActive(tab.path) && styles.active)}
         >
           <Typography variant={'druk'} weight={'wide'} >{tab.label}</Typography>
         </NavLink>
