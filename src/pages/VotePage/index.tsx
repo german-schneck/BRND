@@ -26,7 +26,7 @@ function VotePage(): React.ReactNode {
   const { data: votes, isFetching } = useUserVotes(Number(unixDate));
   const { data: user } = useAuth();
 
-  const [view, setView] = useState<[VotingViewEnum, Brand[]]>([VotingViewEnum.PODIUM, []]);
+  const [view, setView] = useState<[VotingViewEnum, Brand[], string]>([VotingViewEnum.PODIUM, [], '']);
 
   /**
    * Determines if the voting process was successful based on the URL search parameters.
@@ -40,8 +40,9 @@ function VotePage(): React.ReactNode {
    *
    * @param {VotingViewEnum} id - The id of the view to navigate to.
    * @param {Brand[]} selection - The selection of brands for the view.
+   * @param {string} id - The id of the vote to share the podium.
    */
-  const navigateToView = useCallback((id: VotingViewEnum, selection: Brand[]) => setView([id, selection]), [setView]);
+  const navigateToView = useCallback((id: VotingViewEnum, selection: Brand[], voteId: string) => setView([id, selection, voteId]), [setView]);
 
   /**
    * Object containing the properties to be passed to the child components.
@@ -54,6 +55,7 @@ function VotePage(): React.ReactNode {
     navigateToView,
     currentView: view[0],
     currentBrands: view[1],
+    currentVoteId: view[2]
   };
 
   /**

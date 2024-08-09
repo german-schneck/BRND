@@ -7,7 +7,8 @@ export enum VotingViewEnum {
 }
 
 export interface VotingViewProps {
-  navigateToView: (view: VotingViewEnum, brands: Brand[]) => void;
+  navigateToView: (view: VotingViewEnum, brands: Brand[], voteId: string) => void;
   currentBrands: Brand[];
+  currentVoteId: string;
   currentView: VotingViewEnum;
 }

@@ -45,8 +45,8 @@ export default function PodiumView({ navigateToView }: PodiumViewProps) {
         brands[2].id
       ]
     }, {
-      onSuccess: () => {
-        navigateToView(VotingViewEnum.SHARE, brands);
+      onSuccess: (response) => {
+        navigateToView(VotingViewEnum.SHARE, brands, response.id);
       }
     });
   }, [voteBrands, navigateToView]);

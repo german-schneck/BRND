@@ -2,7 +2,7 @@
 import {useMutation} from '@tanstack/react-query';
 
 // Services
-import {VoteBrandsParams, voteBrands} from '@/services/brands';
+import {VoteBrandsParams, VoteBrandsResponse, voteBrands} from '@/services/brands';
 
 export const useVoteBrands = () => {
 
@@ -10,12 +10,11 @@ export const useVoteBrands = () => {
     mutationFn: ({ids}: VoteBrandsParams) => voteBrands({
       ids
     }),
-    onSuccess: async (response) => {
+    onSuccess: async (response: VoteBrandsResponse) => {
       console.log(response);
     },
     onError: (e) => {
-      console.log(e);
-      console.log('Error on voting');
+      console.log('Error on voting', e);
     }
   }); 
 };

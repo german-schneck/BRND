@@ -7,6 +7,8 @@ import Podium from '@/components/Podium';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
 
+import { useShareFrame } from '@/hooks/user';
+
 // Types
 import { VotingViewProps } from '../../types';
 
@@ -19,9 +21,10 @@ import ShareIcon from '@/assets/icons/share-icon.svg?react';
 
 interface ShareViewProps extends VotingViewProps {}
 
-export default function ShareView({ currentBrands }: ShareViewProps) {
+export default function ShareView({ currentBrands, currentVoteId }: ShareViewProps) {
   const navigate = useNavigate();
   const location = useLocation();
+  const shareFrame = useShareFrame();
   
   /**
    * Handles the click event for the "Skip" button.
@@ -37,8 +40,15 @@ export default function ShareView({ currentBrands }: ShareViewProps) {
    */
   const handleClickShare = useCallback(() => {
     window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20podium%20of%20Brands%20with:%0A%F0%9F%A5%87${currentBrands[1].name}%0A%F0%9F%A5%88${currentBrands[0].name}%0A%F0%9F%A5%89${currentBrands[2].name}%0A%0A`, '_blank');
-    location.pathname === '/vote' ? navigate(`${location.pathname}/${Math.floor(Date.now()/1000)}?success`) : navigate(location.pathname + '?success');
-  }, []);
+    
+    shareFrame.mutate(undefined, {
+      onSuccess: () => {
+        location.pathname === '/vote'
+          ? navigate(`${location.pathname}/${Math.floor(Date.now()/1000)}?success`) 
+          : navigate(location.pathname + '?success');
+      }
+    });
+  }, [shareFrame, currentBrands, navigate]);
 
   /**
    * Array of objects representing the podium places.
@@ -83,7 +93,7 @@ export default function ShareView({ currentBrands }: ShareViewProps) {
 
           <div className={styles.action}>
             <Typography variant={'geist'} weight={'semiBold'} textAlign={'center'} size={14} lineHeight={18}>
-              You will earn X BRND points sharing on frame your first podium
+              You will earn 3 BRND points sharing your podium once a day
             </Typography>
             <Button caption={'Share now'} className={styles.button} iconLeft={(<ShareIcon />)} onClick={handleClickShare} />
           </div>

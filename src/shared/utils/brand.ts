@@ -7,4 +7,4 @@ import { BrandStateScoreType } from '@/hooks/brands';
  * @returns {string} - 'equal' if stateScore is 0, 'up' if stateScore is 1, 'down' otherwise.
  */
 export const getBrandScoreVariation = (stateScore: number): BrandStateScoreType => 
-  stateScore === 0 ? 'equal' : stateScore === 1 ? 'up' : 'down';
+  stateScore === 0 ? 'equal' : stateScore > 0 ? 'up' : 'down';

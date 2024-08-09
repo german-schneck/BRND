@@ -66,15 +66,24 @@ export interface VoteBrandsParams {
  * @property {object} data - Contains the response data.
  */
 export type VoteBrandsResponse = & {
-  id: number;
+  id: string;
   date: string;
-  position: number;
-  brand: {
+  brand1: {
     id: number;
     name: string;
     imageUrl: string;
-  };
-}[];
+  },
+  brand2: {
+    id: number;
+    name: string;
+    imageUrl: string;
+  },
+  brand3: {
+    id: number;
+    name: string;
+    imageUrl: string;
+  }
+};
 
 /**
  * Sends a vote request to the brand service.

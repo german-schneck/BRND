@@ -38,3 +38,8 @@ export const getUserBrands = async () =>
   await request<UserBrand[]>(`${USER_SERVICE}/brands`, {
     method: 'GET',
   });
+
+export const shareFrame = async () =>
+  await request(`${USER_SERVICE}/share-frame`, {
+    method: 'POST',
+  });

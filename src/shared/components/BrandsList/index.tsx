@@ -83,7 +83,6 @@ export default function BrandsList({
       name: searchQuery
     }, {
       onSuccess: () => {
-        console.log('Brand claimed successfully');
         bottomSheet.close();
         navigate('/claimed');
       },

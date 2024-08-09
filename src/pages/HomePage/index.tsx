@@ -30,11 +30,11 @@ function HomePage(): React.ReactNode {
               tabs={[
                 {
                   label: 'Top',
-                  path: '/top'
+                  path: '/'
                 },
                 {
                   label: 'New',
-                  path: '/'
+                  path: '/new'
                 },
                 {
                   label: 'All',
@@ -45,8 +45,8 @@ function HomePage(): React.ReactNode {
           </div>
         </div>
         <Routes>
-          <Route path="/" element={<NewBrands />} />
-          <Route path="/top" element={<TrendBrands />} />
+          <Route path="/" element={<TrendBrands />} />
+          <Route path="/new" element={<NewBrands />} />
           <Route path="/all" element={<AllBrands />} />
         </Routes>
       </div>
