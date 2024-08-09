@@ -25,20 +25,7 @@
   flex-direction: row;
   align-items: center;
   width: 230px;
-
-  & > * {
-    position: relative;
-    margin-left: -5px;
-    z-index: 1;
-  }
-
-  & > *:first-child {
-    margin-left: 0;
-  }
-
-  & > *:last-child {
-    z-index: 2;
-  }
+  gap: 6px;
 }
 
 .data {
@@ -47,7 +34,7 @@
   margin-left: auto;
   flex-direction: column;
   gap: 18px;
-
+  max-width: 90px;
   color: #8A8A8A;
 }
 

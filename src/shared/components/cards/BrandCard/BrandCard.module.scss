@@ -3,21 +3,20 @@
 .item {
   width: 100%;
   aspect-ratio: 1;
-  background-color: #0A0B0D;
-  border: 1px solid #2F2F2F;
-  border-radius: 12px;
+  background-color: transparent;
   display: flex;
   overflow: hidden;
   transition: all 200ms linear;
   position: relative;
-  padding: 0px;
+  border-radius: 12px;
+  border: 1px solid #2F2F2F;
+
   cursor: pointer;
   color: #fff;
 
   &.selected, &.disabled {
-    padding: 1.5px;
-    border-color: transparent;
-
+    padding: 2px;
+    border: transparent;
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       100% { background-position: 100% 50%; }
@@ -38,11 +37,17 @@
 }
 
 .effect {
-  inset: 0;
+  content: "";
   position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 10px;
   background: linear-gradient(154.5deg, #FF9533 2.43%, #FF0000 26.41%, #0C00FF 74.37%, #00FF00 98.35%);
-  background-size: 100% 100%;
-  z-index: 0;
+  -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
 .container {

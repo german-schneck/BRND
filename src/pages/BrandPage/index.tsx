@@ -160,7 +160,14 @@ function BrandPage() {
             <div className={styles.container}>
               <div className={classNames(styles.grid, styles.inline)}>
                 <div className={styles.grid}>
-                  <img src={data.brand.imageUrl} className={styles.image} width={'100%'} height={'100%'} alt={data.brand.name} />
+                  <div className={styles.image}>
+                    <img
+                      src={data.brand.imageUrl}
+                      width={'100%'}
+                      height={'100%'}
+                      alt={data.brand.name}
+                    />
+                  </div>
                   {renderVariation()}
                   <GridItem title={'Farcaster'}>
                     <div className={classNames(styles.bottom, styles.profile)}>
@@ -200,7 +207,7 @@ function BrandPage() {
                   </div>
                 </GridItem>
 
-                <GridItem title={'Latest casts'} className={classNames(styles.box, styles.purple, styles.casts)}>
+                <GridItem title={'Latest casts'} className={classNames(styles.box, styles.casts)}>
                   {data.casts.map((cast, index) => (
                     <CastItem
                       key={'castitem--key--' + index.toString()}

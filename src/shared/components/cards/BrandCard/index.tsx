@@ -62,10 +62,14 @@ export default function BrandCard({
 
   const sizes = {
     m: {
-      image: 28,
+      image: 22,
       title: {
         size: 12,
         lineHeight: 14
+      },
+      score: {
+        size: 10,
+        lineHeight: 10
       }
     },
     l: {
@@ -73,6 +77,10 @@ export default function BrandCard({
       title: {
         size: 22,
         lineHeight: 26
+      },
+      score: {
+        size: 12,
+        lineHeight: 12
       }
     }
   };
@@ -110,7 +118,7 @@ export default function BrandCard({
   };
 
   return (
-    <button disabled={disabled} className={classNames(styles.item, selected && styles.selected, disabled && styles.disabled, className)} onClick={onClick}>
+    <button disabled={disabled} className={classNames(styles.item, (selected && styles.selected), (disabled && styles.disabled), className)} onClick={onClick}>
       <AnimatePresence>
         {selected && (
           <motion.div
@@ -127,7 +135,7 @@ export default function BrandCard({
           <img src={photoUrl} width={sizes[size].image} height={sizes[size].image} alt={`${name} logo`} />
 
           <div className={styles.score}>
-            <Typography weight={'regular'} variant={'geist'} size={12} lineHeight={12} textAlign={'center'}>{shortenNumber(score)}</Typography>
+            <Typography weight={'regular'} variant={'geist'} size={sizes[size].score.size} lineHeight={sizes[size].score.lineHeight} textAlign={'center'}>{shortenNumber(score)}</Typography>
             {renderVariation(variation)}
           </div>
         </div>

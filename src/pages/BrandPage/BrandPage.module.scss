@@ -57,10 +57,17 @@
 .image {
   width: 100%;
   height: 170px;
-  object-fit: scale-down;
-  aspect-ratio: 1;
   border-radius: 12px;
   overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    aspect-ratio: 1;
+    transform: scale(1.1);
+  }
+
 }
 
 .center, .bottom {
@@ -126,14 +133,6 @@
     height: auto !important; 
   }
 
-  &.purple {
-    border: 1px solid #463659;
-
-    h5 {
-      color: #9B92A5;
-    }
-  }
-
   &.casts {
     > div {
       display: flex;
@@ -150,7 +149,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 100%;
-  max-width: 154px;
+  max-width: 100%;
   overflow: hidden;
 }
 
