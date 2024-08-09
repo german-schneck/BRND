@@ -78,7 +78,7 @@ function VotePage(): React.ReactNode {
 
   useEffect(() => { 
     if (unixDate && !isFetching && votes?.id) {
-      navigateToView(isSuccess ? VotingViewEnum.CONGRATS : VotingViewEnum.SHARE, [votes.brand2, votes.brand1, votes.brand3]);
+      navigateToView(isSuccess ? VotingViewEnum.CONGRATS : VotingViewEnum.SHARE, [votes.brand2, votes.brand1, votes.brand3], mapToProps.currentVoteId);
     }
   }, [isFetching, votes, unixDate, isSuccess, navigateToView]);
 

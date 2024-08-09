@@ -31,7 +31,9 @@ export default function ShareView({ currentBrands, currentVoteId }: ShareViewPro
    * Navigates to the CONGRATS view with the current brands.
    */
   const handleClickSkip = useCallback(() => {
-    navigate('/');
+    currentVoteId === ''
+      ? navigate(-1)
+      : navigate('/');
   }, []);
 
   /**

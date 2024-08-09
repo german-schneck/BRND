@@ -86,7 +86,7 @@ function BrandPage() {
       return null;
     }
 
-    const variation = getBrandScoreVariation(data?.brand.stateScoreWeek);
+    const variation = getBrandScoreVariation(data?.brand.stateScore);
 
     const iconClass = styles[variation];
     const IconComponent = variation === 'equal' ? ScoreEqualIcon : ScoreUpDownIcon;
@@ -97,7 +97,7 @@ function BrandPage() {
         title={'Score'} 
         rightElement={
           <div className={classNames(styles.indicator, iconClass)}>
-            <Typography weight={'light'} size={12} lineHeight={14}>{variation === 'up' ? '+' : variation === 'down' ? '-' : ''}{data?.brand.scoreWeek}</Typography>
+            <Typography weight={'light'} size={12} lineHeight={14}>{variation === 'up' ? '+' : variation === 'down' ? '-' : ''}{data?.brand.stateScore}</Typography>
   
             <div className={styles.icon}>
               <IconComponent />
