@@ -54,7 +54,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #0a0b0d6b;
+  background-color: #0A0B0D;
   padding: 12px;
   transition: all 200ms linear;
   border-radius: 13px;
@@ -63,7 +63,6 @@
   width: 100%;
   flex: 1;
   aspect-ratio: 1;
-  backdrop-filter: blur(4px);
 
   p {
     white-space: nowrap;

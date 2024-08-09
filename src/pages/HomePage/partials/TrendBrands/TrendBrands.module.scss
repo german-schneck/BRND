@@ -44,3 +44,9 @@
   height: 148px;
 }
 
+.brandCard {
+  div[data-id="container"] {
+    backdrop-filter: blur(4px);
+    background-color: #0a0b0d6b;
+  }
+}
