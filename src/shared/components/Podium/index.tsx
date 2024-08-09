@@ -70,7 +70,7 @@ function Podium({ isAnimated = true, initial = [], onVote, variant = 'selection'
                 open(
                   <div className={styles.selector}>
                     <BrandsList 
-                      value={selected.map((brand) => brand.id)}
+                      value={selected.map((brand) => brand?.id)}
                       isSelectable={true}
                       isFinderEnabled={true}
                       config={{
