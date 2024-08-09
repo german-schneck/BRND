@@ -42,7 +42,7 @@
   position: absolute;
   inset: 0;
   border-radius: 12px;
-  padding: 10px;
+  padding: 2px;
   background: linear-gradient(154.5deg, #FF9533 2.43%, #FF0000 26.41%, #0C00FF 74.37%, #00FF00 98.35%);
   -webkit-mask:
           linear-gradient(#fff 0 0) content-box,
@@ -54,7 +54,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #0A0B0D;
+  background-color: #0a0b0d6b;
   padding: 12px;
   transition: all 200ms linear;
   border-radius: 13px;
@@ -63,6 +63,7 @@
   width: 100%;
   flex: 1;
   aspect-ratio: 1;
+  backdrop-filter: blur(4px);
 
   p {
     white-space: nowrap;
