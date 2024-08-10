@@ -2,6 +2,8 @@
 import { useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+export const FRAME_URL = import.meta.env.VITE_APP_FRAME_URL;
+
 // Components
 import Podium from '@/components/Podium';
 import Typography from '@/components/Typography';
@@ -41,8 +43,8 @@ export default function ShareView({ currentBrands, currentVoteId }: ShareViewPro
    * Opens a new window with the specified URL.
    */
   const handleClickShare = useCallback(() => {
-    window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20podium%20of%20Brands%20with:%0A%F0%9F%A5%87${currentBrands[1].name}%0A%F0%9F%A5%88${currentBrands[0].name}%0A%F0%9F%A5%89${currentBrands[2].name}%0A%0A`, '_blank');
-    
+    window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20podium%20of%20Brands%20with:%0A%F0%9F%A5%87${currentBrands[1].name}%0A%F0%9F%A5%88${currentBrands[0].name}%0A%F0%9F%A5%89${currentBrands[2].name}%0A&embeds[]=${FRAME_URL}/${currentVoteId}`, '_blank');
+
     shareFrame.mutate(undefined, {
       onSuccess: () => {
         location.pathname === '/vote'
