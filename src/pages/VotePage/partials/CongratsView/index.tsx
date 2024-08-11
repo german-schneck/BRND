@@ -41,7 +41,7 @@ export default function CongratsView() {
       </div>
       <div className={styles.confirmation}>
         <Typography variant={'druk'} weight={'wide'} size={28} lineHeight={36} textAlign={'center'} className={styles.title}>
-          Congrats! you have won X brnd points
+          Congrats! you have won 3 BRND points
         </Typography>
         <Button caption={'Discover new brands'} onClick={handleClickContinue} />
       </div>

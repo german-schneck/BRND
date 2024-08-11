@@ -39,7 +39,7 @@ export const getUserBrands = async () =>
     method: 'GET',
   });
 
-export const shareFrame = async () =>
+export const shareFrame = async (): Promise<boolean> =>
   await request(`${USER_SERVICE}/share-frame`, {
     method: 'POST',
   });
