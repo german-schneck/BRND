@@ -13,7 +13,6 @@ import CastImage from '@/assets/images/cast-image.png';
 import ExternalLinkIcon from '@/assets/icons/external-link-icon.svg?react';
 
 // Utils
-import { isImage } from '@/shared/utils/image';
 import IconButton from '../../../../shared/components/IconButton';
 
 interface CastItemProps {
@@ -35,15 +34,13 @@ const CastItem: React.FC<CastItemProps> = ({ user, url, message, attach, classNa
     if (!attach)
       return null;
 
-    if (isImage(attach.src)) {
-      switch (attach.type) {
-        case 'video':
-        case 'image':
-        default:
-          return (
-            <img src={attach.src} className={styles.image} alt={`${attach.src}`} />
-          ); 
-      }
+    switch (attach.type) {
+      case 'video':
+      case 'image':
+      default:
+        return (
+          <img src={attach.src} className={styles.image} alt={`${attach.src}`} />
+        ); 
     }
 
   }, [attach]);

@@ -58,8 +58,8 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
   */
 
   const handleClickGoHome = useCallback(() => {
-    navigate('/top');
-  }, []);
+    navigate('/');
+  }, [navigate]);
 
   /**
    * Handles the click event for the user button.

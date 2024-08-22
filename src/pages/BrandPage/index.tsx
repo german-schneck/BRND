@@ -163,8 +163,6 @@ function BrandPage() {
                   <div className={styles.image}>
                     <img
                       src={data.brand.imageUrl}
-                      width={'100%'}
-                      height={'100%'}
                       alt={data.brand.name}
                     />
                   </div>
