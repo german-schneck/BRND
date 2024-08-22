@@ -47,7 +47,7 @@ export default function ShareView({ currentBrands, currentVoteId }: ShareViewPro
     const profile2 = currentBrands[0].profile ? currentBrands[0].profile : currentBrands[0].channel;
     const profile3 = currentBrands[2].profile ? currentBrands[2].profile : currentBrands[2].channel;
 
-    window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20podium%20of%20Brands%20with:%0A%0A%F0%9F%A5%87${currentBrands[1].name} - ${profile1}%0A%F0%9F%A5%88${currentBrands[0].name} - ${profile2}%0A%F0%9F%A5%89${currentBrands[2].name} - ${profile3}%0A&embeds[]=${FRAME_URL}/${currentVoteId}`, '_blank');
+    window.open(`https://warpcast.com/~/compose?text=I%27ve%20just%20create%20my%20%2Fbrnd%20podium:%0A%0A%F0%9F%A5%87${currentBrands[1].name} - ${profile1}%0A%F0%9F%A5%88${currentBrands[0].name} - ${profile2}%0A%F0%9F%A5%89${currentBrands[2].name} - ${profile3}%0A&embeds[]=${FRAME_URL}/${currentVoteId}`, '_blank');
 
     shareFrame.mutate(undefined, {
       onSuccess: (result) => {
