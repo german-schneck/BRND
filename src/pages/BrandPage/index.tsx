@@ -153,19 +153,25 @@ function BrandPage() {
               <div className={styles.head}>
                 <div className={styles.title}>
                   {/* <Typography as={'span'} variant={'geist'} weight={'light'} size={16} lineHeight={16} className={classNames(styles.grey, styles.position)}># 3</Typography> */}
-                  <Typography as={'span'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>{data.brand.name}</Typography>
+                  <Typography as={'p'} variant={'druk'} weight={'text-wide'} size={22} lineHeight={22} className={styles.name}>
+                    <span>
+                      {data.brand.name}
+                    </span>
+                  </Typography>
                 </div>
               </div>
             </div>
             <div className={styles.container}>
               <div className={classNames(styles.grid, styles.inline)}>
                 <div className={styles.grid}>
-                  <div className={styles.image}>
-                    <img
-                      src={data.brand.imageUrl}
-                      alt={data.brand.name}
-                    />
-                  </div>
+                  <GridItem>
+                    <div className={styles.image}>
+                      <img
+                        src={data.brand.imageUrl}
+                        alt={data.brand.name}
+                      />
+                    </div>
+                  </GridItem>
                   {renderVariation()}
                   <GridItem title={'Farcaster'}>
                     <div className={classNames(styles.bottom, styles.profile)}>
