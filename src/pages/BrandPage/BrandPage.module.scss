@@ -54,20 +54,22 @@
   }
 }
 
+.imageBox {
+  border: none;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
 .image {
-  width: 100%;
-  height: 100%;
+  width: 130px;
+  height: 130px;
   aspect-ratio: 1/1;
   justify-content: center;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    aspect-ratio: 1/1;
-    vertical-align: bottom;
-  }
-
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
 }
 
 .center, .bottom {
