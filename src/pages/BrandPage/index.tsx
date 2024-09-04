@@ -164,10 +164,10 @@ function BrandPage() {
             <div className={styles.container}>
               <div className={classNames(styles.grid, styles.inline)}>
                 <div className={styles.grid}>
-                  <div className={styles.imageBox}>
-                    <div
-                      className={styles.image}
-                      style={{ backgroundImage: `url("${data.brand.imageUrl}")` }}
+                  <div className={styles.image}>
+                    <img
+                      src={data.brand.imageUrl}
+                      alt={data.brand.name}
                     />
                   </div>
                   {renderVariation()}
