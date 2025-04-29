@@ -58,7 +58,7 @@ function LoginPage() {
       logIn.mutate({
         fid: data.fid,
         signature: data.signature,
-        domain: 'example.com',
+        domain: 'brnd.land',
         message: data.message,
         nonce: data.nonce,
         username: data.username,

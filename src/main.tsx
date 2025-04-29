@@ -18,13 +18,15 @@ const queryClient = new QueryClient();
 
 // Configuration
 import { router } from './config/router';
-import { farcasterConfig } from './config/farcaster';
+import { farcasterConfig, FarcasterFrameProvider } from './config/farcaster';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthKitProvider config={farcasterConfig}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <FarcasterFrameProvider>
+          <RouterProvider router={router} />
+        </FarcasterFrameProvider>
       </QueryClientProvider>
     </AuthKitProvider>
   </React.StrictMode>,
