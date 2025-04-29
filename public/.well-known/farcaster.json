@@ -1,0 +1,18 @@
+{
+	"accountAssociation": {
+		"header": "eyJmaWQiOjgxMDksInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHg4MTgwMkNFNTgxQzY0QjQ0NjBhN2RFMkNhMkZmNjdCM2FiREYzQTlCIn0",
+		"payload": "eyJkb21haW4iOiJicm5kLmxhbmQifQ",
+		"signature": "MHg0MjczZTYzZjU0MDVkYjhhNDAwMzJkMGFiMTllMTM2N2Q4ZTI4YzhlMDBjNWRiYTI3YjYxNjlmNjA4YmU3ODU0MjRlMTljNDllZjUxM2EyYThmMTNhZjMzNTRlZDBhNWMyZjI1NjRkYmIwYzYyZjlkZTNlMDg0YjY2MDU2MGQyMzFi"
+	},
+	"frame": {
+		"version": "1",
+		"name": "BRND",
+		"iconUrl": "https://drive.google.com/file/d/1SqGpAjO8kLq2j1vGYaEuyuWqGSGsLxJg/view?usp=drive_link",
+		"homeUrl": "https://brnd.land",
+		"imageUrl": "https://drive.google.com/file/d/1SlmrTCvcXdmJgV3q8KT_A_ClcNROWMH1/view?usp=drive_link",
+		"buttonTitle": "Vote your Brand",
+		"splashImageUrl": "https://drive.google.com/file/d/1Sq-C0D6doCqdbQsfFzjzlj22UFQlKOZd/view?usp=drive_link",
+		"splashBackgroundColor": "#000000",
+		"webhookUrl": "https://brnd.land/api/webhook"
+	}
+}
