@@ -4,6 +4,7 @@ import {Outlet} from 'react-router-dom';
 // Providers
 import {BottomSheetProvider} from './BottomSheetProvider';
 import {ModalProvider} from './ModalProvider';
+import { FarcasterFrameProvider } from '@/config/farcaster';
 
 /**
  * AppProvider component that wraps the application with necessary providers.
@@ -14,7 +15,9 @@ export function AppProvider(): JSX.Element {
   return (
     <BottomSheetProvider>
       <ModalProvider>
-        <Outlet />
+        <FarcasterFrameProvider>
+          <Outlet />
+        </FarcasterFrameProvider>
       </ModalProvider>
     </BottomSheetProvider>
   );
