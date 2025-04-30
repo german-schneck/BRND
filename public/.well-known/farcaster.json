@@ -7,11 +7,11 @@
 	"frame": {
 		"version": "1",
 		"name": "BRND",
-		"iconUrl": "https://drive.google.com/file/d/1SqGpAjO8kLq2j1vGYaEuyuWqGSGsLxJg/view?usp=drive_link",
+		"iconUrl": "https://imgur.com/a/b00Oydg",
 		"homeUrl": "https://brnd.land",
-		"imageUrl": "https://drive.google.com/file/d/1SlmrTCvcXdmJgV3q8KT_A_ClcNROWMH1/view?usp=drive_link",
+		"imageUrl": "https://imgur.com/a/AtKO87o",
 		"buttonTitle": "Vote your Brand",
-		"splashImageUrl": "https://drive.google.com/file/d/1Sq-C0D6doCqdbQsfFzjzlj22UFQlKOZd/view?usp=drive_link",
+		"splashImageUrl": "https://imgur.com/a/XAPCgze",
 		"splashBackgroundColor": "#000000",
 		"webhookUrl": "https://brnd.land/api/webhook"
 	}
