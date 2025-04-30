@@ -1,5 +1,5 @@
 // Dependencies
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { SignInButton, UseSignInData, useProfile } from '@farcaster/auth-kit';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,8 @@ import { ModalsIds, useModal } from '@/shared/hooks/ui';
 
 // StyleSheet
 import styles from './LoginPage.module.scss';
+
+import { sdk } from '@farcaster/frame-sdk';
 
 // Assets
 import Logo from '@/assets/images/logo.svg';
@@ -43,6 +45,10 @@ function LoginPage() {
   const { isAuthenticated } = useProfile();
   const { refetch } = useAuth();
   const { openModal } = useModal();
+
+  useEffect(() => {
+    sdk.actions.ready();
+  }, []);
 
   /**
    * Handles the successful sign-in event by mutating the login state with the received sign-in data.

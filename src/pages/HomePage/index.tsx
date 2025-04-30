@@ -5,8 +5,6 @@ import { Routes, Route } from 'react-router-dom';
 // StyleSheet
 import styles from './HomePage.module.scss';
 
-import { sdk } from '@farcaster/frame-sdk'
-
 // Components
 import AppLayout from '../../shared/layouts/AppLayout';
 import NewBrands from './partials/NewBrands';
@@ -21,10 +19,6 @@ import Logo from '@/assets/images/logo.svg';
 import withProtectionRoute from '@/hocs/withProtectionRoute';
 
 function HomePage(): React.ReactNode {
-  useEffect(() => {
-    sdk.actions.ready();
-  }, []);
-  
   return (
     <AppLayout>
       <div className={styles.body}>
