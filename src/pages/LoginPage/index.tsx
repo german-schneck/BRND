@@ -11,8 +11,6 @@ import { ModalsIds, useModal } from '@/shared/hooks/ui';
 // StyleSheet
 import styles from './LoginPage.module.scss';
 
-import { sdk } from '@farcaster/frame-sdk';
-
 // Assets
 import Logo from '@/assets/images/logo.svg';
 import BRNDImage1 from '@/assets/images/brnd-intro-imgs/png-brnd-brand-page.png';
@@ -45,10 +43,6 @@ function LoginPage() {
   const { isAuthenticated } = useProfile();
   const { refetch } = useAuth();
   const { openModal } = useModal();
-
-  useEffect(() => {
-    sdk.actions.ready();
-  }, []);
 
   /**
    * Handles the successful sign-in event by mutating the login state with the received sign-in data.
